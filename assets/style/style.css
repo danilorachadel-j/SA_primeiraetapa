@@ -1,8 +1,21 @@
-.container{
-    background-color: black;
+.container1{
+    
     justify-content: center;
     align-items: center;
+    border: solid 4px;
+    margin-top: 100px;
+    margin-left: 300px;
+    margin-right: 300px;
 }
-body{
-    background-color: black;
+.flex{
+    display: flex;
+}
+body {
+    background-color: rgb(41, 39, 53);
+}
+.img1{
+   width: 220px;      /* Tamaño fijo en píxeles */
+            height: auto;      /* Mantiene proporción */
+            display: block;
+            
 }
