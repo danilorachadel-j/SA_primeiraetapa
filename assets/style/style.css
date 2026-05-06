@@ -12,14 +12,18 @@
 }
 body {
     background-color: rgb(41, 39, 53);
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 20px 0;
 }
 .img1{
    width: 220px;      
             height: auto;      
             display: block;
             
+}
+
+#body-c {
+     background-color: #f8f9fa; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px 0;
 }
 .card-cadastro {
     background: #d1d1d1;
