@@ -14,10 +14,8 @@
 }
 
 #body-h{
-    background-image: url(../assets/img/Fundo_Home.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+    background-image: url(../img/Fundo_Home.jpg);
+    
 }
 
 #body-l{
