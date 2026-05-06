@@ -13,9 +13,24 @@
     align-items: center;
 }
 
+.navbarHome{
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    margin: 0;
+    background-color: rgb(104, 104, 104);
+}
+
 #body-h{
     background-image: url(../img/Fundo_Home.jpg);
-    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+}
+
+#body-h img{
+    width: 150px;
 }
 
 #body-l{
@@ -111,4 +126,15 @@
 .btn-cadastrar:hover {
     background-color: #0b5ed7;
     color: white;
+}
+
+.Wblock {
+    background-color: #ffffff;
+    width: 120%;
+    height: 150px;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
 }
