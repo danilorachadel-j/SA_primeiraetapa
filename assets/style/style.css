@@ -1,9 +1,9 @@
 .container1{
     color: #d1d1d1;
     background-color: #212529;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
+    padding-left: 330px;
+    padding-top: 250px;
 }
 .flex{
     display: flex;
@@ -21,12 +21,15 @@ body {
 } 
 .img-lateral{
      flex: 0 0 55%;            
-    background-image: url(../img/Metro-logo-login.jpg);
+    background-image: url(../img/Fundo-1.jpd.jpg) ;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-attachment: fixed;
-    min-width: 220px;
-    border-radius: 35px;
+    
+    border-radius: 0px 35px 35px 0px;
+    justify-content: center;
+   display: flex;
+   align-items: center;
 }
 
 #body-c {
