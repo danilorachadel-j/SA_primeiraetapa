@@ -12,13 +12,18 @@
     justify-content: center;
     align-items: center;
 }
+
+#body-h{
+    background-image: url(../assets/img/Fundo_Home.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 #body-l{
     background-color: #212529;
 }
-body {
-    background-color: rgb(41, 39, 53);
-    
-} 
+
 .img-lateral{
      flex: 0 0 55%;            
     background-image: url(../img/Metro-logo-login.jpg);
