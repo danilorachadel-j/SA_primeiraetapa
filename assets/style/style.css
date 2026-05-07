@@ -12,6 +12,18 @@
     justify-content: center;
     align-items: center;
 }
+.cont-nav{
+    background-color: #212529;
+  
+    margin: 0;
+    padding: 0;
+
+}
+
+.subcontainer{
+    display: flex;
+    grid-template-columns: auto auto auto;
+}
 
 .navbarHome{
     justify-content: space-between;
@@ -27,10 +39,12 @@
     background-size: cover;
     background-attachment: fixed;
     color: white;
+    margin: 0;
 }
 
 #body-h img{
     width: 150px;
+    
 }
 
 #body-l{
