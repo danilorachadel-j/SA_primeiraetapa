@@ -151,4 +151,9 @@ background-repeat: no-repeat;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    text-align: center;
+}
+
+.text-6 {
+    text
 }
