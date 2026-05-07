@@ -145,3 +145,10 @@ background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
+
+.title-6 {
+    background-image: url(../img/RJ_Cristo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
