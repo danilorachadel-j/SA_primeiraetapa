@@ -204,3 +204,12 @@ box-shadow: 0 8px 32 px 0 rgba(0, 0, 0, 0.3);
     color: black;
     transform: translateY(-3px);
 }
+.blue{
+    padding: 100px;
+    background-color: rgb(99, 99, 99);
+}
+.yo{
+    padding: 100px;
+    background-color: rgb(255, 255, 255);
+    margin: 30px;
+}
