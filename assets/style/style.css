@@ -160,6 +160,19 @@ background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
+<<<<<<< HEAD
+.title-6 {
+    background-image: url(../img/RJ_Cristo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+}
+
+.text-6 {
+    text
+}
+=======
 .hero-section {
     height:100vh;
     width: 100%;
@@ -204,6 +217,7 @@ box-shadow: 0 8px 32 px 0 rgba(0, 0, 0, 0.3);
     color: black;
     transform: translateY(-3px);
 }
+<<<<<<< HEAD
 .blue{
     padding: 100px;
     background-color: rgb(99, 99, 99);
@@ -213,3 +227,6 @@ box-shadow: 0 8px 32 px 0 rgba(0, 0, 0, 0.3);
     background-color: rgb(255, 255, 255);
     margin: 30px;
 }
+=======
+>>>>>>> 5b2e974f509ec5a858cf5b1a384066c7e56b6c32
+>>>>>>> 139d2c09b222e7e39b2bf32f550d61f20418308f
