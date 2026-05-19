@@ -48,27 +48,53 @@
 }
 .description{
    padding-left: 95px; 
+   padding-right: 400px;
+   font-family: monospace;
+   font-size: large;
 }
 .subcontainer{
-    display: flex;
+    display: grid;
     grid-template-columns: auto auto auto;
+    align-items: center;
+    padding-left: 95px;
+    font-family: monospace;
+    font-size: large;
+    h3{
+        padding-top: 10px;
+        border-top: 2px solid #ffffff9f;
+        margin-right: 210px;
+    }
+}
+.card{
+    padding-top: 90px;
+    
 }
 .container{
     padding-right: 840;
 }
+.container2{
+    padding-right: 800;
+}
 .IA{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.IU{
-    font-family: ;
-}
+
 .part-1{
-      background-image: url(../img/Fundo_Home.jpg);
+    background-image: url(../img/Fundo_Home.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;  
 }
+.part-2{
 
+}
+.ops{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.op1{
+    background-image: url(../img/Metro\ DF\ \(1\).jfif);
+}
 
 #body-h{
     color: white;
@@ -213,7 +239,7 @@ background-repeat: no-repeat;
     max-width: 800px;
 }
 
-h1 {
+h1{
     color: #ffffff;
     font-size: clamp(2.5rem, 10vw, 5.5rem);
     font-weight: 700;
