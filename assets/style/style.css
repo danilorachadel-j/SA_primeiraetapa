@@ -76,7 +76,14 @@
     padding-right: 800;
 }
 .IA{
+<<<<<<< HEAD
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+=======
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.IU{
+    font-family:;
+>>>>>>> fd565528fd7a8043bfe3f85e39e8ab63b8d78c55
 }
 
 .part-1{
@@ -204,7 +211,7 @@
 
 
 #body-w {
-background-image: url(../img/chu_chu.jpg);
+background-image: url(../img/imagem_jlle1.webp);
 background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
