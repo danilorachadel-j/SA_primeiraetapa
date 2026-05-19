@@ -93,6 +93,9 @@
 .part-2{
 
 }
+.titulo2{
+    padding-left: 190px;
+}
 .ops{
     display: grid;
     grid-template-columns: auto auto;
@@ -105,12 +108,15 @@
     background-size: cover;
     background-attachment: local;
     padding-top: 350px;
+    margin-right: 20px;
+    padding-right: 500px;
 }
 .op2{
     background-image: url(../img/The\ Metro\ in\ Mexico\ City\ \(1\).jfif);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: local;
+    padding-top: 350px;
 }
 
 #body-h{
