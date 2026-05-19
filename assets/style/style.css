@@ -76,14 +76,12 @@
     padding-right: 800;
 }
 .IA{
-<<<<<<< HEAD
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-=======
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .IU{
     font-family:;
->>>>>>> fd565528fd7a8043bfe3f85e39e8ab63b8d78c55
+
 }
 
 .part-1{
@@ -98,9 +96,21 @@
 .ops{
     display: grid;
     grid-template-columns: auto auto;
+    padding-left: 190px;
+    padding-right: 190px;
 }
 .op1{
     background-image: url(../img/Metro\ DF\ \(1\).jfif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: local;
+    padding-top: 350px;
+}
+.op2{
+    background-image: url(../img/The\ Metro\ in\ Mexico\ City\ \(1\).jfif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: local;
 }
 
 #body-h{
