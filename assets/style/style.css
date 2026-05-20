@@ -52,7 +52,13 @@
 
 .cont-nav {
     background-color: #151618;
+<<<<<<< HEAD
+    img{
+        width: 100px;
+    }  
+=======
 
+>>>>>>> 71bad2ce55162a18d21f02595da0a513b050216f
     margin: 0;
     padding: 0;
 
@@ -99,6 +105,20 @@
 .container {
     padding-right: 840;
 }
+<<<<<<< HEAD
+.container2{
+    padding-right: 700;
+    justify-content: center;
+    align-items: center;
+}
+.IA{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.IU{
+    font-family:;
+=======
+>>>>>>> 289aec7fbab08476a7df048d2ac24be0cdfd7c1c
 
 .container2 {
     padding-right: 800;
@@ -144,7 +164,11 @@
     padding-top: 340px;
     margin-right: 20px;
     padding-right: 500px;
+<<<<<<< HEAD
+    padding-bottom: 20px;
+=======
 
+>>>>>>> 71bad2ce55162a18d21f02595da0a513b050216f
 }
 
 .op2 {
@@ -161,6 +185,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    img{
+        width: 100px;
+    }
 }
 
 .logo {
@@ -234,12 +261,22 @@
     display: flex;
     align-items: center;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+=======
+
+>>>>>>> 71bad2ce55162a18d21f02595da0a513b050216f
 .container2 {
     justify-content: center;
     align-items: center;
 }
+<<<<<<< HEAD
+>>>>>>> 289aec7fbab08476a7df048d2ac24be0cdfd7c1c
+=======
 
+>>>>>>> 71bad2ce55162a18d21f02595da0a513b050216f
 #body-c {
     background-color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
