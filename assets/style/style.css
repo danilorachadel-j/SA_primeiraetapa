@@ -1,4 +1,4 @@
-.container1{
+.container1 {
     color: #d1d1d1;
     background-color: #212529;
     min-height: 100vh;
@@ -6,41 +6,41 @@
     padding-top: 250px;
 }
 
-.flex{
+.flex {
     display: flex;
 }
 
-.grid{
+.grid {
     display: grid;
     grid-template-columns: auto auto auto;
 }
 
-.containerTable{
+.containerTable {
     align-items: left;
 }
 
-.cont{
+.cont {
     justify-content: center;
     align-items: center;
-    
+
 }
 
-.nav-direita{
+.nav-direita {
     padding-top: 10px;
     display: flex;
-    
+
 }
 
-.navbar{
+.navbar {
     display: grid;
     grid-template-columns: auto 155px;
 }
 
-.navbarTable{
+.navbarTable {
     background-color: #333333;
 }
 
-.nav-login{
+.nav-login {
     font-size: 25px;
     padding-top: 15px;
     color: #d1d1d1;
@@ -48,36 +48,34 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.nav-user{
-  
-}
+.nav-user {}
 
-.cont-nav{
+.cont-nav {
     background-color: #151618;
-    
+
     margin: 0;
     padding: 0;
 
 }
 
-.title{
+.title {
     padding-top: 150px;
     padding-left: 90px;
-     text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     display: flex;
     font-size: clamp(2rem, 2.5vw, 5.5rem);
-    
+
 }
 
-.description{
-   padding-left: 95px; 
-   padding-right: 400px;
-   font-family: monospace;
-   font-size: large;
-   font-size: x-large;
+.description {
+    padding-left: 95px;
+    padding-right: 400px;
+    font-family: monospace;
+    font-size: large;
+    font-size: x-large;
 }
 
-.subcontainer{
+.subcontainer {
     display: grid;
     grid-template-columns: auto auto auto;
     align-items: center;
@@ -85,58 +83,58 @@
     font-family: monospace;
     font-size: large;
     padding-bottom: 20px;
-    h3{
+
+    h3 {
         padding-top: 10px;
         border-top: 2px solid #ffffff9f;
         margin-right: 210px;
     }
 }
 
-.card{
+.card {
     padding-top: 90px;
-    
+
 }
 
-.container{
+.container {
     padding-right: 840;
 }
 
-.container2{
+.container2 {
     padding-right: 800;
 }
 
-.part-1{
+.part-1 {
     background-image: url(../img/Fundo_Home.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;  
+    background-attachment: fixed;
 }
 
-.part-2{
+.part-2 {}
 
-}
-
-.titulo2{
+.titulo2 {
     padding-left: 250px;
     font-family: monospace;
     color: #151618;
     font-size: clamp(2rem, 2.5vw, 5.5rem);
 }
 
-.ops{
+.ops {
     display: grid;
     grid-template-columns: auto auto;
     padding-left: 250px;
     padding-right: 250px;
     font-family: monospace;
     font-size: xx-large;
-    h1{
+
+    h1 {
         padding-left: 40px;
-        text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 }
 
-.op1{
+.op1 {
     background-image: url(../img/Metro\ DF\ \(1\).jfif);
     background-repeat: no-repeat;
     background-size: cover;
@@ -144,10 +142,10 @@
     padding-top: 340px;
     margin-right: 20px;
     padding-right: 500px;
-    
+
 }
 
-.op2{
+.op2 {
     background-image: url(../img/The\ Metro\ in\ Mexico\ City\ \(1\).jfif);
     background-repeat: no-repeat;
     background-size: cover;
@@ -155,7 +153,7 @@
     padding-top: 340px;
 }
 
-.embaixo{
+.embaixo {
     background-color: #000000;
     margin-top: 40px;
     display: flex;
@@ -163,81 +161,85 @@
     align-items: center;
 }
 
-.logo{
+.logo {
     width: 100px;
     height: auto;
 }
 
-.img-lateral{
+.img-lateralTrain {
     height: 95vh;
     position: fixed;
     right: 0;
 }
 
-#body-h{
+#body-h {
     color: white;
     margin: 0;
 }
 
-#body-h img{
+#body-h img {
     width: 100px;
-    
+
 }
 
-#body-l{
+#body-l {
     background-color: #212529;
 }
 
-#body-n{
+#body-n {
     #background-image: url(../img/mapWallpaper.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
 
-#tableButton{
+#tableButton {
     padding: 20px;
     align-self: center;
     width: auto;
 }
 
-#sensorTable table{
+#sensorTable table {
     background-color: #000000;
 }
 
-#sensorTable th{
+#sensorTable th {
     background-color: rgb(93, 155, 105);
 }
 
 #sensorTable tr:nth-child(odd) {
     background-color: #bababa;
 }
+
 #sensorTable tr:nth-child(even) {
     background-color: #a9a9a9;
 }
-.content-wrapper{
+
+.content-wrapper {
     color: #fdfeff;
     font-size: clamp(2rem, 2.5vw, 5.5rem);
 }
 
-.img-lateral{
-     flex: 0 0 55%;            
-    background-image: url(../img/Fundo-1.jpd.jpg) ;
+.img-lateral {
+    flex: 0 0 55%;
+    background-image: url(../img/Fundo-1.jpd.jpg);
     background-repeat: no-repeat;
     background-size: contain;
     background-attachment: fixed;
-    
+
     border-radius: 0px 35px 35px 0px;
     justify-content: center;
-   display: flex;
-   align-items: center;
+    display: flex;
+    align-items: center;
 }
+
 .container2 {
     justify-content: center;
     align-items: center;
 }
+
 #body-c {
-     background-color: #ffffff; 
+    background-color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 20px 0;
     background-image: url(../img/metro_1.jpg);
@@ -248,6 +250,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .card-cadastro {
     background: #000000;
     padding: 45px;
@@ -312,8 +315,8 @@
 }
 
 #body-w {
-background-image: url(../img/imagem_jlle1.webp);
-background-repeat: no-repeat;
+    background-image: url(../img/imagem_jlle1.webp);
+    background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -327,9 +330,9 @@ background-repeat: no-repeat;
 }
 
 .hero-section {
-    height:100vh;
+    height: 100vh;
     width: 100%;
-    background: linear-gradient(to right, rgba(0,0,0,0.7)0% rgba(8, 8, 8, 0)60%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7)0% rgba(8, 8, 8, 0)60%);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -338,41 +341,43 @@ background-repeat: no-repeat;
     font-family: 'inter', sans-serif;
 }
 
-.content-wrapper{
+.content-wrapper {
     max-width: 800px;
 }
 
 .btn-main {
-all: unset;
-cursor: pointer;
-background: rgba(255,255,255,0.1);
-color: white;
-padding: 20px 50px;
-font-size: 1.2rem;
-font-weight: 500;
-border-radius: 50px;
-border: 1px solid rgba(255,255,255,0.4);
-backdrop-filter: blur(10px);
-transition: all 0.3s ease;
-box-shadow: 0 8px 32 px 0 rgba(0, 0, 0, 0.3);
+    all: unset;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 20px 50px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32 px 0 rgba(0, 0, 0, 0.3);
 }
+
 .btn-main:hover {
     background-color: white;
     color: black;
     transform: translateY(-3px);
 }
 
-.blue{
+.blue {
     padding: 100px;
     background-color: rgb(99, 99, 99);
 }
-.yo{
+
+.yo {
     padding: 100px;
     background-color: rgb(255, 255, 255);
     margin: 30px;
 }
 
-.body-t{
+.body-t {
     background-image: url(../img/joinville_arco.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -380,7 +385,8 @@ box-shadow: 0 8px 32 px 0 rgba(0, 0, 0, 0.3);
     background-attachment: fixed;
     text-align: center;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -388,20 +394,21 @@ box-shadow: 0 8px 32 px 0 rgba(0, 0, 0, 0.3);
 }
 
 .body-bu {
-background-color: #ffffff;
-color: #333333;
-line-height: 1.6;
+    background-color: #ffffff;
+    color: #333333;
+    line-height: 1.6;
 }
+
 .banner {
     position: relative;
     width: 100%;
     height: 50vh;
     min-height: 300px;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/imagem_jlle1.webp') no-repeat center center;
-background-size: cover;
-display: flex;
-justify-content: center;
-align-items: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .banner h1 {
@@ -445,7 +452,7 @@ align-items: center;
     display: flex;
     gap: 40px;
     text-align: flex-start;
-} 
+}
 
 .imagem-coluna {
     flex: 1;
@@ -475,6 +482,7 @@ align-items: center;
         flex-direction: column;
         gap: 20px;
     }
+
     .banner {
         height: 35vh;
     }
