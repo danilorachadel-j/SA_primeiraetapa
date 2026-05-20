@@ -133,6 +133,27 @@
     background-color: #212529;
 }
 
+#body-n{
+    background-color: rgb(61, 61, 122);
+}
+
+#tableButton{
+    padding: 20px;
+    align-self: center;
+}
+
+#sensorTable table{
+    background-color: #000000;
+}
+
+#sensorTable th{
+    background-color: grey;
+}
+
+#sensorTable tr:nth-child(odd) {
+    background-color: #212529;
+}
+
 .img-lateral{
      flex: 0 0 55%;            
     background-image: url(../img/Fundo-1.jpd.jpg) ;
