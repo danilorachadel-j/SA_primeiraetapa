@@ -43,8 +43,10 @@
 .title{
     padding-top: 150px;
     padding-left: 90px;
-    
+     text-shadow: 0 4px 15px rgba(0,0,0,0.3);
     display: flex;
+    font-size: clamp(2rem, 2.5vw, 5.5rem);
+    
 }
 .description{
    padding-left: 95px; 
@@ -59,6 +61,7 @@
     padding-left: 95px;
     font-family: monospace;
     font-size: large;
+    padding-bottom: 20px;
     h3{
         padding-top: 10px;
         border-top: 2px solid #ffffff9f;
@@ -94,29 +97,46 @@
 
 }
 .titulo2{
-    padding-left: 190px;
+    padding-left: 250px;
+    font-family: monospace;
+    color: #151618;
+    font-size: clamp(2rem, 2.5vw, 5.5rem);
 }
 .ops{
     display: grid;
     grid-template-columns: auto auto;
-    padding-left: 190px;
-    padding-right: 190px;
+    padding-left: 250px;
+    padding-right: 250px;
+    font-family: monospace;
+    font-size: xx-large;
+    h1{
+        padding-left: 40px;
+        text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
 }
 .op1{
     background-image: url(../img/Metro\ DF\ \(1\).jfif);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: local;
-    padding-top: 350px;
+    padding-top: 340px;
     margin-right: 20px;
     padding-right: 500px;
+    
 }
 .op2{
     background-image: url(../img/The\ Metro\ in\ Mexico\ City\ \(1\).jfif);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: local;
-    padding-top: 350px;
+    padding-top: 340px;
+}
+.embaixo{
+    background-color: #000000;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #body-h{
@@ -130,6 +150,27 @@
 }
 
 #body-l{
+    background-color: #212529;
+}
+
+#body-n{
+    background-color: rgb(61, 61, 122);
+}
+
+#tableButton{
+    padding: 20px;
+    align-self: center;
+}
+
+#sensorTable table{
+    background-color: #000000;
+}
+
+#sensorTable th{
+    background-color: grey;
+}
+
+#sensorTable tr:nth-child(odd) {
     background-color: #212529;
 }
 
@@ -263,12 +304,9 @@ background-repeat: no-repeat;
 }
 
 h1{
-    color: #ffffff;
-    font-size: clamp(2.5rem, 10vw, 5.5rem);
-    font-weight: 700;
-    line-height: 0.95;
-    margin-bottom: 40px;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    
+    
+   
 }
 
 .btn-main {
