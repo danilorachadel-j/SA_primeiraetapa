@@ -173,6 +173,10 @@
 #sensorTable tr:nth-child(odd) {
     background-color: #212529;
 }
+.content-wrapper{
+    color: #fdfeff;
+    font-size: clamp(2rem, 2.5vw, 5.5rem);
+}
 
 .img-lateral{
      flex: 0 0 55%;            
@@ -283,10 +287,6 @@ background-repeat: no-repeat;
     text-align: center;
 }
 
-.text-6 {
-    text
-}
-
 .hero-section {
     height:100vh;
     width: 100%;
@@ -303,11 +303,7 @@ background-repeat: no-repeat;
     max-width: 800px;
 }
 
-h1{
-    
-    
-   
-}
+
 
 .btn-main {
 all: unset;
