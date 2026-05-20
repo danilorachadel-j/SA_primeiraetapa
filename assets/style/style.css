@@ -319,5 +319,10 @@ box-shadow: 0 8px 32 px 0 rgba(0, 0, 0, 0.3);
 }
 
 .body-t{
-    background-image: url(../img/RJ_Cristo.jpg);
+    background-image: url(../img/joinville_arco.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    text-align: center;
 }
