@@ -8,6 +8,18 @@
 .flex{
     display: flex;
 }
+
+.grid{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.containerTable{
+    padding-left: 10px;
+    padding-bottom: 50px;
+    
+}
+
 .cont{
     justify-content: center;
     align-items: center;
@@ -18,11 +30,16 @@
     display: flex;
     
 }
+
 .navbar{
     display: grid;
     grid-template-columns: auto 155px;
-
 }
+
+.navbarTable{
+    background-color: #333333;
+}
+
 .nav-login{
     font-size: 25px;
     padding-top: 15px;
@@ -139,6 +156,18 @@
     align-items: center;
 }
 
+.logo{
+    width: 100px;
+    height: auto;
+}
+
+.img-lateral{
+    height: 95vh;
+    position: fixed;
+    right: 0;
+}
+
+
 #body-h{
     color: white;
     margin: 0;
@@ -154,12 +183,16 @@
 }
 
 #body-n{
-    background-color: rgb(61, 61, 122);
+    background-image: url(../img/mapWallpaper.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 #tableButton{
     padding: 20px;
     align-self: center;
+    width: auto;
 }
 
 #sensorTable table{
@@ -167,11 +200,14 @@
 }
 
 #sensorTable th{
-    background-color: grey;
+    background-color: rgb(93, 155, 105);
 }
 
 #sensorTable tr:nth-child(odd) {
-    background-color: #212529;
+    background-color: #bababa;
+}
+#sensorTable tr:nth-child(even) {
+    background-color: #a9a9a9;
 }
 
 .img-lateral{
