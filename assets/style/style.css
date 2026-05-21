@@ -1,7 +1,7 @@
 .container1{
     color: #d1d1d1;
     background-color: #212529;
-    min-height: 100vh;
+    min-height: 91vh;
     padding-left: 330px;
     padding-top: 250px;
 } 
@@ -39,7 +39,9 @@
 .navbarTable {
     background-color: #333333;
 }
-
+.nav-login2{
+    border-bottom: 3px solid rgba(226, 215, 215, 0.562);
+}
 .nav-login {
     font-size: 25px;
     padding-top: 15px;
@@ -51,7 +53,7 @@
 .nav-user {}
 
 .cont-nav {
-    background-color: #151618;
+    background-color: #1c1d1f;
     img{
         width: 100px;
     }  
@@ -97,6 +99,10 @@
 .card1{
     margin-right: 260px;
     border-top: 2px solid #ffffff9f;
+    a{
+        color: #fdfeff;
+        text-decoration: none;
+    }
 }
 .card2{
     margin-right: 260px;
@@ -167,6 +173,10 @@
     margin-right: 20px;
     padding-right: 500px;
     padding-bottom: 20px;
+    a{
+        color: #ffffff;
+        text-decoration: none;
+    }
 
 }
 
@@ -176,6 +186,10 @@
     background-size: cover;
     background-attachment: local;
     padding-top: 340px;
+    a{
+        color: #ffffff;
+        text-decoration: none;
+    }
 }
 
 .embaixo {
@@ -273,6 +287,7 @@
     color: white;
     align-items: center;
     justify-content: center;
+    margin: 0;
 }
 
 .card-cadastro {
