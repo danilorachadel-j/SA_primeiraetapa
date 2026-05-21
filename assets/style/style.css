@@ -52,13 +52,9 @@
 
 .cont-nav {
     background-color: #151618;
-<<<<<<< HEAD
     img{
         width: 100px;
     }  
-=======
-
->>>>>>> 71bad2ce55162a18d21f02595da0a513b050216f
     margin: 0;
     padding: 0;
 
@@ -78,34 +74,41 @@
     padding-right: 400px;
     font-family: monospace;
     font-size: large;
-    font-size: x-large;
+    font-size: large;
+    padding-bottom: 60px;
 }
 
 .subcontainer {
+    margin-top: 90px ;
     display: grid;
     grid-template-columns: auto auto auto;
     align-items: center;
-    padding-left: 95px;
+    justify-content: center;
     font-family: monospace;
     font-size: large;
-    padding-bottom: 20px;
+    padding-bottom: 60px;
 
     h3 {
         padding-top: 10px;
-        border-top: 2px solid #ffffff9f;
-        margin-right: 210px;
     }
+     
 }
 
-.card {
-    padding-top: 90px;
-
+.card1{
+    margin-right: 260px;
+    border-top: 2px solid #ffffff9f;
 }
-
+.card2{
+    margin-right: 260px;
+    border-top: 2px solid #ffffff9f;
+}
+.card3{
+    border-top: 2px solid #ffffff9f;
+}
 .container {
     padding-right: 840;
 }
-<<<<<<< HEAD
+
 .container2{
     padding-right: 700;
     justify-content: center;
@@ -117,13 +120,7 @@
 }
 .IU{
     font-family:;
-=======
->>>>>>> 289aec7fbab08476a7df048d2ac24be0cdfd7c1c
-
-.container2 {
-    padding-right: 800;
 }
-
 .part-1 {
     background-image: url(../img/Fundo_Home.jpg);
     background-repeat: no-repeat;
@@ -140,6 +137,8 @@
     font-family: monospace;
     color: #151618;
     font-size: clamp(2rem, 2.5vw, 5.5rem);
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
 .ops {
@@ -155,6 +154,9 @@
         text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 }
+.part-2{
+    padding-bottom: 60px;
+}
 
 .op1 {
     background-image: url(../img/Metro\ DF\ \(1\).jfif);
@@ -164,11 +166,8 @@
     padding-top: 340px;
     margin-right: 20px;
     padding-right: 500px;
-<<<<<<< HEAD
     padding-bottom: 20px;
-=======
 
->>>>>>> 71bad2ce55162a18d21f02595da0a513b050216f
 }
 
 .op2 {
@@ -201,15 +200,11 @@
     right: 0;
 }
 
-#body-h {
+#body-h{
     color: white;
     margin: 0;
 }
 
-#body-h img {
-    width: 100px;
-
-}
 
 #body-l {
     background-color: #212529;
@@ -261,22 +256,12 @@
     display: flex;
     align-items: center;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-=======
-
->>>>>>> 71bad2ce55162a18d21f02595da0a513b050216f
 .container2 {
     justify-content: center;
     align-items: center;
 }
-<<<<<<< HEAD
->>>>>>> 289aec7fbab08476a7df048d2ac24be0cdfd7c1c
-=======
 
->>>>>>> 71bad2ce55162a18d21f02595da0a513b050216f
 #body-c {
     background-color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
