@@ -466,6 +466,36 @@
     text-overflow: ellipsis;
 }
 
+.body-b2 {
+    background-color: #ffffff;
+    color: #333333;
+    line-height: 1.6;
+}
+
+.banner1 {
+    Position: relative;
+    width: 100%;
+    height: 50vh;
+    min-height: 300px;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(165, 165, 165, 0.4)), url('../img/paisagenrj.jpg') no-repeat center top;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner1 h1 {
+    color: #ffffffff;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    letter-spacing: -1px;
+    text-align: center;
+    white-space: nowrap;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .back-btn {
     position: absolute;
     top: 20px;
@@ -499,6 +529,8 @@
 
 .imagem-coluna {
     flex: 1;
+
+    border-radius: 24px;
 }
 
 .rounded-img {
