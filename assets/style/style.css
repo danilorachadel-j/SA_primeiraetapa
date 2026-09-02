@@ -107,7 +107,12 @@
 .card2{
     margin-right: 260px;
     border-top: 2px solid #ffffff9f;
+     a{
+        color: #fdfeff;
+        text-decoration: none;
+    }
 }
+
 .card3{
     border-top: 2px solid #ffffff9f;
 }
