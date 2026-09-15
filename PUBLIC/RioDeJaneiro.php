@@ -8,7 +8,7 @@
 </head>
 <body class="body-b2">
     <header class="banner1 h2">
-        <a href="home.html">
+        <a href="home.php">
             <button class="back-btn">&#10094;</button>
         </a>
         <h1>Rio de Janeiro - RJ</h1>

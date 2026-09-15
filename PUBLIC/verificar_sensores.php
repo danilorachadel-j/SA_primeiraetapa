@@ -11,7 +11,7 @@
 <body id="body-n">
     <div class="cont-nav">
         <div class="container">
-            <a href="home.html">
+            <a href="home.php">
                 <img class="logo" src="../assets/img/Logo.png" alt="login">
             </a>
         </div>
@@ -20,7 +20,7 @@
     <div class="grid containerTable">
         <div id="tableButton">
             <div>
-                <a href="login.html" class="btn-table">Novo sensor</a>
+                <a href="login.php" class="btn-table">Novo sensor</a>
             </div>
             <div id="sensorTable">
                 <table>

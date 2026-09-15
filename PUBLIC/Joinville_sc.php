@@ -9,7 +9,7 @@
 
 <body class="body-bu">
     <header class="banner">
-        <a href="home.html">
+        <a href="home.php">
             <button class="back-btn">&#10094;</button>
         </a>
         <h1>Joinville - SC</h1>
