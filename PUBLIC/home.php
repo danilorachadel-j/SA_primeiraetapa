@@ -11,13 +11,13 @@
     <div class="cont-nav">
         <nav class="navbar bg-body-tertiary">
             <div class="container5">
-                <a class="navbar-brand" href="home.html">
+                <a class="navbar-brand" href="home.php">
                     <img src="../assets/img/Logo.png" alt="login">
                 </a>
             </div>
             <div class="nav-direita">
-                <a class="nav-login" href="login.html">Login</a>
-                <a class="nav-user" href="login.html">
+                <a class="nav-login" href="login.php">Login</a>
+                <a class="nav-user" href="login.php">
                     <img src="../assets/img/icon-user.webp" alt="home">
                 </a>
             </div>
@@ -41,13 +41,13 @@
             </div>
             <div class="subcontainer">
                 <div class="card1">
-                    <a href="Joinville_sc.html">
+                    <a href="Joinville_sc.php">
                         <h3>Joinville - SC</h3>
                         <p>Conheças nossos projetos para o Sul</p>
                     </a>
                 </div>
                 <div class="card2">
-                    <a href="RioDeJaneiro.html">
+                    <a href="RioDeJaneiro.php">
                         <h3>Rio de Janeiro - RJ</h3>
                         <p>Venha e conheça nossos projetos na cidade maravilhosa</p>
                     </a>
@@ -64,12 +64,12 @@
             </div>
             <div class="ops">
                 <div class="op1">
-                    <a href="cadastro.html">
+                    <a href="cadastro.php">
                         <h1>Cadastrar sensor</h1>
                     </a>
                 </div>
                 <div class="op2">
-                    <a href="verificar_sensores.html">
+                    <a href="verificar_sensores.php">
                     <h1>Verificar sensores</h1>
                     </a>
                 </div>
