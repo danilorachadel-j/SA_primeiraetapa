@@ -567,3 +567,24 @@
         height: 35vh;
     }
 }
+
+.banner2{
+Position: relative;
+    width: 100%;
+    height: 50vh;
+    min-height: 300px; 
+    transform: scale(1.0);
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(165, 165, 165, 0.4)), url('../img/brasilia_novo.jpg') no-repeat center 80%;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color:#ffffff;
+}
+
+.body-Nu {
+    background-color: #ffffff;
+    color: #333333;
+    line-height: 1.6;
+}
