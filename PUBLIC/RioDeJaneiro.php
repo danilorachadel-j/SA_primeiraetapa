@@ -18,7 +18,7 @@
             <div class="imagem-coluna">
                 <img src="../assets/img/RJ_Cristo.jpg" alt="Imagem Rio de Janeiro">
             </div>
-            <div class="texto-coluna">
+            <div class="texto-coluna2">
                 <p>
                     O planejamento urbano do Rio de Janeiro sempre enfrentou problemas de mobilidade.
                      O MetrôRio surgiu para facilitar os deslocamentos e diminuir a dependência dos carros e ônibus. 
