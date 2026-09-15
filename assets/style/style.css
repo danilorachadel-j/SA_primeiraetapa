@@ -598,3 +598,9 @@ Position: relative;
     text-align: flex-start;
 }
 
+.imagem-coluna3 {
+    max-width: 700px;
+    width: 900px;
+    overflow: hidden;
+    top: -15px;
+}
