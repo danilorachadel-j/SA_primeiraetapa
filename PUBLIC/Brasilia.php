@@ -9,7 +9,7 @@
 
 <body class="body-Nu">
     <header class="banner2">
-        <a href="home.html">
+        <a href="home.php">
             <button class="back-btn">&#10094;</button>
         </a>
         <h1>Brasília - DF</h1>
