@@ -538,10 +538,17 @@
 }
 
 .imagem-coluna {
-    
-    
-    
-    border-radius: 10px;
+    max-width: 700px;
+    width: 900px;
+   overflow: hidden;
+    border-radius: 60px;
+}
+
+.texto-coluna2 {
+    flex: 1.2;
+    font-size: 1.1rem;
+    color: #444444;
+    text-align: justify;
 }
 
 .rounded-img {
@@ -610,4 +617,12 @@ Position: relative;
     overflow: hidden;
     top: -15px;
     border-radius: 120px;
+}
+
+.imagem-coluna1 {
+    max-width: 700px;
+    width: 900px;
+    overflow: hidden;
+    top: -15px;
+    border-radius: 50px;
 }

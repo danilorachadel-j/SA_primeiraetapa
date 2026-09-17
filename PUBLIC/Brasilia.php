@@ -16,8 +16,8 @@
     </header>
     <main>
         <div class="content-container4">
-            <div class="imagem-coluna3">
-                <img src="../assets/img/brasilia_novaireja2.jpg" alt="Imagem Brasília">
+            <div >
+                <img class="imagem-coluna3" src="../assets/img/brasilia_novaireja2.jpg" alt="Imagem Brasília">
             </div>
             <div class="texto-coluna">
                 <p>

@@ -16,8 +16,8 @@
     </header>
     <main>
         <div class="content-container3">
-            <div class="imagem-coluna1">
-                <img src="../assets/img/joinville_arco.jpg" alt="Imagem Joinville">
+            <div>
+                <img class="imagem-coluna1" src="../assets/img/joinville_arco.jpg" alt="Imagem Joinville">
             </div>
             <div class="texto-coluna">
                 <p>
