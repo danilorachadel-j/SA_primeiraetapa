@@ -17,6 +17,9 @@
 
 .containerTable {
     align-items: left;
+    img{
+        
+    }
 }
 
 .cont {
@@ -246,10 +249,20 @@
 
 #sensorTable table {
     background-color: #000000;
+    width: calc(100% - 350px);
+    font-size: 1.2rem;
+    border-collapse: collapse;
+}
+
+#sensorTable th,
+#sensorTable td {
+    padding: 12px 16px;
+    text-align: left;
 }
 
 #sensorTable th {
     background-color: rgb(93, 155, 105);
+    font-size: 1.3rem;
 }
 
 #sensorTable tr:nth-child(odd) {
