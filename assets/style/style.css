@@ -294,7 +294,11 @@
     justify-content: center;
     margin: 0;
 }
-
+.titulo-rotas{
+    background-image: url(../img/tren-rotas1.png);
+    padding-bottom: 400px;
+    background-size: cover;
+}
 .card-cadastro {
     background: #000000;
     padding: 45px;
