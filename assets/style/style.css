@@ -296,8 +296,17 @@
 }
 .titulo-rotas{
     background-image: url(../img/tren-rotas1.png);
-    padding-bottom: 400px;
+    padding-bottom: 250px;
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    h1{
+        padding-top: 200;
+        font-size: clamp(2rem, 2.5vw, 5.5rem);
+    }
 }
 .card-cadastro {
     background: #000000;
