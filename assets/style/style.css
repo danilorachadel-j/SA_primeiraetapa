@@ -114,7 +114,12 @@
 }
 
 .card3{
+    margin-right: 260px;
     border-top: 2px solid #ffffff9f;
+     a{
+        color: #fdfeff;
+        text-decoration: none;
+    }
 }
 .container {
     padding-right: 840;
@@ -533,9 +538,10 @@
 }
 
 .imagem-coluna {
-    flex: 1;
-
-    border-radius: 24px;
+    
+    
+    
+    border-radius: 10px;
 }
 
 .rounded-img {
@@ -603,4 +609,5 @@ Position: relative;
     width: 900px;
     overflow: hidden;
     top: -15px;
+    border-radius: 120px;
 }
