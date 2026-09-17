@@ -20,9 +20,7 @@
 
 .containerTable {
     align-items: left;
-    img{
-        
-    }
+    width: 100%;
 }
 
 .cont {
@@ -670,3 +668,10 @@ Position: relative;
     border-radius: 50px;
 }
 
+.sideSquash {
+    overflow: hidden;
+    width: 900px;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
