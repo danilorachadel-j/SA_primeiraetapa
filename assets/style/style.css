@@ -122,7 +122,7 @@
 .card3{
     margin-right: 260px;
     border-top: 2px solid #ffffff9f;
-     a{
+    a{
         color: #fdfeff;
         text-decoration: none;
     }
@@ -140,9 +140,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.IU{
-    font-family:;
-}
+
 .part-1 {
     background-image: url(../img/Fundo_Home.jpg);
     background-repeat: no-repeat;
@@ -584,7 +582,7 @@
 .imagem-coluna {
     max-width: 700px;
     width: 900px;
-   overflow: hidden;
+    overflow: hidden;
     border-radius: 60px;
 }
 
