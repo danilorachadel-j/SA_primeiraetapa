@@ -53,8 +53,10 @@
                     </a>
                 </div>
                 <div class="card3">
-                    <h3>Brasilia - DF</h3>
-                    <p>Veja nossos projetos na capital</p>
+                    <a href="Brasilia.php">
+                        <h3>Brasília - DF</h3>
+                        <p>Veja nossos projetos na capital</p>
+                    </a>
                 </div>
             </div>
         </div>

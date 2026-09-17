@@ -15,8 +15,8 @@
     </header>
     <main>
         <div class="content-container3">
-            <div class="imagem-coluna">
-                <img src="../assets/img/RJ_Cristo.jpg" alt="Imagem Rio de Janeiro">
+            <div>
+                <img class="imagem-coluna" src="../assets/img/RJ_Cristo.jpg" alt="Imagem Rio de Janeiro">
             </div>
             <div class="texto-coluna2">
                 <p>
