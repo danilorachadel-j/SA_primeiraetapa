@@ -1,14 +1,10 @@
-<?php
-include "../infra/conexão.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CADASTRO</title>
+    <title>CADASTRO TREM</title>
 
     <link rel="stylesheet" href="../assets/style/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +15,7 @@ include "../infra/conexão.php";
         <div class="container2 d-flex justify-content align-items-center min-vh-100">
             <div class="card-cadastro">
                 <div class="text-center mb-4">
-                    <h2 class="titulo-pagina">Cadastro</h2>
+                    <h2 class="titulo-pagina">Cadastro de Trem</h2>
                     <p class="subtitulo">Preencha os dados abaixo para realizar o registro completo do trem no sistema.</p>
 
                 </div>
@@ -28,10 +24,6 @@ include "../infra/conexão.php";
                     <div class="col-md-8">
                         <label for="nome" class="form-label">Nome Completo</label>
                         <input type=" text" class="form-control" id="nome" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="cpf" class="form-label">Identificação</label>
-                        <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" required>
                     </div>
                     <div class="col-md-4">
                         <label for="nascimento" class="form-label"> Data de fabricação</label>
@@ -44,10 +36,6 @@ include "../infra/conexão.php";
                     <div class="col-md-4">
                         <label for="tipo" class="form-label">Tipo</label>
                         <input type="text" class="form-control" id="tipo" required>
-                    </div>
-                    <div class="col-md-12">
-                        <label for="endereco" class="form-label">Endereço</label>
-                        <input type="text" class="form-control" id="endereco">
                     </div>
                         <div class="col-md-5">
                             <label for="cidade" class="form-label">Cidade</label>
@@ -66,7 +54,7 @@ include "../infra/conexão.php";
 
     </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../SCRIPTS/script-cadastro.js"></script>
+<script src="../SCRIPTS/script-cadastro-trem.js"></script>
 </body>
 
 </html>
