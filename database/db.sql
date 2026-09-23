@@ -17,3 +17,8 @@ CREATE TABLE trem(
   FOREIGN KEY (id_adm) REFERENCES adm(id) ON DELETE CASCADE
 );
 
+CREATE TABLE adm(
+  id INTO AUTO_INCREMENT PRIMARY KEY,
+  adm_name varchar(50) NOT NULL,
+  adm_password varchar (50) NOT NULL
+)

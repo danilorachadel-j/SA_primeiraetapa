@@ -1,3 +1,10 @@
+<?php
+
+include("..INFRA/conexão.php")
+
+
+
+?>
 <html lang="en">
 
 <head>
@@ -34,6 +41,9 @@
                         <input type="password" class="form-control" id="exampleInputPassword1"
                             placeholder="" required>
                     </div>
+                    <?php
+
+                    ?>
                     <br>
                     <div class="d-grid gap-2 ">
                         <button id="botao-envio" type="submit" class="btn btn-primary">Entrar</button>
