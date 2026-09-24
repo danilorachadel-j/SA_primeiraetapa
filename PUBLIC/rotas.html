@@ -31,6 +31,7 @@
             <h2>Rio de Janeiro - RJ</h2>
             <table>
                 <tr>
+                    <th>Trem</th>
                     <th>Ponto de Saida</th>
                     <th>Destino</th>
                     <th>Horario de saida </th>
@@ -42,6 +43,7 @@
             <h2>Brasília - DF</h2>
             <table>
                 <tr>
+                    <th>Trem</th>
                     <th>Ponto de Saida</th>
                     <th>Destino</th>
                     <th>Horario de saida </th>
@@ -53,6 +55,7 @@
             <h2>Joinvile - SC</h2>
             <table>
                 <tr>
+                    <th>Trem</th>
                     <th>Ponto de Saida</th>
                     <th>Destino</th>
                     <th>Horario de saida </th>
