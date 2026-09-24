@@ -1,10 +1,11 @@
-CREATE DATABASE sa_ferrorama_d_s_i_n;
+IF NOT EXISTS CREATE DATABASE sa_ferrorama_d_s_i_n;
 USE sa_ferrorama_d_s_i_n;
 
 CREATE TABLE adm(
 id INT AUTO_INCREMENT PRIMARY KEY,
-nome VARCHAR(200) NOT NULL,
-email VARCHAR(75) NOT NULL
+adm_nome VARCHAR(200) NOT NULL,
+adm_email VARCHAR(75) NOT NULL,
+adm_password VARCHAR(200) NOT NULL,
 );
 
 CREATE TABLE trem(
