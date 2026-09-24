@@ -327,7 +327,7 @@
     margin: 0;
 }
 .titulo-rotas{
-    background-image: url(../img/tren-rotas1.png);
+    background-image: url(../img/tren-rotas2.png);
     padding-bottom: 250px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -341,13 +341,22 @@
         font-size: clamp(3rem, 3.5vw, 5.5rem);
     }
 }
-.rota-df{
-
-    padding-top: 100;
-    padding-left: 100;
-    img{
-        height: 500;   
+.rotas{
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    
+    h2{
+        border-bottom: 2px solid black;
+        margin-right: 10px;
     }
+    th{
+        padding-right: 10px;
+    }
+}
+.df{
+    padding-right: 70px;
+    padding-left: 70px;
 }
 .card-cadastro {
     background: #000000;
