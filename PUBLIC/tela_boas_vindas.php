@@ -1,3 +1,7 @@
+<?php
+include "../infra/conexão.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

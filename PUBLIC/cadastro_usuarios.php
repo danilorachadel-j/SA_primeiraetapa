@@ -1,0 +1,68 @@
+<?php
+include "../infra/conexão.php";
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CADASTRO USUÁRIOS</title>
+
+    <link rel="stylesheet" href="../assets/style/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <main id="body-c">
+        <div class="container2 d-flex justify-content align-items-center min-vh-100">
+            <div class="card-cadastro">
+                <div class="text-center mb-4">
+                    <h2 class="titulo-pagina">Cadastro de Usuário</h2>
+                    <p class="subtitulo">Preencha os dados abaixo para realizar o registro completo do usuário no sistema.</p>
+
+                </div>
+
+                <form class="row g-3">
+                    <div class="col-md-8">
+                        <label for="nome" class="form-label">Nome Completo</label>
+                        <input type=" text" class="form-control" id="nome" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="cpf" class="form-label">Identificação</label>
+                        <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="nascimento" class="form-label"> Data de Nascimento</label>
+                        <input type="date" class="form-control" id="nascimento" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="telefone" class="form-label">Número de Telefone</label>
+                        <input type="text" class="form-control" id="telefone" placeholder="(00)00000-0000" required>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="endereco" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="endereco">
+                    </div>
+                        <div class="col-md-5">
+                            <label for="cidade" class="form-label">Cidade</label>
+                            <input type="text" class="form-control" id="cidade" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="estado" class="form-label">Estado</label>
+                            <input type="text" class="form-control" id="estado" required>
+                        </div>
+                        
+                </form>
+            </div>
+
+        </div>
+
+
+    </main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../SCRIPTS/script-cadastro-usuarios.js"></script>
+</body>
+
+</html>

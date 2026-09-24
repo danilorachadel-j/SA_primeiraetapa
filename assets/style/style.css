@@ -5,7 +5,10 @@
     padding-left: 330px;
     padding-top: 250px;
 } 
-
+*{
+    padding: 0;
+    margin: 0;
+}
 .flex {
     display: flex;
 }
@@ -17,6 +20,7 @@
 
 .containerTable {
     align-items: left;
+    width: 100%;
 }
 
 .cont {
@@ -68,19 +72,19 @@
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     display: flex;
     font-size: clamp(2rem, 2.5vw, 5.5rem);
-
 }
 
 .description {
     padding-left: 95px;
     padding-right: 400px;
-    font-family: monospace;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: large;
     font-size: large;
     padding-bottom: 60px;
 }
 
 .subcontainer {
+    padding-left: 95px;
     margin-top: 90px ;
     display: grid;
     grid-template-columns: auto auto auto;
@@ -116,7 +120,7 @@
 .card3{
     margin-right: 260px;
     border-top: 2px solid #ffffff9f;
-     a{
+    a{
         color: #fdfeff;
         text-decoration: none;
     }
@@ -134,14 +138,15 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.IU{
-    font-family:;
-}
+
 .part-1 {
     background-image: url(../img/Fundo_Home.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    h1 p {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 }
 
 .part-2 {
@@ -227,6 +232,7 @@
 #body-h{
     color: white;
     margin: 0;
+    
 }
 
 
@@ -251,10 +257,20 @@
 
 #sensorTable table {
     background-color: #000000;
+    width: calc(100% - 350px);
+    font-size: 1.2rem;
+    border-collapse: collapse;
+}
+
+#sensorTable th,
+#sensorTable td {
+    padding: 12px 16px;
+    text-align: left;
 }
 
 #sensorTable th {
     background-color: rgb(93, 155, 105);
+    font-size: 1.3rem;
 }
 
 #sensorTable tr:nth-child(odd) {
@@ -301,6 +317,11 @@
     justify-content: center;
     margin: 0;
 }
+
+#body-r{
+    padding: 0;
+    margin: 0;
+}
 .titulo-rotas{
     background-image: url(../img/tren-rotas1.png);
     padding-bottom: 250px;
@@ -311,8 +332,17 @@
     align-items: center;
     display: flex;
     h1{
+        color: white;
         padding-top: 200;
-        font-size: clamp(2rem, 2.5vw, 5.5rem);
+        font-size: clamp(3rem, 3.5vw, 5.5rem);
+    }
+}
+.rota-df{
+
+    padding-top: 100;
+    padding-left: 100;
+    img{
+        height: 500;   
     }
 }
 .card-cadastro {
@@ -454,12 +484,7 @@
     text-align: center;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+
 
 .body-bu {
     background-color: #ffffff;
@@ -555,7 +580,7 @@
 .imagem-coluna {
     max-width: 700px;
     width: 900px;
-   overflow: hidden;
+    overflow: hidden;
     border-radius: 60px;
 }
 
@@ -643,3 +668,10 @@ Position: relative;
     border-radius: 50px;
 }
 
+.sideSquash {
+    overflow: hidden;
+    width: 900px;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
