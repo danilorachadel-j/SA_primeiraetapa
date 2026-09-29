@@ -366,6 +366,33 @@
 .horario{
     display: flex;
 }
+.cadastro-rotas{
+    padding-top: 300px;
+    margin-left: 300px;
+
+}
+#body-sla{
+    background-image: url(../img/tela-cadastro-rotas.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+.form-cdstro-rotas{
+    height: 220px;
+    width: 330px;
+    padding: 30px 50px;
+    border-radius: 35px;
+    background-color: rgba(4, 0, 255, 0.26);
+    backdrop-filter: blur(8px);
+    h2{
+        display: flex;
+        justify-content: center;
+    }
+}
+.bottom-01{
+    display: flex;
+    justify-content: center;
+}
 
 .titulo-pagina {
     font-weight: 700;
