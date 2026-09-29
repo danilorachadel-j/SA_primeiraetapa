@@ -29,8 +29,13 @@
 
 }
 
+.nav-esquerda {
+    padding-left: 30px;
+    display: flex;
+}
+
 .nav-direita {
-    padding-top: 10px;
+    padding: 10px;
     display: flex;
 
 }
@@ -713,4 +718,42 @@ Position: relative;
     height: 100%;
     object-fit: cover;
     object-position: center;
+}
+#body-76{
+    margin: 0;
+    background-color: rgb(53, 53, 53);
+    background-image: url(../img/estacao_trem76.jpg);
+    background-size: cover;
+}
+
+.titulo-76{
+    margin-bottom: 50px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 200px;
+    padding: 25px;
+    background-color: rgb(36, 36, 36);
+    margin-right: 200px;
+    border-radius: 25px;
+}
+
+.head-76{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#formCadastro{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 700px;
+    padding: 25px;
+    color: white;
+    background-color: rgb(36, 36, 36);
+    margin-right: 700px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px 1px black;
 }
