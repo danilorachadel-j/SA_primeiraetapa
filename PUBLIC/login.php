@@ -46,7 +46,7 @@ include "../infra/conexão.php";
             </div>
         </div>
     </div>
-
+<script src="../SCRIPTS/script-login.js"></script>
 </body>
 
 </html>
