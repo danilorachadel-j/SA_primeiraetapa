@@ -363,6 +363,9 @@
     width: 100%;
     color: white;
 }
+.horario{
+    display: flex;
+}
 
 .titulo-pagina {
     font-weight: 700;
