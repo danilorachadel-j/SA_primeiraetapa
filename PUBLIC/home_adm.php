@@ -6,8 +6,21 @@
     <link rel="stylesheet" href="../assets/style/style.css">
 </head>
 <body>
+    <div class="cont-nav">
+        <nav class="navbar bg-body-tertiary">
+            <div class="nav-esquerda">
+                <a class="navbar-brand" href="home.php">
+                    <img src="../assets/img/Logo.png" alt="login">
+                </a>
+            </div>
+            <div class="nav-direita">
+                    <img src="../assets/img/icon-user.webp" alt="home">
+
+            </div>
+        </nav>
+    </div>
     <main>
-     <div class="part-2">
+        <div class="part-2">
             <div class="titulo2">
                 <h1>Opções</h1>
             </div>
@@ -25,10 +38,6 @@
             </div>
         </div>
     </main>
-    <footer>
-        <div class="embaixo">
-            <img src="../assets/img/Logo.png" alt="">
-        </div>
-    </footer>
+
 </body>
 </html>

@@ -29,8 +29,13 @@
 
 }
 
+.nav-esquerda {
+    padding-left: 10px;
+    display: flex;
+}
+
 .nav-direita {
-    padding-top: 10px;
+    padding: 10px;
     display: flex;
 
 }

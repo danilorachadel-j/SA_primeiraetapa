@@ -21,9 +21,7 @@ include "../infra/conexão.php";
                 <div class="text-center mb-4">
                     <h2 class="titulo-pagina">Cadastro de Trem</h2>
                     <p class="subtitulo">Preencha os dados abaixo para realizar o registro completo do trem no sistema.</p>
-
                 </div>
-
                 <form class="row g-3">
                     <div class="col-md-8">
                         <label for="nome" class="form-label">Nome Completo</label>
