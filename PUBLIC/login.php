@@ -43,16 +43,9 @@ include "../infra/conexão.php";
                         <button id="botao-envio" type="submit" class="btn btn-primary">Entrar</button>
                     </div>
                 </form>
-                
             </div>
         </div>
-
     </div>
-
-
-
-
-
 
 </body>
 

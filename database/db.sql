@@ -17,4 +17,3 @@ CREATE TABLE trem(
   data_cadastro DATE NOT NULL,
   FOREIGN KEY (id_adm) REFERENCES adm(id) ON DELETE CASCADE
 );
-
