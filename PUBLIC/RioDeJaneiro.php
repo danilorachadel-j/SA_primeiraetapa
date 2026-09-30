@@ -25,10 +25,10 @@ include "../infra/conexão.php";
             <div class="texto-coluna2">
                 <p>
                     O planejamento urbano do Rio de Janeiro sempre enfrentou problemas de mobilidade.
-                     O MetrôRio surgiu para facilitar os deslocamentos e diminuir a dependência dos carros e ônibus. 
-                     Porém, sua rede ainda é limitada, principalmente em áreas da Zona Oeste, 
-                     e a integração com outros transportes precisa melhorar. Por isso, o futuro da cidade depende da expansão do metrô, 
-                     da integração dos transportes e de um planejamento urbano mais eficiente.
+                    O MetrôRio surgiu para facilitar os deslocamentos e diminuir a dependência dos carros e ônibus. 
+                    Porém, sua rede ainda é limitada, principalmente em áreas da Zona Oeste, 
+                    e a integração com outros transportes precisa melhorar. Por isso, o futuro da cidade depende da expansão do metrô, 
+                    da integração dos transportes e de um planejamento urbano mais eficiente.
                 </p>
             </div>
         </div>

@@ -1,6 +1,4 @@
-<?php
-include "../infra/conexão.php";
-?>
+
 
 <html lang="en">
 
@@ -46,17 +44,10 @@ include "../infra/conexão.php";
                         <button id="botao-envio" type="submit" class="btn btn-primary">Entrar</button>
                     </div>
                 </form>
-                
             </div>
         </div>
-
     </div>
-
-
-
-
-
-
+<script src="../SCRIPTS/script-login.js"></script>
 </body>
 
 </html>
