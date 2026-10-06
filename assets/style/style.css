@@ -372,23 +372,31 @@
     display: flex;
 }
 .cadastro-rotas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding-top: 300px;
-    margin-left: 300px;
-
 }
 #body-sla{
-    background-image: url(../img/tela-cadastro-rotas.png);
+    background-image: url(../img/tela-cadastro-rotas1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     
 }
 .form-cdstro-rotas{
+    font-family: monospace;
+    font-size: large;
+    color: rgb(40, 115, 255);
+    justify-content: center;
     height: 220px;
     width: 330px;
     padding: 30px 50px;
     border-radius: 35px;
-    background-color: rgba(4, 0, 255, 0.26);
-    backdrop-filter: blur(8px);
+    background-color: rgba(253, 253, 253, 0.096);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.281);
+    border-left: 1px solid rgba(255, 255, 255, 0.281);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.281);
     h2{
         display: flex;
         justify-content: center;
