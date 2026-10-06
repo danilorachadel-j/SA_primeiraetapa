@@ -20,9 +20,9 @@ include "../infra/conexão.php";
         <div class="titulo-76">
             <h2>CADASTRO DE USUÁRIOS</h2>
         </div>
-                <img src="..assets/style/img/logo.png" alt="">
+        <img src="..assets/style/img/logo.png" alt="">
 
-        </div>
+    </div>
     <form id="formCadastro">
         <label for="nome">Nome completo:</label>
         <br>
@@ -53,10 +53,10 @@ include "../infra/conexão.php";
         <br>
         <input type="text" id="Cidade" placeholder="">
         <br>
-        <button type="submit">Enviar</button>                        
-                </form>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../SCRIPTS/script-cadastro-usuarios.js"></script>
+        <button type="submit">Enviar</button>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../SCRIPTS/script-cadastro-usuarios.js"></script>
 </body>
 
 </html>
