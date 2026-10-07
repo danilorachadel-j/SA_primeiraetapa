@@ -11,7 +11,7 @@
 </head>
 
 <body id="body-l">
-    <div class="nav-login2">
+<div class="nav-login2">
         <a href="home.php">
             <img src="../assets/img/Logo.png" width="100px" alt="">
         </a>

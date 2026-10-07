@@ -1,3 +1,7 @@
+<?php
+include "../infra/conexão.php";
+?>
+
 
 <html lang="en">
 
@@ -18,7 +22,7 @@
     <main>
         <div class="content-container4">
             <div>
-                <img class="imagem-coluna3" src="../assets/img/brasilia_novaireja2.jpg" alt="Imagem Brasília">
+                <img class="imagem-coluna3" src="../assets/img/igreja-brasilia.jpg" alt="Imagem Brasília">
             </div>
             <div class="texto-coluna">
                 <p>
@@ -41,10 +45,16 @@
                     atende plenamente todas as regiões,
                     o que faz com que muitos moradores continuem dependentes de ônibus ou transporte individual.
 
+
+
+
                 </p>
             </div>
         </div>
     </main>
 </body>
+
+
+
 
 </html>>
