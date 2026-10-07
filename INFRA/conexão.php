@@ -1,6 +1,6 @@
 <?php 
 
-$host = "localhost:6608";
+$host = "localhost:3306";
 $usuario = "root";
 $senha = "";
 $banco = "sa_ferrorama_d_s_i_n";
