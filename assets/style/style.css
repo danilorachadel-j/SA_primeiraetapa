@@ -373,14 +373,14 @@
 }
 .cadastro-rotas{
     padding-top: 300px;
-    margin-left: 300px;
+    margin-left: 1200px;
 
 }
 #body-sla{
-    background-image: url(../img/tela-cadastro-rotas.png);
+    background-image: url(../img/fundo_cadastro-tren.png);
     background-size: cover;
     background-repeat: no-repeat;
-    
+    color: white;
 }
 .form-cdstro-rotas{
     height: 220px;
