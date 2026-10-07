@@ -1,49 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {
-     const form = document.querySelector('form');
-    const inputCpf = document.getElementById('cpf');
-    const inputTelefone = document.getElementById('telefone');
-    const inputCep = document.getElementById('cep');
-    const senha = document.getElementById('senha');
-    const confirmaSenha = document.getElementById('confirmaSenha');
+document.addEventListener("DOMContentLoaded", function () {
 
-     inputCpf.addEventListener('input', (e) => {
-        let value = e.target.value.replace(/\D/g, '');
-        if (value.length > 11) value = value.slice(0, 11);
-        e.target.value = value.replace(/(\={3})(\={3})(\={3})(\={2})/, "$1.$2.$3-$4")
-            .replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*/, "$1.$2.$3-$4");
-    });
+const formulario = document.querySelector("form");
 
-    inputTelefone.addEventListener('input', (e) => {
-        let value = e.target.value.replace(/\D/g, '');
-        if (value.length > 11) value = value.slice(0, 11);
-        e.target.value = value.replace(/^(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
-    });
+formulario.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-    const validarSenhas = () => {
-        if (senha.value !== confirmaSenha.value) {
-            confirmaSenha.setCustomValidity('As senhas não coincidem');
-        } else {
-            confirmaSenha.setCustomValidity('');
-        }
-    };
+    const nome = document.getElementById("nome").value;
+    const dataFabricacao = document.getElementById("nascimento").value;
+    const telefone = document.getElementById("telefone").value;
+    const tipo = document.getElementById("tipo").value;
+    const cidade = document.getElementById("cidade").value;
+    const estado = document.getElementById("estado").value;
 
-    senha.addEventListener('change', validarSenhas);
-    confirmaSenha.addEventListener('keyup', validarSenhas);
+    alert("Trem cadastrado com sucesso\n\n + "Nome: + nome+"\n" + "Data de Fabricação: "+ dataFabricacao + "\n" + "Tipo:" + tipo+"\n" + "Cidade/UF:" + cidade+"/" + estado);
 
-    form.addEventListener('submit', (event) => {
-        if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-        } else {
-            event.preventDefault();
-
-            const nome = document.getElementById('nome').value;
-            alert(`Sucesso! O aluno ${nome} foi pré-cadastrado no sistema.`);
-            console.log("Dados prontos para envio:", new FormData(form));
-        }
-
-        form.classList.add('was-validated');
-    }, false);
+    formulario.reset();
 });
-
+});
 

@@ -1,6 +1,4 @@
-<?php
-include "../infra/conexão.php";
-?>
+
 
 <html lang="en">
 
@@ -42,3 +40,4 @@ include "../infra/conexão.php";
 </body>
 
 </html>>
+

@@ -9,7 +9,6 @@ include "../infra/conexão.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CADASTRO TREM</title>
-
     <link rel="stylesheet" href="../assets/style/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -20,7 +19,8 @@ include "../infra/conexão.php";
             <div class="card-cadastro">
                 <div class="text-center mb-4">
                     <h2 class="titulo-pagina">Cadastro de Trem</h2>
-                    <p class="subtitulo">Preencha os dados abaixo para realizar o registro completo do trem no sistema.</p>
+                    <p class="subtitulo">Preencha os dados abaixo para realizar o registro completo do trem no sistema.
+                    </p>
                 </div>
                 <form class="row g-3">
                     <div class="col-md-8">
@@ -39,15 +39,18 @@ include "../infra/conexão.php";
                         <label for="tipo" class="form-label">Tipo</label>
                         <input type="text" class="form-control" id="tipo" required>
                     </div>
-                        <div class="col-md-5">
-                            <label for="cidade" class="form-label">Cidade</label>
-                            <input type="text" class="form-control" id="cidade" required>
+                    <div class="col-md-5">
+                        <label for="cidade" class="form-label">Cidade</label>
+                        <input type="text" class="form-control" id="cidade" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="estado" class="form-label">Estado</label>
+                        <input type="text" class="form-control" id="estado" required>
+                        <div class="col-12 mt-3">
+                            <button type="submit" class="btn btn-primary">Cadastrar Trem</button>
                         </div>
-                        <div class="col-md-3">
-                            <label for="estado" class="form-label">Estado</label>
-                            <input type="text" class="form-control" id="estado" required>
-                        </div>
-                        
+                    </div>
+
                 </form>
             </div>
 
@@ -55,8 +58,8 @@ include "../infra/conexão.php";
 
 
     </main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../SCRIPTS/script-cadastro-trem.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../SCRIPTS/script-cadastro-trem.js"></script>
 </body>
 
 </html>
