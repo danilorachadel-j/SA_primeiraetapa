@@ -713,8 +713,8 @@ Position: relative;
 }
 
 .imagem-coluna3 {
-    max-width: 700px;
-    width: 900px;
+    max-width: 500px;
+    width: 800px;
     overflow: hidden;
     top: -15px;
     border-radius: 120px;
