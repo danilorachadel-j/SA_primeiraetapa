@@ -46,6 +46,9 @@ include "../infra/conexão.php";
                     <div class="col-md-3">
                         <label for="estado" class="form-label">Estado</label>
                         <input type="text" class="form-control" id="estado" required>
+                        <div class="col-12 mt-3">
+                            <button type="submit" class="btn btn-primary">Cadastrar Trem</button>
+                        </div>
                     </div>
 
                 </form>
