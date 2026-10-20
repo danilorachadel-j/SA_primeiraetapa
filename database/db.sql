@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS trem(
   id INT AUTO_INCREMENT PRIMARY KEY,
   id_adm INT NOT NULL,
   descricao TEXT,
+  nome_trem VARCHAR(50),
   tipo VARCHAR(200) NOT NULL,
   motor VARCHAR(200),
   prioridade ENUM('baixa', 'media', 'alta') NOT NULL,
@@ -31,4 +32,14 @@ CREATE TABLE IF NOT EXISTS trem(
   cidade VARCHAR(200),
   estado VARCHAR(200),
   FOREIGN KEY (id_adm) REFERENCES adm(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS rotas(
+  id int AUTO_INCREMENT PRIMARY KEY,
+  nome_rota VARCHAR(50),
+  ponto_partida VARCHAR(200),
+  destino VARCHAR(200),
+  horario_saida VARCHAR(50),
+  horario_chegada VARCHAR(50),
+  FOREIGN KEY (nome_trem) REFERENCES trem(nome_trem)
 );
