@@ -24,11 +24,7 @@ CREATE TABLE IF NOT EXISTS trem(
   id_adm INT NOT NULL,
   nome VARCHAR(50) NOT NULL,
   descricao TEXT NOT NULL,
-<<<<<<< HEAD
-  descricao TEXT,
-  nome_trem VARCHAR(50),
-=======
->>>>>>> 8a1b8a16332b8d7f7f1220b21fca01ab6481b911
+  nome_trem VARCHAR(50) UNIQUE,
   tipo VARCHAR(200) NOT NULL,
   motor VARCHAR(200),
   prioridade ENUM('baixa', 'media', 'alta') NOT NULL,
@@ -39,7 +35,6 @@ CREATE TABLE IF NOT EXISTS trem(
   FOREIGN KEY (id_adm) REFERENCES adm(id) ON DELETE CASCADE
 );
 
-<<<<<<< HEAD
 CREATE TABLE IF NOT EXISTS rotas_df(
   id int AUTO_INCREMENT PRIMARY KEY,
   nome_rota VARCHAR(50),
@@ -47,6 +42,7 @@ CREATE TABLE IF NOT EXISTS rotas_df(
   destino VARCHAR(200),
   horario_saida VARCHAR(50),
   horario_chegada VARCHAR(50),
+  nome_trem VARCHAR(50),
   FOREIGN KEY (nome_trem) REFERENCES trem(nome_trem)
 );
 
@@ -57,25 +53,18 @@ CREATE TABLE IF NOT EXISTS rotas_rj(
   destino VARCHAR(200),
   horario_saida VARCHAR(50),
   horario_chegada VARCHAR(50),
+  nome_trem VARCHAR(50),
   FOREIGN KEY (nome_trem) REFERENCES trem(nome_trem)
 );
 
-CREATE TABLE IF NOT EXISTS rotas-jv(
+CREATE TABLE IF NOT EXISTS rotas_jv(
   id int AUTO_INCREMENT PRIMARY KEY,
   nome_rota VARCHAR(50),
   ponto_partida VARCHAR(200),
   destino VARCHAR(200),
   horario_saida VARCHAR(50),
   horario_chegada VARCHAR(50),
+  nome_trem VARCHAR(50),
   FOREIGN KEY (nome_trem) REFERENCES trem(nome_trem)
 );
-=======
-CREATE TABLE IF NOT EXISTS rotas(
-  id_rotas INT AUTO_INCREMENT PRIMARY KEY,
-  nome_rotas VARCHAR(50) NOT NULL,
-  ponto_saida VARCHAR(50) NOT NULL,
-  destino VARCHAR(50) NOT NULL,
-  horario_saida VARCHAR(50) NOT NULL,
-  horario_chegada VARCHAR(50) NOT NULL
-);
->>>>>>> 8a1b8a16332b8d7f7f1220b21fca01ab6481b911
+

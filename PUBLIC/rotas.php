@@ -1,3 +1,21 @@
+<?php
+include "../infra/conexao.php";
+
+$sql_rj = "SELECT * FROM rotas_rj";
+$resultado_rj = $conexao->query($sql_rj);
+$rotas_rj = $resultado_rj->fetch_assoc();
+
+$sql_df = "SELECT * FROM rotas_df";
+$resultado_df = $conexao->query($sql_df);
+$rotas_df = $resultado_df->fetch_assoc();
+
+$sql_jv = "SELECT * FROM rotas_jv";
+$resultado_jv = $conexao->query($sql_jv);
+$rotas_jvll = $resultado_jv->fetch_assoc();
+?>
+
+
+
 <html lang="en">
 
 <head>
@@ -38,18 +56,14 @@
                     <th>Horario de chegada</th>
                 </tr>
                 <tr>
-                <td><?php echo $rotas_df["id"] ?></td>
-                <td><?php echo $rotas_df["nome_rota"] ?></td>
-                <td><?php echo $rotas_df["ponto_partida"] ?></td>
-                <td><?php echo $rotas_df["destino"] ?></td>
-                <td><?php echo $rotas_df["horario_saida"] ?></td>
-                <td><?php echo $rotas_df["horario_chegada"] ?></td>
-                <td><?php echo $rotas_df["nome_trem"]?></td>
-                <td>
-                    <a href="public/editar.php?id=<?php echo $rotas["id"] ?>">Editar</a>
-                    <a href="public/excluir.php?id=<?php echo $rotas["id"] ?>">Excluir</a>
-                </td>
-                <?php } ?>
+                <td><?php echo $rotas_rj["id"] ?></td>
+                <td><?php echo $rotas_rj["nome_rota"] ?></td>
+                <td><?php echo $rotas_rj["ponto_partida"] ?></td>
+                <td><?php echo $rotas_rj["destino"] ?></td>
+                <td><?php echo $rotas_rj["horario_saida"] ?></td>
+                <td><?php echo $rotas_rj["horario_chegada"] ?></td>
+                <td><?php echo $rotas_rj["nome_trem"]?></td>
+                <?php ?>
             </tr>
             </table>
         </div>
@@ -64,19 +78,16 @@
                     <th>Horario de chegada</th>
                 </tr>
                 <tr>
-                <td><?php echo $rotas_["id"] ?></td>
-                <td><?php echo $rotas["nome_rota"] ?></td>
-                <td><?php echo $rotas["ponto_partida"] ?></td>
-                <td><?php echo $rotas["destino"] ?></td>
-                <td><?php echo $rotas["horario_saida"] ?></td>
-                <td><?php echo $rotas["horario_chegada"] ?></td>
-                <td><?php echo $rotas["nome_trem"]?></td>
-                <td>
-                    <a href="public/editar.php?id=<?php echo $rotas["id"] ?>">Editar</a>
-                    <a href="public/excluir.php?id=<?php echo $rotas["id"] ?>">Excluir</a>
-                </td>
-                <?php } ?>
+                <td><?php echo $rotas_df["id"] ?></td>
+                <td><?php echo $rotas_df["nome_rota"] ?></td>
+                <td><?php echo $rotas_df["ponto_partida"]?></td>
+                <td><?php echo $rotas_df["destino"] ?></td>
+                <td><?php echo $rotas_df["horario_saida"] ?></td>
+                <td><?php echo $rotas_df["horario_chegada"] ?></td>
+                <td><?php echo $rotas_df["nome_trem"]?></td>
+                <?php  ?>
             </tr>
+                
             </table>
         </div>
         <div class="jvll">
@@ -90,18 +101,14 @@
                     <th>Horario de chegada</th>
                 </tr>
                 <tr>
-                <td><?php echo $rotas["id"] ?></td>
-                <td><?php echo $rotas["nome_rota"] ?></td>
-                <td><?php echo $rotas["ponto_partida"] ?></td>
-                <td><?php echo $rotas["destino"] ?></td>
-                <td><?php echo $rotas["horario_saida"] ?></td>
-                <td><?php echo $rotas["horario_chegada"] ?></td>
-                <td><?php echo $rotas["nome_trem"]?></td>
-                <td>
-                    <a href="public/editar.php?id=<?php echo $rotas["id"] ?>">Editar</a>
-                    <a href="public/excluir.php?id=<?php echo $rotas["id"] ?>">Excluir</a>
-                </td>
-                <?php } ?>
+                <td><?php echo $rotas_jvll["id"] ?></td>
+                <td><?php echo $rotas_jvll["nome_rota"] ?></td>
+                <td><?php echo $rotas_jvll["ponto_partida"] ?></td>
+                <td><?php echo $rotas_jvll["destino"] ?></td>
+                <td><?php echo $rotas_jvll["horario_saida"] ?></td>
+                <td><?php echo $rotas_jvll["horario_chegada"] ?></td>
+                <td><?php echo $rotas_jvll["nome_trem"]?></td>
+                <?php  ?>
             </tr>
             </table>
         </div>
