@@ -1,3 +1,32 @@
+<?php 
+
+include "..infra/conexao.php";
+
+$mensagem = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $nomeTrem = $_POST['Nome_trem'] ?? '';
+    $pontoSaida = $_POST['Saida'] ??'';
+    $destino = $_POST['Destino'] ??'';
+    $horarioSaida = $_POST['Horario_Saida'] ??'';
+    $horarioChegada = $_POST['Horario_Chegada'] ??'';
+
+    if(!empty($nomeTrem) && !empty($pontoSaida) && !empty($destino)) {
+        $sql = "INSERT INTO rotas (nome_trem,ponto_saida,destino,horario_saida,horario_chegada) VALUES (?,?,?,?,?)";
+        $stmt = $pdo->prepare($sql);
+
+        if($stmt->execute([$nomeTrem, $pontoSaida, $destino, $horarioSaida, $horarioChegada])) {
+          $mensagem = "<p style='color: green;'>Rota cadastrada com sucesso!</p>";  
+        } else {
+            $mensagem= "<p style='color: red;'>Erro ao cadastrar a rota.</p>";
+        }
+        } else {
+            $mensagem = "<p style ='color: red;'>Preencha todos os campos por favor!</p>";
+        }
+    }
+?>
+
 <html lang="en">
 
 <head>
@@ -13,30 +42,36 @@
         <div>
             <div class="form-cdstro-rotas">
                 <h2>Cadastro de Rotas</h2>
+                
+                <?= $mensagem; ?>
+
                 <form action="" method="POST">
                     <div class="form157">
                         <label for="Nome_trem">Nome-Trem:</label>
                         <br>
-                        <input type="text" name="Nome_trem">
+                        <input type="text" name="Nome_trem" required>
                         <br>
+                        
                         <label for="Saida">Ponto de Saida:</label>
                         <br>
-                        <input type="text" name="Saida">
+                        <input type="text" name="Saida" required>
                         <br>
+                        
                         <label for="Destino">Destino:</label>
                         <br>
-                        <input type="text" name="Destino">
+                        <input type="text" name="Destino" required>
                     </div>
+                    
                     <div class="horario">
                         <div class="saida">
-                            <label for="Horario">Horario de Saida:</label>
+                            <label for="Horario_Saida">Horario de Saida:</label>
                             <br>
-                            <input type="number" name="Saida">
+                            <input type="time" name="Horario_Saida" required>
                         </div>
                         <div class="chegada">
-                            <label for="Horario">Horario de Chegada:</label>
+                            <label for="Horario_Chegada">Horario de Chegada:</label>
                             <br>
-                            <input type="number" name="Chegada">
+                            <input type="time" name="Horario_Chegada" required>
                         </div>
                     </div>
                     <br>
