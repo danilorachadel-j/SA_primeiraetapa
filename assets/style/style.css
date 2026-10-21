@@ -804,3 +804,67 @@ padding-top: 300px;
     background-repeat: no-repeat;
     color: white; 
 }
+
+body{
+    background-color: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333333;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#container99{
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #ffffff !important;
+}
+
+h2, h5{
+    color: #1a252f;
+    font-weight: 600;
+}
+
+.form-label{
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #495057;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-control, .form-select{
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    font-size: 0.9rem;
+    transition: border-color 0.2rem ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+.table{
+    font-size: 0.9rem;
+
+}
+
+.table thead th{
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background-color: #212529;
+}
+
+.col-acoes{
+    text-align: center;
+    white-space: nowrap;
+    width: 140px;
+}
+
+.badge{
+    font-size: 0.75rem;
+    padding: 0.4em 0.6em;
+    font-weight: 500;
+}
