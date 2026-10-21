@@ -8,42 +8,46 @@ if (!isset($conexao) || !$conexao) {
 $mensagem = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nome_usuario = trim($_POST['nome_usuario'] ?? '');
-    $idade = trim($_POST['idade'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $nome_trem = trim($_POST['nome_trem'] ?? '');
-    $nome_linha = trim($_POST['nome_linha'] ?? '');
+    $user_name     = trim($_POST['user_name'] ?? '');
+    $user_email    = trim($_POST['user_email'] ?? '');
+    $user_password = trim($_POST['user_password'] ?? '');
+    $moradia       = trim($_POST['moradia'] ?? '');
+    $cpf           = trim($_POST['cpf'] ?? '');
+    $idade         = trim($_POST['idade'] ?? '');
+    $telefone      = trim($_POST['telefone'] ?? '');
 
-    if ($nome_usuario !== '' && $idade !== '' && $email !== '' && $nome_trem !== '' && $nome_linha !== '') {
-        $stmt = mysqli_prepare($conexao, "INSERT INTO usuarios (nome_usuario, idade, email, nome_trem, nome_linha) VALUES (?, ?, ?, ?, ?)");
+    if ($user_name !== '' && $user_email !== '' && $user_password !== '' && $moradia !== '' && $cpf !== '' && $idade !== '' && $telefone !== '') {
+        try {
+            $senha_hash = password_hash($user_password, PASSWORD_DEFAULT);
+            $idade_int = (int) $idade;
 
-        if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "sisss", $nome_usuario, $idade, $email, $nome_trem, $nome_linha);
-            if (mysqli_stmt_execute($stmt)) {
-                $mensagem = "Usuário adicionado com sucesso.";
-            } else {
-                $mensagem = "Erro ao adicionar usuário: " . mysqli_error($conexao);
-            }
+            $stmt = mysqli_prepare(
+                $conexao,
+                "INSERT INTO users1 (user_name, user_email, user_password, moradia, cpf, idade, telefone) VALUES (?, ?, ?, ?, ?, ?, ?)"
+            );
+            mysqli_stmt_bind_param($stmt, "sssssis", $user_name, $user_email, $senha_hash, $moradia, $cpf, $idade_int, $telefone);
+            mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
-        } else {
-            $mensagem = "Erro ao preparar inserção: " . mysqli_error($conexao);
+
+            $mensagem = "Usuário adicionado com sucesso.";
+        } catch (mysqli_sql_exception $e) {
+            $mensagem = "Erro ao adicionar usuário: " . $e->getMessage();
         }
     } else {
         $mensagem = "Preencha todos os campos para adicionar um usuário.";
     }
 }
 
-$sql = "SELECT * FROM usuarios";
-$user = mysqli_query($conexao, $sql);
+$sql = "SELECT id, user_name, user_email, moradia, cpf, idade, telefone FROM users1";
+$users1 = mysqli_query($conexao, $sql);
 
-if (!$user) {
+if (!$users1) {
     die("Erro na consulta: " . mysqli_error($conexao));
 }
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -68,56 +72,58 @@ if (!$user) {
             </div>
         </nav>
     </div>
-            <div class="grid containerTable">      
-                <form method="POST" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 10px;">
-                    <input type="text" name="nome_usuario" placeholder="Nome do usuário" required>
-                    <input type="number" name="idade" placeholder="Idade" min="0" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <input type="text" name="nome_trem" placeholder="Nome do trem" required>
-                    <input type="text" name="nome_linha" placeholder="Nome da linha" required>
-                    <button type="submit">Adicionar usuário</button>
-                </form>
 
-                <?php if ($mensagem !== "") { ?>
-                    <p><?php echo htmlspecialchars($mensagem); ?></p>
-                <?php } ?>
-                
-                <div id="sensorTable">
-                    <table>
-                        <thead>
+    <div class="grid containerTable">
+        <form method="POST" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 10px;">
+            <input type="text" name="user_name" placeholder="Nome do usuário" maxlength="200" required>
+            <input type="email" name="user_email" placeholder="Email" maxlength="75" required>
+            <input type="password" name="user_password" placeholder="Senha" required>
+            <input type="text" name="moradia" placeholder="Moradia" maxlength="200" required>
+            <input type="text" name="cpf" placeholder="CPF" maxlength="14" required>
+            <input type="number" name="idade" placeholder="Idade" min="0" required>
+            <input type="tel" name="telefone" placeholder="Telefone" maxlength="20" required>
+            <button type="submit">Adicionar usuário</button>
+        </form>
+
+        <?php if ($mensagem !== "") { ?>
+            <p><?php echo htmlspecialchars($mensagem); ?></p>
+        <?php } ?>
+
+        <div id="sensorTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>NOME</th>
+                        <th>EMAIL</th>
+                        <th>MORADIA</th>
+                        <th>CPF</th>
+                        <th>IDADE</th>
+                        <th>TELEFONE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (mysqli_num_rows($users1) > 0) { ?>
+                        <?php while ($row = mysqli_fetch_assoc($users1)) { ?>
                             <tr>
-                                <th>NOME DO USUÁRIO</th>
-                                <th>IDADE</th>
-                                <th>EMAIL</th>
-                                <th>NOME DO TREM</th>
-                                <th>NOME DA LINHA</th>
+                                <td><?php echo htmlspecialchars($row['user_name']); ?></td>
+                                <td><?php echo htmlspecialchars($row['user_email']); ?></td>
+                                <td><?php echo htmlspecialchars($row['moradia'] ?? ''); ?></td>
+                                <td><?php echo htmlspecialchars($row['cpf'] ?? ''); ?></td>
+                                <td><?php echo htmlspecialchars($row['idade'] ?? ''); ?></td>
+                                <td><?php echo htmlspecialchars($row['telefone'] ?? ''); ?></td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <?php if (mysqli_num_rows($user) > 0) { ?>
-                                <?php while ($row = mysqli_fetch_assoc($user)) { ?>
-                                    <tr>
-                                        <td><?php echo htmlspecialchars($row['nome_usuario']); ?></td>
-                                        <td><?php echo htmlspecialchars($row['idade']); ?></td>
-                                        <td><?php echo htmlspecialchars($row['email']); ?></td>
-                                        <td><?php echo htmlspecialchars($row['nome_trem']); ?></td>
-                                        <td><?php echo htmlspecialchars($row['nome_linha']); ?></td>
-                                    </tr>
-                                <?php } ?>
-                            <?php } else { ?>
-                                <tr>
-                                    <td colspan="5">Nenhum usuário encontrado.</td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
-                
-                    <img src="../assets/img/trem_usuarios_1.jpg" alt="Train Station" class="img-lateralTrain">
-                
-            </div>
-            
+                        <?php } ?>
+                    <?php } else { ?>
+                        <tr>
+                            <td colspan="6">Nenhum usuário encontrado.</td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
         </div>
+
+        <img src="../assets/img/trem_usuarios_1.jpg" alt="Train Station" class="img-lateralTrain">
+    </div>
 </body>
 
 </html>
