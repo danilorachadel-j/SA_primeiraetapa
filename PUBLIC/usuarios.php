@@ -1,6 +1,44 @@
 <?php
 include "../infra/conexão.php";
-$user = mysqli_query($conexao, "SELECT * FROM usuarios");
+
+if (!isset($conexao) || !$conexao) {
+    die("Erro: conexão com o banco de dados não foi estabelecida.");
+}
+
+$mensagem = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome_usuario = trim($_POST['nome_usuario'] ?? '');
+    $idade = trim($_POST['idade'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $nome_trem = trim($_POST['nome_trem'] ?? '');
+    $nome_linha = trim($_POST['nome_linha'] ?? '');
+
+    if ($nome_usuario !== '' && $idade !== '' && $email !== '' && $nome_trem !== '' && $nome_linha !== '') {
+        $stmt = mysqli_prepare($conexao, "INSERT INTO usuarios (nome_usuario, idade, email, nome_trem, nome_linha) VALUES (?, ?, ?, ?, ?)");
+
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "sisss", $nome_usuario, $idade, $email, $nome_trem, $nome_linha);
+            if (mysqli_stmt_execute($stmt)) {
+                $mensagem = "Usuário adicionado com sucesso.";
+            } else {
+                $mensagem = "Erro ao adicionar usuário: " . mysqli_error($conexao);
+            }
+            mysqli_stmt_close($stmt);
+        } else {
+            $mensagem = "Erro ao preparar inserção: " . mysqli_error($conexao);
+        }
+    } else {
+        $mensagem = "Preencha todos os campos para adicionar um usuário.";
+    }
+}
+
+$sql = "SELECT * FROM usuarios";
+$user = mysqli_query($conexao, $sql);
+
+if (!$user) {
+    die("Erro na consulta: " . mysqli_error($conexao));
+}
 
 ?>
 
@@ -31,6 +69,18 @@ $user = mysqli_query($conexao, "SELECT * FROM usuarios");
         </nav>
     </div>
             <div class="grid containerTable">      
+                <form method="POST" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 10px;">
+                    <input type="text" name="nome_usuario" placeholder="Nome do usuário" required>
+                    <input type="number" name="idade" placeholder="Idade" min="0" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="text" name="nome_trem" placeholder="Nome do trem" required>
+                    <input type="text" name="nome_linha" placeholder="Nome da linha" required>
+                    <button type="submit">Adicionar usuário</button>
+                </form>
+
+                <?php if ($mensagem !== "") { ?>
+                    <p><?php echo htmlspecialchars($mensagem); ?></p>
+                <?php } ?>
                 
                 <div id="sensorTable">
                     <table>
@@ -44,75 +94,21 @@ $user = mysqli_query($conexao, "SELECT * FROM usuarios");
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>NICOLAS</td>
-                                <td>26</td>
-                                <td>nicolas123@gmail.com</td>
-                                <td>THOMAS</td>
-                                <td>X TURBO</td>
-                            </tr>
-                            <tr>
-                                <td>JOÃO</td>
-                                <td>43</td>
-                                <td>joao123@gmail.com</td>
-                                <td>ADIBE</td>
-                                <td>HIPER DIBE</td>
-                            </tr>
-                            <tr>
-                                <td>ROBERTO</td>
-                                <td>34</td>
-                                <td>roberto123@gmail.com</td>
-                                <td>VENICE</td>
-                                <td>X NICE</td>
-                            </tr>
-                            </tr>
-                            <td>PABLO</td>
-                            <td>67</td>
-                            <td>pablo123@gmail.com</td>
-                            <td>TYRON</td>
-                            <td>HIPER TY</td>
-                            <tr>
-                                <td>EDUARDO</td>
-                                <td>20</td>
-                                <td>eduardo123@gmail.com</td>
-                                <td>VAISON</td>
-                                <td>X VSON</td>
-                            </tr>
-                            <tr>
-                                <td>GEORGINA</td>
-                                <td>32</td>
-                                <td>georgina123@gmail.com</td>
-                                <td>CRHIS</td>
-                                <td>HIPER CR7</td>
-                            </tr>
-                            <tr>
-                                <td>ISACK</td>
-                                <td>24</td>
-                                <td>isack123@gmail.com</td>
-                                <td>DOKESHI</td>
-                                <td>X DOKE</td>
-                            </tr>
-                            <tr>
-                                <td>SAMUEL</td>
-                                <td>69</td>
-                                <td>samuel123@gmail.com</td>
-                                <td>SAMIELX</td>
-                                <td>HIPER SAMI</td>
-                            </tr>
-                            <tr>
-                                <td>DANIÇO</td>
-                                <td>45</td>
-                                <td>danilo123@gmail.com</td>
-                                <td>EXERCT</td>
-                                <td>X EX</td>
-                            </tr>
-                            <tr>
-                                <td>JOAQUIM</td>
-                                <td>82</td>
-                                <td>joaquim123@gmail.com</td>
-                                <td>LEGEND</td>
-                                <td>HIPER JOCA</td>
-                            </tr>
+                            <?php if (mysqli_num_rows($user) > 0) { ?>
+                                <?php while ($row = mysqli_fetch_assoc($user)) { ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($row['nome_usuario']); ?></td>
+                                        <td><?php echo htmlspecialchars($row['idade']); ?></td>
+                                        <td><?php echo htmlspecialchars($row['email']); ?></td>
+                                        <td><?php echo htmlspecialchars($row['nome_trem']); ?></td>
+                                        <td><?php echo htmlspecialchars($row['nome_linha']); ?></td>
+                                    </tr>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <tr>
+                                    <td colspan="5">Nenhum usuário encontrado.</td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
