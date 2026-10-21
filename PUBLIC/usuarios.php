@@ -1,5 +1,7 @@
 <?php
 include "../infra/conexão.php";
+$user = mysqli_query($conexao, "SELECT * FROM usuarios");
+
 ?>
 
 <!DOCTYPE html>
