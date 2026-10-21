@@ -765,3 +765,42 @@ Position: relative;
     border-radius: 25px;
     box-shadow: 0px 0px 10px 1px black;
 }
+
+.form-cadastro-sensores{
+    font-family: monospace;
+    font-size: large;
+    color: rgb(0, 0, 0);
+    justify-content: center;
+    height: 220px;
+    width: 330px;
+    padding: 30px 50px;
+    border-radius: 35px;
+    background-color: rgba(253, 253, 253, 0.096);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.281);
+    border-left: 1px solid rgba(255, 255, 255, 0.281);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.281);
+}
+    h2{
+        display: flex;
+        justify-content: center;
+    }
+
+.cadastro-sensores{
+display: flex;
+justify-content: center;
+align-items: center;
+padding-top: 300px;
+}
+
+.bottom-05{
+    display: flex;
+    justify-content: center;
+}
+
+#body-sensor{
+    background-image: url(../img/tela-cadastro-rotas1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white; 
+}
