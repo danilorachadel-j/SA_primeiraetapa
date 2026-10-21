@@ -1,4 +1,6 @@
-
+<?php
+include "../infra/conexão.php";
+?>
 
 <html lang="en">
 
