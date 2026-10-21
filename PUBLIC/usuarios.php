@@ -1,11 +1,53 @@
 <?php
 include "../infra/conexão.php";
-$user = mysqli_query($conexao, "SELECT * FROM usuarios");
 
+if (!isset($conexao) || !$conexao) {
+    die("Erro: conexão com o banco de dados não foi estabelecida.");
+}
+
+$mensagem = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $user_name     = trim($_POST['user_name'] ?? '');
+    $user_email    = trim($_POST['user_email'] ?? '');
+    $user_password = trim($_POST['user_password'] ?? '');
+    $moradia       = trim($_POST['moradia'] ?? '');
+    $cpf           = trim($_POST['cpf'] ?? '');
+    $idade         = trim($_POST['idade'] ?? '');
+    $telefone      = trim($_POST['telefone'] ?? '');
+
+    if ($user_name !== '' && $user_email !== '' && $user_password !== '' && $moradia !== '' && $cpf !== '' && $idade !== '' && $telefone !== '') {
+        try {
+            $senha_hash = password_hash($user_password, PASSWORD_DEFAULT);
+            $idade_int = (int) $idade;
+
+            $stmt = mysqli_prepare(
+                $conexao,
+                "INSERT INTO users1 (user_name, user_email, user_password, moradia, cpf, idade, telefone) VALUES (?, ?, ?, ?, ?, ?, ?)"
+            );
+            mysqli_stmt_bind_param($stmt, "sssssis", $user_name, $user_email, $senha_hash, $moradia, $cpf, $idade_int, $telefone);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+
+            $mensagem = "Usuário adicionado com sucesso.";
+        } catch (mysqli_sql_exception $e) {
+            $mensagem = "Erro ao adicionar usuário: " . $e->getMessage();
+        }
+    } else {
+        $mensagem = "Preencha todos os campos para adicionar um usuário.";
+    }
+}
+
+$sql = "SELECT id, user_name, user_email, moradia, cpf, idade, telefone FROM users1";
+$users1 = mysqli_query($conexao, $sql);
+
+if (!$users1) {
+    die("Erro na consulta: " . mysqli_error($conexao));
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -30,98 +72,58 @@ $user = mysqli_query($conexao, "SELECT * FROM usuarios");
             </div>
         </nav>
     </div>
-            <div class="grid containerTable">      
-                
-                <div id="sensorTable">
-                    <table>
-                        <thead>
+
+    <div class="grid containerTable">
+        <form method="POST" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 10px;">
+            <input type="text" name="user_name" placeholder="Nome do usuário" maxlength="200" required>
+            <input type="email" name="user_email" placeholder="Email" maxlength="75" required>
+            <input type="password" name="user_password" placeholder="Senha" required>
+            <input type="text" name="moradia" placeholder="Moradia" maxlength="200" required>
+            <input type="text" name="cpf" placeholder="CPF" maxlength="14" required>
+            <input type="number" name="idade" placeholder="Idade" min="0" required>
+            <input type="tel" name="telefone" placeholder="Telefone" maxlength="20" required>
+            <button type="submit">Adicionar usuário</button>
+        </form>
+
+        <?php if ($mensagem !== "") { ?>
+            <p><?php echo htmlspecialchars($mensagem); ?></p>
+        <?php } ?>
+
+        <div id="sensorTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>NOME</th>
+                        <th>EMAIL</th>
+                        <th>MORADIA</th>
+                        <th>CPF</th>
+                        <th>IDADE</th>
+                        <th>TELEFONE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (mysqli_num_rows($users1) > 0) { ?>
+                        <?php while ($row = mysqli_fetch_assoc($users1)) { ?>
                             <tr>
-                                <th>NOME DO USUÁRIO</th>
-                                <th>IDADE</th>
-                                <th>EMAIL</th>
-                                <th>NOME DO TREM</th>
-                                <th>NOME DA LINHA</th>
+                                <td><?php echo htmlspecialchars($row['user_name']); ?></td>
+                                <td><?php echo htmlspecialchars($row['user_email']); ?></td>
+                                <td><?php echo htmlspecialchars($row['moradia'] ?? ''); ?></td>
+                                <td><?php echo htmlspecialchars($row['cpf'] ?? ''); ?></td>
+                                <td><?php echo htmlspecialchars($row['idade'] ?? ''); ?></td>
+                                <td><?php echo htmlspecialchars($row['telefone'] ?? ''); ?></td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>NICOLAS</td>
-                                <td>26</td>
-                                <td>nicolas123@gmail.com</td>
-                                <td>THOMAS</td>
-                                <td>X TURBO</td>
-                            </tr>
-                            <tr>
-                                <td>JOÃO</td>
-                                <td>43</td>
-                                <td>joao123@gmail.com</td>
-                                <td>ADIBE</td>
-                                <td>HIPER DIBE</td>
-                            </tr>
-                            <tr>
-                                <td>ROBERTO</td>
-                                <td>34</td>
-                                <td>roberto123@gmail.com</td>
-                                <td>VENICE</td>
-                                <td>X NICE</td>
-                            </tr>
-                            </tr>
-                            <td>PABLO</td>
-                            <td>67</td>
-                            <td>pablo123@gmail.com</td>
-                            <td>TYRON</td>
-                            <td>HIPER TY</td>
-                            <tr>
-                                <td>EDUARDO</td>
-                                <td>20</td>
-                                <td>eduardo123@gmail.com</td>
-                                <td>VAISON</td>
-                                <td>X VSON</td>
-                            </tr>
-                            <tr>
-                                <td>GEORGINA</td>
-                                <td>32</td>
-                                <td>georgina123@gmail.com</td>
-                                <td>CRHIS</td>
-                                <td>HIPER CR7</td>
-                            </tr>
-                            <tr>
-                                <td>ISACK</td>
-                                <td>24</td>
-                                <td>isack123@gmail.com</td>
-                                <td>DOKESHI</td>
-                                <td>X DOKE</td>
-                            </tr>
-                            <tr>
-                                <td>SAMUEL</td>
-                                <td>69</td>
-                                <td>samuel123@gmail.com</td>
-                                <td>SAMIELX</td>
-                                <td>HIPER SAMI</td>
-                            </tr>
-                            <tr>
-                                <td>DANIÇO</td>
-                                <td>45</td>
-                                <td>danilo123@gmail.com</td>
-                                <td>EXERCT</td>
-                                <td>X EX</td>
-                            </tr>
-                            <tr>
-                                <td>JOAQUIM</td>
-                                <td>82</td>
-                                <td>joaquim123@gmail.com</td>
-                                <td>LEGEND</td>
-                                <td>HIPER JOCA</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                    <img src="../assets/img/trem_usuarios_1.jpg" alt="Train Station" class="img-lateralTrain">
-                
-            </div>
-            
+                        <?php } ?>
+                    <?php } else { ?>
+                        <tr>
+                            <td colspan="6">Nenhum usuário encontrado.</td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
         </div>
+
+        <img src="../assets/img/trem_usuarios_1.jpg" alt="Train Station" class="img-lateralTrain">
+    </div>
 </body>
 
 </html>

@@ -8,7 +8,7 @@ adm_email VARCHAR(75) NOT NULL,
 adm_password VARCHAR(200) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS user(
+CREATE TABLE IF NOT EXISTS users1(
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_name VARCHAR(200) NOT NULL,
   user_email VARCHAR(75) NOT NULL,
@@ -22,8 +22,8 @@ CREATE TABLE IF NOT EXISTS user(
 CREATE TABLE IF NOT EXISTS trem(
   id INT AUTO_INCREMENT PRIMARY KEY,
   id_adm INT NOT NULL,
-  descricao TEXT,
-  nome_trem VARCHAR(50),
+  nome VARCHAR(50) NOT NULL,
+  descricao TEXT NOT NULL,
   tipo VARCHAR(200) NOT NULL,
   motor VARCHAR(200),
   prioridade ENUM('baixa', 'media', 'alta') NOT NULL,
@@ -35,11 +35,10 @@ CREATE TABLE IF NOT EXISTS trem(
 );
 
 CREATE TABLE IF NOT EXISTS rotas(
-  id int AUTO_INCREMENT PRIMARY KEY,
-  nome_rota VARCHAR(50),
-  ponto_partida VARCHAR(200),
-  destino VARCHAR(200),
-  horario_saida VARCHAR(50),
-  horario_chegada VARCHAR(50),
-  FOREIGN KEY (nome_trem) REFERENCES trem(nome_trem)
+  id_rotas INT AUTO_INCREMENT PRIMARY KEY,
+  nome_rotas VARCHAR(50) NOT NULL,
+  ponto_saida VARCHAR(50) NOT NULL,
+  destino VARCHAR(50) NOT NULL,
+  horario_saida VARCHAR(50) NOT NULL,
+  horario_chegada VARCHAR(50) NOT NULL
 );
