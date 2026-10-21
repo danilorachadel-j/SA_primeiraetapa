@@ -769,7 +769,7 @@ Position: relative;
 .form-cadastro-sensores{
     font-family: monospace;
     font-size: large;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     justify-content: center;
     height: 220px;
     width: 330px;
@@ -799,7 +799,7 @@ padding-top: 300px;
 }
 
 #body-sensor{
-    background-image: url(../img/tela-cadastro-rotas1.jpg);
+    background-image: url(../img/tela_cadastro_sensor.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     color: white; 
