@@ -47,10 +47,8 @@ include "../infra/conexão.php";
                         <label for="estado" class="form-label">Estado</label>
                         <input type="text" class="form-control" id="estado" required>
                     </div>
-
                 </form>
             </div>
-
         </div>
 
 

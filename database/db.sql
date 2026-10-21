@@ -18,9 +18,19 @@ CREATE TABLE IF NOT EXISTS user(
 CREATE TABLE IF NOT EXISTS trem(
   id INT AUTO_INCREMENT PRIMARY KEY,
   id_adm INT NOT NULL,
+  nome VARCHAR(50) NOT NULL,
   descricao TEXT NOT NULL,
   tipo VARCHAR(200) NOT NULL,
   prioridade ENUM('baixa', 'media', 'alta') NOT NULL,
   data_cadastro DATE NOT NULL,
   FOREIGN KEY (id_adm) REFERENCES adm(id) ON DELETE CASCADE
+);
+
+CREATE TABLE if NOT EXISTS rotas(
+  id_rotas INT AUTO_INCREMENT PRIMARY KEY,
+  nome_rotas VARCHAR(50) NOT NULL,
+  ponto_saida VARCHAR(50) NOT NULL,
+  destino VARCHAR(50) NOT NULL,
+  horario_saida VARCHAR(50) NOT NULL,
+  horario_chegada VARCHAR(50) NOT NULL,
 );
