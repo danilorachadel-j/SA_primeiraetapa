@@ -376,17 +376,9 @@
     justify-content: center;
     align-items: center;
     padding-top: 300px;
-<<<<<<< HEAD
-    margin-left: 1200px;
-
-}
-#body-sla{
-    background-image: url(../img/fundo_cadastro-tren.png);
-=======
 }
 #body-sla{
     background-image: url(../img/tela-cadastro-rotas1.jpg);
->>>>>>> 5094568a5e70830dc33d3992e688daa87edd8eb6
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
