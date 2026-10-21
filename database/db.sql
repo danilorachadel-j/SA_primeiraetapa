@@ -8,7 +8,7 @@ adm_email VARCHAR(75) NOT NULL,
 adm_password VARCHAR(200) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS user(
+CREATE TABLE IF NOT EXISTS users1(
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_name VARCHAR(200) NOT NULL,
   user_email VARCHAR(75) NOT NULL,
@@ -22,13 +22,13 @@ CREATE TABLE IF NOT EXISTS user(
 CREATE TABLE IF NOT EXISTS trem(
   id INT AUTO_INCREMENT PRIMARY KEY,
   id_adm INT NOT NULL,
-<<<<<<< HEAD
   nome VARCHAR(50) NOT NULL,
   descricao TEXT NOT NULL,
-=======
+<<<<<<< HEAD
   descricao TEXT,
   nome_trem VARCHAR(50),
->>>>>>> 39a240b5e6048363a536c9629e4fb518d32c5e84
+=======
+>>>>>>> 8a1b8a16332b8d7f7f1220b21fca01ab6481b911
   tipo VARCHAR(200) NOT NULL,
   motor VARCHAR(200),
   prioridade ENUM('baixa', 'media', 'alta') NOT NULL,
@@ -40,15 +40,7 @@ CREATE TABLE IF NOT EXISTS trem(
 );
 
 <<<<<<< HEAD
-CREATE TABLE if NOT EXISTS rotas(
-  id_rotas INT AUTO_INCREMENT PRIMARY KEY,
-  nome_rotas VARCHAR(50) NOT NULL,
-  ponto_saida VARCHAR(50) NOT NULL,
-  destino VARCHAR(50) NOT NULL,
-  horario_saida VARCHAR(50) NOT NULL,
-  horario_chegada VARCHAR(50) NOT NULL,
-=======
-CREATE TABLE IF NOT EXISTS rotas(
+CREATE TABLE IF NOT EXISTS rotas_df(
   id int AUTO_INCREMENT PRIMARY KEY,
   nome_rota VARCHAR(50),
   ponto_partida VARCHAR(200),
@@ -56,5 +48,34 @@ CREATE TABLE IF NOT EXISTS rotas(
   horario_saida VARCHAR(50),
   horario_chegada VARCHAR(50),
   FOREIGN KEY (nome_trem) REFERENCES trem(nome_trem)
->>>>>>> 39a240b5e6048363a536c9629e4fb518d32c5e84
 );
+
+CREATE TABLE IF NOT EXISTS rotas_rj(
+  id int AUTO_INCREMENT PRIMARY KEY,
+  nome_rota VARCHAR(50),
+  ponto_partida VARCHAR(200),
+  destino VARCHAR(200),
+  horario_saida VARCHAR(50),
+  horario_chegada VARCHAR(50),
+  FOREIGN KEY (nome_trem) REFERENCES trem(nome_trem)
+);
+
+CREATE TABLE IF NOT EXISTS rotas-jv(
+  id int AUTO_INCREMENT PRIMARY KEY,
+  nome_rota VARCHAR(50),
+  ponto_partida VARCHAR(200),
+  destino VARCHAR(200),
+  horario_saida VARCHAR(50),
+  horario_chegada VARCHAR(50),
+  FOREIGN KEY (nome_trem) REFERENCES trem(nome_trem)
+);
+=======
+CREATE TABLE IF NOT EXISTS rotas(
+  id_rotas INT AUTO_INCREMENT PRIMARY KEY,
+  nome_rotas VARCHAR(50) NOT NULL,
+  ponto_saida VARCHAR(50) NOT NULL,
+  destino VARCHAR(50) NOT NULL,
+  horario_saida VARCHAR(50) NOT NULL,
+  horario_chegada VARCHAR(50) NOT NULL
+);
+>>>>>>> 8a1b8a16332b8d7f7f1220b21fca01ab6481b911
