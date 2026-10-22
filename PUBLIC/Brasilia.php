@@ -1,10 +1,8 @@
 <?php
-include "../infra/conexão.php";
+include "../infra/conexao.php";
 ?>
 
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,17 +42,11 @@ include "../infra/conexão.php";
                     ao centro da capital. Apesar de sua importância, o sistema ainda possui uma cobertura limitada e não
                     atende plenamente todas as regiões,
                     o que faz com que muitos moradores continuem dependentes de ônibus ou transporte individual.
-
-
-
-
                 </p>
             </div>
         </div>
     </main>
 </body>
 
-
-
-
 </html>>
+
