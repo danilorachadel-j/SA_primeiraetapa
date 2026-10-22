@@ -24,7 +24,7 @@ include "../infra/conexão.php";
     <div class="grid containerTable">
         <div id="tableButton">
             <div>
-                <a href="login.php" class="btn-table">Novo sensor</a>
+                <a href="cadastrar_sensores.php" class="btn-table">Novo sensor</a>
             </div>
             <div id="sensorTable">
                 <table>

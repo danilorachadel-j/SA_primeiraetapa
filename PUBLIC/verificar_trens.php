@@ -22,7 +22,7 @@
         <div class="grid containerTable">
             <div id="tableButton">
                 <div>
-                    <a href="login.php" class="btn-table">Novo sensor</a>
+                    <a href="crud_trens.php" class="btn-table">Novo sensor</a>
                 </div>
                 <div id="sensorTable">
                     <table>
