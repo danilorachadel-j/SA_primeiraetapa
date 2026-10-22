@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS users1 (
     nome VARCHAR(100) NOT NULL
 );
 
-<<<<<<< HEAD
 CREATE TABLE IF NOT EXISTS trem(
   id INT AUTO_INCREMENT PRIMARY KEY,
   id_adm INT NOT NULL,
@@ -29,11 +28,6 @@ CREATE TABLE IF NOT EXISTS trem(
   FOREIGN KEY (id_adm) REFERENCES adm(id) ON DELETE CASCADE
 );
 
-=======
-INSERT INTO usuarios (nome) VALUES 
-('Samuel Urdaneta'), 
-('Nicolas Lima'), 
-('Isack Santana');
 
 CREATE TABLE IF NOT EXISTS trens (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -45,11 +39,8 @@ CREATE TABLE IF NOT EXISTS trens (
     estado CHAR(2) NOT NULL, 
     usuario_id INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
-
->>>>>>> 3f057ea633a7c1cb6c8ecb20b229b4fbf2be010f
 CREATE TABLE IF NOT EXISTS rotas_df(
   id int AUTO_INCREMENT PRIMARY KEY,
   nome_rota VARCHAR(50),
@@ -82,7 +73,3 @@ CREATE TABLE IF NOT EXISTS rotas_jv(
   nome_trem VARCHAR(50),
   FOREIGN KEY (nome_trem) REFERENCES trem(nome_trem)
 );
-<<<<<<< HEAD
-
-=======
->>>>>>> 3f057ea633a7c1cb6c8ecb20b229b4fbf2be010f
