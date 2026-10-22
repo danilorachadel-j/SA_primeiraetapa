@@ -1,5 +1,5 @@
 <?php
-include "../infra/conexão.php";
+include "../INFRA/conexao.php";
 
 if (!isset($conexao) || !$conexao) {
     die("Erro: conexão com o banco de dados não foi estabelecida.");
