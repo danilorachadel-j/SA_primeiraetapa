@@ -4,12 +4,15 @@ include "../infra/conexao.php";
 $usuariosCadastrados = ["Samuel Urdaneta", "Nicolas Lima", "Isack Santana"];
 
 if (isset($_GET['acao']) && $_GET['acao'] == 'excluir' && isset($_GET['id'])) {
-    $stmt = $pdo->prepare("DELETE FROM trens WHERE id = ?");
-    $stmt->execute([$_GET['id']]);
+    $stmt = $conexao->prepare("DELETE FROM trens WHERE id = ?");
+    $stmt->bind_param("i", $_GET['id']);
+    $stmt->execute();
+    $stmt->close();
     header("Location: index.php");
     exit;
 }
- if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['trem-id'] ?? '';
     $nome = $_POST['nome'] ?? '';
     $telefone = $_POST['telefone'] ?? '';
@@ -19,27 +22,42 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'excluir' && isset($_GET['id'])) {
     $estado = strtoupper($_POST['estado'] ?? '');
     $responsavel = $_POST['usuario_responsavel'] ?? '';
 
-    if(!empty($id)) {
+    if (!empty($id)) {
         $sql = "UPDATE trens SET nome = ?, telefone = ?, data_fabricacao = ?, tipo = ?, cidade = ?, estado = ?, responsavel = ? WHERE id = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$nome, $telefone, $nascimento, $tipo, $cidade, $estado, $responsavel, $id]);
+        $stmt = $conexao->prepare($sql);
+        if (!$stmt) {
+    die("Erro na consulta SQL: " . $conexao->error);
+}
+        $stmt->bind_param("sssssssi", $nome, $telefone, $nascimento, $tipo, $cidade, $estado, $responsavel, $id);
+        $stmt->execute();
+        $stmt->close();
     } else {
         $sql = "INSERT INTO trens (nome, telefone, data_fabricacao, tipo, cidade, estado, responsavel) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$nome, $telefone, $nascimento, $tipo, $cidade, $estado, $responsavel]);
+        $stmt = $conexao->prepare($sql);
+ 
+        $stmt->bind_param("sssssss", $nome, $telefone, $nascimento, $tipo, $cidade, $estado, $responsavel);
+        $stmt->execute();
+        $stmt->close();
     }
     header("Location: index.php");
     exit;
- }
-    $tremEdicao = null;
-        if (isset($_GET['acao']) && $_GET['acao'] == 'editar' && isset($_GET['id'])) {
-        $stmt = $pdo->prepare("SELECT * FROM trens WHERE id = ?");
-        $stmt->execute([$_GET['id']]);
-        $tremEdicao = $stmt->fetch(PDO::FETCH_ASSOC);
-        }
+}
 
-        $stmt = $pdo->query("SELECT* FROM trens  ORDER BY id DESC");
-        $trens = $stmt->fetchAll(PDO::ASSOC);
+$tremEdicao = null;
+if (isset($_GET['acao']) && $_GET['acao'] == 'editar' && isset($_GET['id'])) {
+    $stmt = $conexao->prepare("SELECT * FROM trens WHERE id = ?");
+    $stmt->bind_param("i", $_GET['id']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $tremEdicao = $result->fetch_assoc();
+    $stmt->close();
+}
+
+$trens = [];
+$resultadoTrens = $conexao->query("SELECT * FROM trens ORDER BY id DESC");
+if ($resultadoTrens) {
+    $trens = $resultadoTrens->fetch_all(MYSQLI_ASSOC);
+}
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +71,8 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'excluir' && isset($_GET['id'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<div class="container id='container99' bg-light p-4 rounded shadow-sm" style="max-width: 900px;">
+<body>
+    <div id="container99" class="container bg-light p-4 rounded shadow-sm my-4" style="max-width: 900px;">
         <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
             <h2 class="h4 m-0">SISTEMA DE TRENS</h2>
             <div class="d-flex align-items-center gap-2">
@@ -72,17 +91,17 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'excluir' && isset($_GET['id'])) {
                 
                 <div class="col-md-6">
                     <label class="form-label">NOME DO TREM</label>
-                    <input type="text" id="nome" name="nome" class="form-control" value="<?= $tremEdicao['nome'] ?? '' ?>" required>
+                    <input type="text" id="nome" name="nome" class="form-control" value="<?= htmlspecialchars($tremEdicao['nome'] ?? '') ?>" required>
                 </div>
 
                 <div class="col-md-3">
                     <label class="form-label">TELEFONE DA UNIDADE</label>
-                    <input type="text" id="telefone" name="telefone" class="form-control" placeholder="(00)00000-0000" value="<?= $tremEdicao['telefone'] ?? '' ?>" required>
+                    <input type="text" id="telefone" name="telefone" class="form-control" placeholder="(00)00000-0000" value="<?= htmlspecialchars($tremEdicao['telefone'] ?? '') ?>" required>
                 </div>
                 
                 <div class="col-md-3">
                     <label class="form-label">DATA DA FABRICAÇÃO</label>
-                    <input type="date" id="nascimento" name="nascimento" class="form-control" value="<?= $tremEdicao['data_fabricacao'] ?? '' ?>" required>
+                    <input type="date" id="nascimento" name="nascimento" class="form-control" value="<?= htmlspecialchars($tremEdicao['data_fabricacao'] ?? '') ?>" required>
                 </div>
                 
                 <div class="col-md-4">
@@ -98,8 +117,8 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'excluir' && isset($_GET['id'])) {
                 <div class="col-md-4">
                     <label class="form-label">CIDADE / UF</label>
                     <div class="input-group">
-                        <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" value="<?= $tremEdicao['cidade'] ?? '' ?>" required>
-                        <input type="text" id="estado" name="estado" class="form-control" placeholder="UF" maxlength="2" style="max-width: 60px;" value="<?= $tremEdicao['estado'] ?? '' ?>" required>
+                        <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" value="<?= htmlspecialchars($tremEdicao['cidade'] ?? '') ?>" required>
+                        <input type="text" id="estado" name="estado" class="form-control" placeholder="UF" maxlength="2" style="max-width: 60px;" value="<?= htmlspecialchars($tremEdicao['estado'] ?? '') ?>" required>
                     </div>
                 </div>
                 
@@ -147,7 +166,7 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'excluir' && isset($_GET['id'])) {
                                 <small class="text-muted"><?= htmlspecialchars($trem['telefone']) ?></small>
                             </td>
                             <td><?= htmlspecialchars($trem['tipo']) ?></td>
-                            <td><?= date('d/m/Y', strtotime($trem['data_fabricacao'])) ?></td>
+                            <td><?= !empty($trem['data_fabricacao']) ? date('d/m/Y', strtotime($trem['data_fabricacao'])) : '' ?></td>
                             <td><?= htmlspecialchars($trem['cidade']) ?>/<?= htmlspecialchars($trem['estado']) ?></td>
                             <td><span class="badge bg-info text-dark"><?= htmlspecialchars($trem['responsavel']) ?></span></td>
                             <td class="col-acoes">
