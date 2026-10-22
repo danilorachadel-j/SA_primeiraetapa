@@ -1,30 +1,4 @@
 <?php
-<<<<<<< HEAD
-
-include "../infra/conexao.php";
-
-$nome = $_POST["nome"];
-$categoria = $_POST["categoria"];
-$faixa_etaria = $_POST["faixa_etaria"];
-$preco = $_POST["preco"];
-$estoque = $_POST["estoque"];
-
-$sql = "INSERT INTO brinquedos (nome_trem, ponto_partida, destino, horario_saida, horario_chegada) VALUES (?, ?, ?, ?, ?)";
-
-$stmt = $conexao->prepare($sql);
-
-$stmt->bind_param( "sssdi", $nome_trem, $ponto_partida, $horario_saida, $horario_chegada);
-
-$stmt->execute();
-
-$stmt->close();
-$conexao->close();
-
-exit;
-
-?>
-<html lang="en">
-=======
 include "../infra/conexao.php";
 
 $mensagem = "";
@@ -58,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <html lang="pt-br">
->>>>>>> d01b5f5782c8f4691a8eb24bbe26250f2f930fe8
 
 <head>
     <meta charset="UTF-8">
