@@ -64,8 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <option value="rotas_jv">JV (Joinville)</option>
                         </select>
                         <br>
-
-                        <!-- Selector tipo buscador/ciudad usando datalist -->
                         <label for="Nome_trem">Nome do Trem:</label>
                         <br>
                         <input list="trens_cadastrados" name="Nome_trem" id="Nome_trem" required placeholder="Digite ou selecione o trem..." style="width: 100%; padding: 8px; margin-bottom: 10px;">
