@@ -73,3 +73,4 @@ CREATE TABLE IF NOT EXISTS rotas_jv(
   nome_trem VARCHAR(50),
   FOREIGN KEY (nome_trem) REFERENCES trem(nome_trem)
 );
+
