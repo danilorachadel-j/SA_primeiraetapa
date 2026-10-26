@@ -1,13 +1,6 @@
 CREATE DATABASE IF NOT EXISTS sa_ferrorama_d_s_i_n;
 USE sa_ferrorama_d_s_i_n;
 
-CREATE TABLE IF NOT EXISTS adm(
-id INT AUTO_INCREMENT PRIMARY KEY,
-adm_nome VARCHAR(200) NOT NULL,
-adm_email VARCHAR(75) NOT NULL,
-adm_password VARCHAR(200) NOT NULL
-);
-
 CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_usuario VARCHAR(200) NOT NULL,
