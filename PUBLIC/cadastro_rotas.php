@@ -78,9 +78,6 @@ if (!$rotas) {
                 <a class="navbar-brand" href="home.php">
                     <img src="../assets/img/Logo.png" alt="login">
                 </a>
-                <form method="POST" action="../index.php">
-        <button id="logoutButton" type="submit" name="logout" >deslogar</button>
-    </form>
             </div>
         </nav>
     </div>

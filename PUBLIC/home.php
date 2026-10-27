@@ -74,11 +74,6 @@
                 </div>
                 <div class="">
                     <a href="cadastro_rotas.php">
-                        <h1>Cadastro Rotas</h1>
-                    </a>
-                </div>
-                <div class="">
-                    <a href="rotas.php">
                         <h1>Rotas</h1>
                     </a>
                 </div>
