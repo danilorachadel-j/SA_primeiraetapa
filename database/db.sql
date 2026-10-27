@@ -41,3 +41,12 @@ CREATE TABLE IF NOT EXISTS trens (
 );
 
 
+CREATE TABLE IF NOT EXISTS sensores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo_sensor VARCHAR(100) NOT NULL,
+    dados_sensor TEXT NOT NULL,
+    id_trem INT NOT NULL,
+    FOREIGN KEY (id_trem) REFERENCES trens(id)
+        ON DELETE CASCADE
+);
+

@@ -67,11 +67,6 @@
                         <h1>Cadastrar sensor</h1>
                     </a>
                 </div>
-                <div class="op2">
-                    <a href="sensores.php">
-                    <h1>Lista Sensores</h1>
-                    </a>
-                </div>
                 <div class="">
                     <a href="cadastro_rotas.php">
                         <h1>Rotas</h1>
