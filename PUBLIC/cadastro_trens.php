@@ -16,19 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $estado_trem = trim($_POST['estado_trem'] ?? '');
     $nome_rota = trim($_POST['nome_rota'] ?? '');
 
-    if (
-        $nome_trem === '' ||
-        $tipo_trem === '' ||
-        $carga === '' ||
-        $estado_trem === '' ||
-        $nome_rota === ''
+    if ( $nome_trem === '' || $tipo_trem === '' ||  $carga === '' ||  $estado_trem === '' ||  $nome_rota === ''
     ) {
         $erroFormulario = 'Preencha todos os campos do trem.';
     } else {
-        $stmt = $conexao->prepare(
-            'INSERT INTO trens
-            (nome_trem, tipo_trem, carga, estado_trem, nome_rota)
-            VALUES (?, ?, ?, ?, ?)'
+        $stmt = $conexao->prepare( 'INSERT INTO trens (nome_trem, tipo_trem, carga, estado_trem, nome_rota) VALUES (?, ?, ?, ?, ?)'
         );
 
         if (!$stmt) {
@@ -108,7 +100,7 @@ $trens = $conexao->query(
                 </p>
             <?php endif; ?>
 
-            <form method="POST" action="trens.php">
+            <form method="POST" action="cadastro_trens.php">
 
                 <label for="nome_trem">Nome</label>
                 <input
@@ -188,7 +180,7 @@ $trens = $conexao->query(
                                 <td>
                                     <a
                                         class="edit-button"
-                                        href="trensEdit.php?id=<?= (int) $trem['id']; ?>"
+                                        href="editar_trens.php?id=<?= (int) $trem['id']; ?>"
                                     >
                                         Editar
                                     </a>
