@@ -177,14 +177,31 @@ $trens = $conexao->query(
                                 <td><?= htmlspecialchars($trem['carga'], ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td><?= htmlspecialchars($trem['estado_trem'], ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td><?= htmlspecialchars($trem['nome_rota'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td>
-                                    <a
-                                        class="edit-button"
-                                        href="editar_trens.php?id=<?= (int) $trem['id']; ?>"
-                                    >
-                                        Editar
-                                    </a>
-                                </td>
+                                
+<td>
+    <a
+        class="edit-button"
+        href="editar_trens.php?id=<?= (int) $trem['id']; ?>"
+    >
+        Editar
+    </a>
+
+    <form
+        method="POST"
+        action="apagar_trens.php"
+        style="display: inline;"
+        onsubmit="return confirm('Tem certeza que deseja apagar este trem?');"
+    >
+        <input
+            type="hidden"
+            name="id"
+            value="<?= (int) $trem['id']; ?>"
+        >
+
+        <button type="submit">Apagar</button>
+    </form>
+</td>
+
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
