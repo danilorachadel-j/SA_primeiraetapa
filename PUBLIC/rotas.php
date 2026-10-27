@@ -27,12 +27,6 @@ $resultado_jv = $conexao->query($sql_jv);
                     <img src="../assets/img/Logo.png" alt="login">
                 </a>
             </div>
-            <div class="nav-direita">
-                <a class="nav-login" href="login.php">Login</a>
-                <a class="nav-user" href="login.php">
-                    <img src="../assets/img/icon-user.webp" alt="home">
-                </a>
-            </div>
         </nav>
     </div>
     <div class="titulo-rotas">

@@ -14,12 +14,9 @@
                 <a class="navbar-brand" href="home.php">
                     <img src="../assets/img/Logo.png" alt="login">
                 </a>
-            </div>
-            <div class="nav-direita">
-                <a class="nav-login" href="login.php">Login</a>
-                <a class="nav-user" href="login.php">
-                    <img src="../assets/img/icon-user.webp" alt="home">
-                </a>
+                <form method="POST" action="../index.php">
+        <button id="logoutButton" type="submit" name="logout" >deslogar</button>
+    </form>
             </div>
         </nav>
     </div>
@@ -56,6 +53,43 @@
                     <a href="Brasilia.php">
                         <h3>Brasília - DF</h3>
                         <p>Veja nossos projetos na capital</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="part-2">
+            <div class="titulo2">
+                <h1>Opções</h1>
+            </div>
+            <div class="ops">
+                <div class="op1">
+                    <a href="cadastro_sensores.php">
+                        <h1>Cadastrar sensor</h1>
+                    </a>
+                </div>
+                <div class="op2">
+                    <a href="sensores.php">
+                    <h1>Lista Sensores</h1>
+                    </a>
+                </div>
+                <div class="">
+                    <a href="cadastro_rotas.php">
+                        <h1>Cadastro Rotas</h1>
+                    </a>
+                </div>
+                <div class="">
+                    <a href="rotas.php">
+                        <h1>Rotas</h1>
+                    </a>
+                </div>
+                <div class="">
+                    <a href="cadastro_usuarios.php">
+                        <h1>Cadastro Usuarios</h1>
+                    </a>
+                </div>
+                <div class="">
+                    <a href="cadastro_trens.php">
+                        <h1>Cadastro trens</h1>
                     </a>
                 </div>
             </div>

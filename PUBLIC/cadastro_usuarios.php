@@ -1,62 +1,126 @@
 <?php
-include "../infra/conexão.php";
+require_once __DIR__ . "/../infra/conexao.php";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome_usuario = trim($_POST['nome_usuario'] ?? '');
+    $email_usuario = trim($_POST['email_usuario'] ?? '');
+    $telefone_usuario = trim($_POST['telefone_usuario'] ?? '');
+    $senha_usuario = $_POST['senha_usuario'] ?? '';
+
+    // Todo usuário novo será cadastrado como usuário comum
+    $administrador = 0;
+
+    $sql = 'INSERT INTO usuarios
+            (nome_usuario, email_usuario, telefone_usuario, senha_usuario, administrador)
+            VALUES (?, ?, ?, ?, ?)';
+
+    $stmt = $conexao->prepare($sql);
+
+    if (!$stmt) {
+        die("Erro ao preparar o cadastro: " . $conexao->error);
+    }
+
+    $stmt->bind_param(
+        'ssssi',
+        $nome_usuario,
+        $email_usuario,
+        $telefone_usuario,
+        $senha_usuario,
+        $administrador
+    );
+
+    if ($stmt->execute()) {
+        $stmt->close();
+
+        header('Location: login.php');
+        exit;
+    } else {
+        die("Erro ao cadastrar usuário: " . $stmt->error);
+    }
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-
-<head id="head-76">
+<html lang="pt-BR">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de usuários</title>
-
+    <title>Cadastro - Ferrorama</title>
     <link rel="stylesheet" href="../assets/style/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<body>
 
-<body id="body-76">
-    <div class="head-76">
-        <img src="..assets/style/img/logo.png" alt="">
-        <div class="titulo-76">
-            <h2>CADASTRO DE USUÁRIOS</h2>
-        </div>
-        <img src="..assets/style/img/logo.png" alt="">
-
+    <div>
+        <a href="home.php">Voltar</a>
     </div>
-    <form id="formCadastro">
-        <label for="nome">Nome completo:</label>
-        <br>
-        <input type="text" id="nome" placeholder="">
-        <br><br>
 
-        <label for="email">Email principal:</label>
-        <br>
-        <input type="email" id="email" placeholder="">
-        <br><br>
+    <div>
+        <form method="POST"
+              action="<?= htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8') ?>">
 
-        <label for="telefone">Telefone principal:</label>
-        <br>
-        <input type="numero" id="telefone" placeholder="">
-        <br><br>
+            <label for="nome_usuario">Nome</label>
+            <input
+                type="text"
+                id="nome_usuario"
+                name="nome_usuario"
+                required
+            >
 
-        <label for="CPF">CPF para cadastro:</label>
-        <br>
-        <input type="numero" id="CPF" placeholder="Obrigatório">
-        <br><br>
+            <label for="email_usuario">E-mail</label>
+            <input
+                type="email"
+                id="email_usuario"
+                name="email_usuario"
+                required
+            >
 
-        <label for="Idade">Idade para cadastro:</label>
-        <br>
-        <input type="numero" id="Idade" placeholder="Minimo 18 anos">
-        <br><br>
+            <label for="telefone_usuario">Telefone</label>
+            <input
+                type="tel"
+                id="telefone_usuario"
+                name="telefone_usuario"
+                pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}"
+                maxlength="15"
+                inputmode="numeric"
+                placeholder="(47) 99999-9999"
+                required
+            >
 
-        <label for="Cidade">Cidade para cadastro:</label>
-        <br>
-        <input type="text" id="Cidade" placeholder="">
-        <br>
-        <button type="submit">Enviar</button>
-    </form>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../SCRIPTS/script-cadastro-usuarios.js"></script>
+            <label for="senha_usuario">Senha</label>
+            <input
+                type="password"
+                id="senha_usuario"
+                name="senha_usuario"
+                required
+            >
+
+            <input type="submit" value="Cadastrar">
+
+        </form>
+
+        <script>
+            const campoTelefone =
+                document.getElementById('telefone_usuario');
+
+            campoTelefone.addEventListener('input', () => {
+                let telefone = campoTelefone.value
+                    .replace(/\D/g, '')
+                    .slice(0, 11);
+
+                if (telefone.length > 2) {
+                    telefone = `(${telefone.slice(0, 2)}) ${telefone.slice(2)}`;
+                } else if (telefone.length > 0) {
+                    telefone = `(${telefone}`;
+                }
+
+                if (telefone.length > 10) {
+                    telefone = `${telefone.slice(0, 10)}-${telefone.slice(10)}`;
+                }
+
+                campoTelefone.value = telefone;
+            });
+        </script>
+    </div>
+
 </body>
-
 </html>

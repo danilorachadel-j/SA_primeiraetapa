@@ -10,6 +10,17 @@ CREATE TABLE IF NOT EXISTS usuarios (
     administrador BOOLEAN NOT NULL
 );
 
+INSERT INTO usuarios (
+    nome_usuario,
+    email_usuario,
+    telefone_usuario,
+    senha_usuario,
+    administrador
+) VALUES (
+    'Samuel','samuel@gmail.com', '12345678912', '1234', 1
+    'Nicolas','nicolas@gmail.com', '12354342341', '4321', 0
+);
+
 CREATE TABLE IF NOT EXISTS rotas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_rota VARCHAR(200) NOT NULL UNIQUE,
@@ -28,3 +39,5 @@ CREATE TABLE IF NOT EXISTS trens (
         REFERENCES rotas(nome_rota)
         ON DELETE CASCADE
 );
+
+
