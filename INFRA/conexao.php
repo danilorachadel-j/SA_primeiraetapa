@@ -1,7 +1,7 @@
 <?php 
 
 $host = "localhost";
-$port = 3378;
+$porta = 6608;
 $usuario = "root";
 $senha = "";
 $banco = "sa_ferrorama_d_s_i_n";
