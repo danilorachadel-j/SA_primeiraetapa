@@ -11,6 +11,16 @@ CREATE TABLE IF NOT EXISTS usuarios (
     administrador TINYINT(1)   NOT NULL DEFAULT 0 
 );
 
+INSERT INTO usuarios (
+    nome_usuario,
+    email_usuario,
+    telefone_usuario,
+    senha_usuario,
+    adm
+) VALUES
+('Samuel', 'samuel@gmail.com', '12345678912', '1234', 1),
+( 'Nicolas', 'nicolas@gmail.com', '12354342341', '4321', 0);
+
 CREATE TABLE IF NOT EXISTS trens (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_trem VARCHAR(200) NOT NULL,
