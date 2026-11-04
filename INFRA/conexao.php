@@ -5,7 +5,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $dbHost = getenv('DB_HOST') ?: 'localhost';
 $dbUser = getenv('DB_USER') ?: 'root';
 $dbPass = getenv('DB_PASS') ?: '';
-$dbName = getenv('DB_NAME') ?: 'sa_ferrorama_d_s_i_n'
+$dbName = getenv('DB_NAME') ?: 'sa_ferrorama_d_s_i_n';
 $dbPort = (int) (getenv('DB_PORT') ?: 3306);
 
 try {
