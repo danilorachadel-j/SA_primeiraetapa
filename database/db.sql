@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     email_usuario VARCHAR(200) NOT NULL UNIQUE,
     telefone_usuario VARCHAR(15) NOT NULL UNIQUE,
     senha_usuario VARCHAR(255) NOT NULL UNIQUE,
-    administrador BOOLEAN TINYINT(1) NOT NULL DEFAULT 0
+    administrador BOOLEAN NOT NULL 
 );
 
 CREATE TABLE IF NOT EXISTS trens (
