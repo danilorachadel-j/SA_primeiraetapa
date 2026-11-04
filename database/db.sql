@@ -6,9 +6,9 @@ CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_usuario VARCHAR(200) NOT NULL UNIQUE,
     email_usuario VARCHAR(200) NOT NULL UNIQUE,
-    telefone_usuario VARCHAR(15) NOT NULL UNIQUE,
-    senha_usuario VARCHAR(255) NOT NULL UNIQUE,
-    administrador BOOLEAN NOT NULL 
+    telefone_usuario VARCHAR(15) NOT NULL,
+    senha_usuario VARCHAR(255) NOT NULL,
+    administrador TINYINT(1)   NOT NULL DEFAULT 0 
 );
 
 INSERT INTO usuarios (
@@ -25,16 +25,16 @@ CREATE TABLE IF NOT EXISTS trens (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_trem VARCHAR(200) NOT NULL,
     tipo_trem VARCHAR(200) NOT NULL,
-    carga VARCHAR(50) NOT NULL,
-    id_usuario INT NOT NULL
-    CONSTRAINT fk_rotas_trem FOREIGN KEY (id_trem)
-    REFERENCES trens(id) ON DELETE RESTRICT
+    carga VARCHAR(100) NOT NULL,
+    id_usuario INT NOT NULL,
+    CONSTRAINT fk_trens_usuarios FOREIGN KEY (id_usuario)
+    REFERENCES usuarios(id) ON DELETE RESTRICT
 );
 
 CREATE TABLE IF NOT EXISTS rotas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_rota VARCHAR(200) NOT NULL UNIQUE,
-    estado_rota VARCHAR(50) NOT NULL,
+    estado_rota CHAR(2) NOT NULL,
     local_rota VARCHAR(200) NOT NULL,
     id_trem INT NOT NULL,
     CONSTRAINT fk_trens_trem FOREIGN KEY (id_trem)
