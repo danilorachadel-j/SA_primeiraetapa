@@ -1,3 +1,13 @@
+
+<?php
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header("Location: ../index.php");
+    exit();
+}
+?>
+
 <html lang="en">
 
 <head>
@@ -14,9 +24,10 @@
                 <a class="navbar-brand" href="home.php">
                     <img src="../assets/img/Logo.png" alt="login">
                 </a>
+
                 <form method="POST" action="../index.php">
-        <button id="logoutButton" type="submit" name="logout" >deslogar</button>
-    </form>
+                    <button id="logoutButton" type="submit" name="logout">deslogar</button>
+                </form>
             </div>
         </nav>
     </div>
@@ -29,6 +40,7 @@
                         <h1>O Planejamento Urbano Muda o Mundo</h1>
                     </div>
                 </div>
+
                 <div class="description">
                     <b>Planejamento urbano ao longo das decádas tems e tornado algo cada vez mais
                         importante, principalmente agora que a tecnologia tem se tornado cada vez mais comun, venha e
@@ -36,6 +48,7 @@
                         Trainsecurity e veja nosso processo de implementação de ferrovias e metrôs no país.</b>
                 </div>
             </div>
+
             <div class="subcontainer">
                 <div class="card1">
                     <a href="Joinville_sc.php">
@@ -43,12 +56,14 @@
                         <p>Conheças nossos projetos para o Sul</p>
                     </a>
                 </div>
+
                 <div class="card2">
                     <a href="RioDeJaneiro.php">
                         <h3>Rio de Janeiro - RJ</h3>
                         <p>Venha e conheça nossos projetos na cidade maravilhosa</p>
                     </a>
                 </div>
+
                 <div class="card3">
                     <a href="Brasilia.php">
                         <h3>Brasília - DF</h3>
@@ -57,35 +72,43 @@
                 </div>
             </div>
         </div>
+
         <div class="part-2">
             <div class="titulo2">
                 <h1>Opções</h1>
             </div>
+
             <div class="ops">
+
                 <div class="op1">
                     <a href="cadastro_sensores.php">
                         <h1>Cadastrar sensor</h1>
                     </a>
                 </div>
+
                 <div class="">
                     <a href="cadastro_rotas.php">
                         <h1>Rotas</h1>
                     </a>
                 </div>
-                <div class="">
-                    <a href="cadastro_usuarios.php">
-                        <h1>Cadastro Usuarios</h1>
-                    </a>
-                </div>
+
+                <?php if (isset($_SESSION['adm']) && (int)$_SESSION['adm'] === 1): ?>
+                    <div class="">
+                        <a href="cadastro_usuarios.php">
+                            <h1>Cadastro Usuarios</h1>
+                        </a>
+                    </div>
+                <?php endif; ?>
+
                 <div class="">
                     <a href="cadastro_trens.php">
                         <h1>Cadastro trens</h1>
                     </a>
                 </div>
+
             </div>
         </div>
     </main>
-    
-</body>
 
+</body>
 </html>
