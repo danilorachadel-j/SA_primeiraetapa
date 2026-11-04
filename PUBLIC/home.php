@@ -87,7 +87,7 @@ if (!isset($_SESSION['id'])) {
                 </div>
 
                 <div class="">
-                    <a href="cadastro_rotas.php">
+                    <a href="rotas.php">
                         <h1>Rotas</h1>
                     </a>
                 </div>

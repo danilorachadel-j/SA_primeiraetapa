@@ -1,4 +1,3 @@
-
 <?php
 require_once __DIR__ . "/../infra/conexao.php";
 
@@ -10,126 +9,128 @@ if (!$id) {
 
 $mensagem = "";
 
-// Atualizar trem
+$usuarios = $conexao->query(
+    "SELECT id, nome_usuario FROM usuarios ORDER BY nome_usuario"
+);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $nome_trem = trim($_POST['nome_trem'] ?? '');
     $tipo_trem = trim($_POST['tipo_trem'] ?? '');
     $carga = trim($_POST['carga'] ?? '');
-    $estado_trem = trim($_POST['estado_trem'] ?? '');
-    $nome_rota = trim($_POST['nome_rota'] ?? '');
+    $id_usuario = filter_input(INPUT_POST, 'id_usuario', FILTER_VALIDATE_INT);
 
-    if ($nome_trem === '' || $tipo_trem === '' ||
-        $carga === '' || $estado_trem === '' || $nome_rota === '') {
-
+    if (
+        $nome_trem === '' ||
+        $tipo_trem === '' ||
+        $carga === '' ||
+        !$id_usuario
+    ) {
         $mensagem = "Preencha todos os campos.";
 
     } else {
-        $stmt = $conexao->prepare(
-            "UPDATE trens
-             SET nome_trem = ?, tipo_trem = ?, carga = ?,
-                 estado_trem = ?, nome_rota = ?
-             WHERE id = ?"
+
+        $verificar = $conexao->prepare(
+            "SELECT id FROM usuarios WHERE id = ?"
         );
 
-        $stmt->bind_param(
-            "sssssi",
-            $nome_trem,
-            $tipo_trem,
-            $carga,
-            $estado_trem,
-            $nome_rota,
-            $id
-        );
+        $verificar->bind_param("i", $id_usuario);
+        $verificar->execute();
 
-        if ($stmt->execute()) {
-            $stmt->close();
-            header("Location: cadastro_trens.php");
-            exit;
+        $usuarioExiste = $verificar->get_result()->num_rows > 0;
+
+        $verificar->close();
+
+        if (!$usuarioExiste) {
+            $mensagem = "Selecione um usuário existente.";
+
         } else {
-            $mensagem = "Erro ao atualizar o trem.";
-        }
 
-        $stmt->close();
+            $stmt = $conexao->prepare(
+                "UPDATE trens SET nome_trem = ?, tipo_trem = ?, carga = ?, id_usuario = ? WHERE id = ?"
+            );
+
+            $stmt->bind_param("sssii", $nome_trem, $tipo_trem, $carga, $id_usuario, $id);
+
+            if ($stmt->execute()) {
+
+                $stmt->close();
+
+                header("Location: cadastro_trens.php");
+                exit;
+
+            } else {
+
+                $mensagem = "Erro ao atualizar o trem.";
+            }
+
+            $stmt->close();
+        }
     }
 }
 
-// Buscar dados do trem
+
 $stmt = $conexao->prepare(
     "SELECT * FROM trens WHERE id = ?"
 );
+
 $stmt->bind_param("i", $id);
 $stmt->execute();
 
 $resultado = $stmt->get_result();
 $trem = $resultado->fetch_assoc();
+
 $stmt->close();
 
 if (!$trem) {
     die("Trem não encontrado.");
 }
 
-// Buscar rotas
-$rotas = $conexao->query(
-    "SELECT nome_rota FROM rotas ORDER BY nome_rota"
-);
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <title>Editar trem</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar trem - Ferrorama</title>
+    <link rel="stylesheet" href="../assets/style/style.css">
 </head>
+
 <body>
 
     <h1>Editar trem</h1>
-
-    <p><?php echo htmlspecialchars($mensagem); ?></p>
+    <?php if ($mensagem !== ""): ?>
+        <p> <?= htmlspecialchars($mensagem, ENT_QUOTES, 'UTF-8'); ?> </p>
+    <?php endif; ?>
 
     <form method="POST">
 
-        <label>Nome do trem:</label>
-        <input type="text" name="nome_trem"
-            value="<?= htmlspecialchars($trem['nome_trem']); ?>" required>
+        <label for="nome_trem">Nome do trem:</label>
+        <input type="text" id="nome_trem" name="nome_trem" value="<?= htmlspecialchars($trem['nome_trem'], ENT_QUOTES, 'UTF-8'); ?>" required >
+
+        <br><br>
+        <label for="tipo_trem">Tipo:</label>
+        <input type="text" id="tipo_trem" name="tipo_trem" value="<?= htmlspecialchars($trem['tipo_trem'], ENT_QUOTES, 'UTF-8'); ?>" required>
+        <br><br>
+        <label for="carga">Carga:</label>
+        <input type="text" id="carga" name="carga" value="<?= htmlspecialchars($trem['carga'], ENT_QUOTES, 'UTF-8'); ?>" required >
         <br><br>
 
-        <label>Tipo:</label>
-        <input type="text" name="tipo_trem"
-            value="<?= htmlspecialchars($trem['tipo_trem']); ?>" required>
-        <br><br>
+        <label for="id_usuario">Usuário responsável:</label>
+        <select id="id_usuario" name="id_usuario" required>
+            <option value="">Selecione um usuário</option>
 
-        <label>Carga:</label>
-        <input type="text" name="carga"
-            value="<?= htmlspecialchars($trem['carga']); ?>" required>
-        <br><br>
-
-        <label>Estado:</label>
-        <select name="estado_trem" required>
-            <option value="">Selecione um estado</option>
-
-            <?php foreach (['DF', 'RJ', 'SC'] as $estado): ?>
-                <option value="<?= $estado ?>"
-                    <?= $trem['estado_trem'] === $estado ? 'selected' : '' ?>>
-                    <?= $estado ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-        <br><br>
-
-        <label>Rota:</label>
-        <select name="nome_rota" required>
-            <option value="">Selecione uma rota</option>
-
-            <?php while ($rota = $rotas->fetch_assoc()): ?>
-                <option
-                    value="<?= htmlspecialchars($rota['nome_rota']); ?>"
-                    <?= $trem['nome_rota'] === $rota['nome_rota'] ? 'selected' : '' ?>>
-                    <?= htmlspecialchars($rota['nome_rota']); ?>
+            <?php while ($usuario = $usuarios->fetch_assoc()): ?>
+                <option value="<?= (int) $usuario['id']; ?>"
+                    <?= ($usuario['id'] == $trem['id_usuario']) ? 'selected' : ''; ?>>
+                    <?= htmlspecialchars($usuario['nome_usuario'], ENT_QUOTES, 'UTF-8'); ?>
                 </option>
             <?php endwhile; ?>
         </select>
-        <br><br>
 
+        <br><br>
         <button type="submit">Salvar alterações</button>
         <a href="cadastro_trens.php">Voltar</a>
 

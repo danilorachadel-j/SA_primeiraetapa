@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS sa_ferrorama_d_s_i_n;
+CREATE DATABASE IF NOT EXISTS sa_ferrorama_d_s_i_n
 CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE sa_ferrorama_d_s_i_n;
 
@@ -6,10 +6,11 @@ CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_usuario VARCHAR(200) NOT NULL UNIQUE,
     email_usuario VARCHAR(200) NOT NULL UNIQUE,
-    telefone_usuario VARCHAR(15) NOT NULL,
+    telefone_usuario VARCHAR(15) NOT NULL UNIQUE,
     senha_usuario VARCHAR(255) NOT NULL,
-    administrador TINYINT(1)   NOT NULL DEFAULT 0 
+    adm BOOLEAN NOT NULL DEFAULT 0  --NAO MEXE NESSA DESGRAÇA DANILO
 );
+   
 
 INSERT INTO usuarios (
     nome_usuario,

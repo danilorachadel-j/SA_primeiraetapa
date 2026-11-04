@@ -2,60 +2,74 @@
 <?php
 require_once __DIR__ . "/../infra/conexao.php";
 
-$estadosBrasileiros = [
-    'DF', 'RJ', 'SC'
-];
-
 $erroFormulario = null;
 $sucessoFormulario = null;
+
+
+$usuarios = $conexao->query(
+    "SELECT id, nome_usuario FROM usuarios ORDER BY nome_usuario"
+);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome_trem = trim($_POST['nome_trem'] ?? '');
     $tipo_trem = trim($_POST['tipo_trem'] ?? '');
     $carga = trim($_POST['carga'] ?? '');
-    $estado_trem = trim($_POST['estado_trem'] ?? '');
-    $nome_rota = trim($_POST['nome_rota'] ?? '');
+    $id_usuario = filter_input(INPUT_POST, 'id_usuario', FILTER_VALIDATE_INT);
 
-    if ( $nome_trem === '' || $tipo_trem === '' ||  $carga === '' ||  $estado_trem === '' ||  $nome_rota === ''
-    ) {
+    if ($nome_trem === '' || $tipo_trem === '' || $carga === '' || !$id_usuario) {
         $erroFormulario = 'Preencha todos os campos do trem.';
     } else {
-        $stmt = $conexao->prepare( 'INSERT INTO trens (nome_trem, tipo_trem, carga, estado_trem, nome_rota) VALUES (?, ?, ?, ?, ?)'
+
+        $verificar = $conexao->prepare(
+            "SELECT id FROM usuarios WHERE id = ?"
         );
 
-        if (!$stmt) {
-            $erroFormulario = 'Não foi possível preparar o cadastro do trem.';
+        $verificar->bind_param('i', $id_usuario);
+        $verificar->execute();
+        $usuarioExiste = $verificar->get_result()->num_rows > 0;
+        $verificar->close();
+
+        if (!$usuarioExiste) {
+            $erroFormulario = 'Selecione um usuário existente.';
         } else {
-            $stmt->bind_param(
-                'sssss',
-                $nome_trem,
-                $tipo_trem,
-                $carga,
-                $estado_trem,
-                $nome_rota
+            $stmt = $conexao->prepare(
+                "INSERT INTO trens (nome_trem, tipo_trem, carga, id_usuario)
+                 VALUES (?, ?, ?, ?)"
             );
 
-            if ($stmt->execute()) {
-                $sucessoFormulario = 'Trem cadastrado com sucesso.';
-            } elseif ($stmt->errno === 1452) {
-                $erroFormulario = 'Selecione uma rota existente para o trem.';
+            if (!$stmt) {
+                $erroFormulario = 'Não foi possível preparar o cadastro do trem.';
             } else {
-                $erroFormulario = 'Não foi possível cadastrar o trem.';
-            }
+                $stmt->bind_param(
+                    'sssi',
+                    $nome_trem,
+                    $tipo_trem,
+                    $carga,
+                    $id_usuario
+                );
 
-            $stmt->close();
+                if ($stmt->execute()) {
+                    $sucessoFormulario = 'Trem cadastrado com sucesso.';
+                } else {
+                    $erroFormulario = 'Não foi possível cadastrar o trem.';
+                }
+
+                $stmt->close();
+            }
         }
     }
 }
 
-$rotas = $conexao->query(
-    'SELECT nome_rota FROM rotas ORDER BY nome_rota'
-);
-
 $trens = $conexao->query(
-    'SELECT id, nome_trem, tipo_trem, carga, estado_trem, nome_rota
-     FROM trens
-     ORDER BY id DESC'
+    "SELECT
+        t.id,
+        t.nome_trem,
+        t.tipo_trem,
+        t.carga,
+        u.nome_usuario
+     FROM trens t
+     INNER JOIN usuarios u ON t.id_usuario = u.id
+     ORDER BY t.id DESC"
 );
 ?>
 
@@ -80,7 +94,6 @@ $trens = $conexao->query(
         </nav>
     </div>
 
-</nav>
     <main class="data-layout">
 
         <section class="data-form-panel">
@@ -101,47 +114,21 @@ $trens = $conexao->query(
             <form method="POST" action="cadastro_trens.php">
 
                 <label for="nome_trem">Nome</label>
-                <input
-                    type="text"
-                    id="nome_trem"
-                    name="nome_trem"
-                    required
-                >
+                <input type="text" id="nome_trem" name="nome_trem" required >
 
                 <label for="tipo_trem">Tipo</label>
-                <input
-                    type="text"
-                    id="tipo_trem"
-                    name="tipo_trem"
-                    required
-                >
+                <input type="text" id="tipo_trem" name="tipo_trem" required >
 
                 <label for="carga">Carga</label>
-                <input
-                    type="text"
-                    id="carga"
-                    name="carga"
-                    required
-                >
+                <input type="text" id="carga" name="carga" required >
 
-                <label for="estado_trem">Estado</label>
-                <select id="estado_trem" name="estado_trem" required>
-                    <option value="">Selecione um estado</option>
+                <label for="id_usuario">Usuário responsável</label>
+                <select id="id_usuario" name="id_usuario" required>
+                    <option value="">Selecione um usuário</option>
 
-                    <?php foreach ($estadosBrasileiros as $estado): ?>
-                        <option value="<?= htmlspecialchars($estado, ENT_QUOTES, 'UTF-8'); ?>">
-                            <?= htmlspecialchars($estado, ENT_QUOTES, 'UTF-8'); ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-
-                <label for="nome_rota">Rota</label>
-                <select id="nome_rota" name="nome_rota" required>
-                    <option value="">Selecione uma rota</option>
-
-                    <?php while ($rota = $rotas->fetch_assoc()): ?>
-                        <option value="<?= htmlspecialchars($rota['nome_rota'], ENT_QUOTES, 'UTF-8'); ?>">
-                            <?= htmlspecialchars($rota['nome_rota'], ENT_QUOTES, 'UTF-8'); ?>
+                    <?php while ($usuario = $usuarios->fetch_assoc()): ?>
+                        <option value="<?= (int) $usuario['id']; ?>">
+                            <?= htmlspecialchars($usuario['nome_usuario'], ENT_QUOTES, 'UTF-8'); ?>
                         </option>
                     <?php endwhile; ?>
                 </select>
@@ -161,8 +148,7 @@ $trens = $conexao->query(
                             <th>Nome</th>
                             <th>Tipo</th>
                             <th>Carga</th>
-                            <th>Estado</th>
-                            <th>Rota</th>
+                            <th>Usuário responsável</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
@@ -173,33 +159,17 @@ $trens = $conexao->query(
                                 <td><?= htmlspecialchars($trem['nome_trem'], ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td><?= htmlspecialchars($trem['tipo_trem'], ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td><?= htmlspecialchars($trem['carga'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td><?= htmlspecialchars($trem['estado_trem'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td><?= htmlspecialchars($trem['nome_rota'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                
-<td>
-    <a
-        class="edit-button"
-        href="editar_trens.php?id=<?= (int) $trem['id']; ?>"
-    >
-        Editar
-    </a>
+                                <td><?= htmlspecialchars($trem['nome_usuario'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td>
+                                    <a class="edit-button" href="editar_trens.php?id=<?= (int) $trem['id']; ?>" >
+                                        Editar
+                                    </a>
 
-    <form
-        method="POST"
-        action="apagar_trens.php"
-        style="display: inline;"
-        onsubmit="return confirm('Tem certeza que deseja apagar este trem?');"
-    >
-        <input
-            type="hidden"
-            name="id"
-            value="<?= (int) $trem['id']; ?>"
-        >
-
-        <button type="submit">Apagar</button>
-    </form>
-</td>
-
+                                    <form method="POST" action="apagar_trens.php" style="display: inline;" onsubmit="return confirm('Tem certeza que deseja apagar este trem?');" >
+                                        <input type="hidden" name="id" value="<?= (int) $trem['id']; ?>">
+                                        <button type="submit">Apagar</button>
+                                    </form>
+                                </td>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
