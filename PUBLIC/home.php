@@ -1,11 +1,14 @@
-
 <?php
-session_start();
 
-if (!isset($_SESSION['id'])) {
-    header("Location: ../index.php");
-    exit();
+if (isset($_SESSION['erro_acesso'])) {
+    echo '<div class="alert alert-danger text-center" role="alert">';
+    echo $_SESSION['erro_acesso'];
+    echo '</div>';
+
+    unset($_SESSION['erro_acesso']);
 }
+
+require_once __DIR__ . "/../infra/verificar_login.php";
 ?>
 
 <html lang="en">
@@ -26,7 +29,7 @@ if (!isset($_SESSION['id'])) {
                 </a>
 
                 <form method="POST" action="../index.php">
-                    <button id="logoutButton" type="submit" name="logout">deslogar</button>
+                     <button id="logoutButton" type="submit" name="logout" value="1">deslogar</button>
                 </form>
             </div>
         </nav>

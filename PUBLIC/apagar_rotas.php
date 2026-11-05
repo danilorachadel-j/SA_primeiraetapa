@@ -1,9 +1,34 @@
 
 <?php
 require_once __DIR__ . "/../infra/conexao.php";
-exigir_login();
-exigir_post('rotas.php');
 
-apagar_registro(
-    $conexao, 'rotas', 'rotas.php', 'Rota apagada com sucesso.', 'Não é possível apagar: esta rota possui sensores vinculados.'
-);
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header("Location: cadastro_rotas.php");
+    exit;
+}
+
+$id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+
+if (!$id) {
+    header("Location: rotas.php");
+    exit;
+}
+
+$sql = "DELETE FROM rotas WHERE id = ?";
+$stmt = $conexao->prepare($sql);
+
+if (!$stmt) {
+    exit("Erro ao preparar a exclusão.");
+}
+
+$stmt->bind_param("i", $id);
+
+if ($stmt->execute()) {
+    $stmt->close();
+    header("Location: rotas.php");
+    exit;
+}
+
+$stmt->close();
+exit("Não foi possível apagar a rota.");
+?>

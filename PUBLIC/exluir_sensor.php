@@ -2,6 +2,7 @@
 <?php
 require_once __DIR__ . "/../infra/conexao.php";
 
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: cadastro_sensores.php");
     exit;

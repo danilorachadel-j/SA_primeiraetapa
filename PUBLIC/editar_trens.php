@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../infra/conexao.php";
+require_once __DIR__ . "/../infra/verificar_login.php";
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 

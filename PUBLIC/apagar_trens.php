@@ -1,4 +1,3 @@
-
 <?php
 
 require_once __DIR__ . "/../infra/conexao.php";
@@ -14,6 +13,50 @@ if (!$id) {
     header("Location: cadastro_trens.php");
     exit;
 }
+
+$sql = "SELECT id FROM sensores WHERE id_trem = ? LIMIT 1";
+
+$stmt = $conexao->prepare($sql);
+
+if (!$stmt) {
+    exit("Erro ao verificar os sensores do trem.");
+}
+
+$stmt->bind_param("i", $id);
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+
+if ($resultado->num_rows > 0) {
+    $stmt->close();
+
+    header("Location: cadastro_trens.php?erro=sensor");
+    exit;
+}
+
+$stmt->close();
+
+$sql = "SELECT id FROM rotas WHERE id_trem = ? LIMIT 1";
+
+$stmt = $conexao->prepare($sql);
+
+if (!$stmt) {
+    exit("Erro ao verificar as rotas do trem.");
+}
+
+$stmt->bind_param("i", $id);
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+
+if ($resultado->num_rows > 0) {
+    $stmt->close();
+
+    header("Location: cadastro_trens.php?erro=rota");
+    exit;
+}
+
+$stmt->close();
 
 $sql = "DELETE FROM trens WHERE id = ?";
 
@@ -34,6 +77,7 @@ if ($stmt->execute()) {
 
 $stmt->close();
 
-exit("Não foi possível apagar o trem.");
+header("Location: cadastro_trens.php?erro=excluir");
+exit;
 
 ?>

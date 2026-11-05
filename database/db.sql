@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     email_usuario VARCHAR(200) NOT NULL UNIQUE,
     telefone_usuario VARCHAR(15) NOT NULL UNIQUE,
     senha_usuario VARCHAR(255) NOT NULL,
-    adm BOOLEAN NOT NULL DEFAULT 0  --NAO MEXE NESSA DESGRAÇA DANILO
+    adm BOOLEAN NOT NULL DEFAULT 0  
 );
    
 
@@ -43,13 +43,13 @@ CREATE TABLE IF NOT EXISTS rotas (
 );
 
 CREATE TABLE IF NOT EXISTS sensores (
-    id              INT AUTO_INCREMENT PRIMARY KEY,
-    tipo_sensor     VARCHAR(50)   NOT NULL,
-    dados_sensor    TEXT          NOT NULL,
-    valor_capturado DECIMAL(10,2) NULL,                
-    limite_disparo  DECIMAL(10,2) NULL,                
-    id_rota         INT           NOT NULL,
-    CONSTRAINT fk_sensores_rota FOREIGN KEY (id_rota)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo_sensor VARCHAR(50) NOT NULL,
+    dados_sensor TEXT NOT NULL,
+    valor_capturado DECIMAL(10,2) NULL,
+    limite_disparo DECIMAL(10,2) NULL,
+    id_rota INT NOT NULL,
+    CONSTRAINT fk_sensores_rotas FOREIGN KEY (id_rota)
         REFERENCES rotas(id) ON DELETE RESTRICT
 );
 

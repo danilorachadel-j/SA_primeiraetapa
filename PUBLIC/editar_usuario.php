@@ -1,5 +1,6 @@
 <?php
 include "../INFRA/conexao.php";
+require_once __DIR__ . "/../infra/verificar_login.php";
 
 if (!isset($conexao) || !$conexao) {
     die("Erro: conexão com o banco de dados não foi estabelecida.");

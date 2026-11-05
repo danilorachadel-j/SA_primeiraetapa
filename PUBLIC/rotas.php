@@ -1,6 +1,7 @@
 
 <?php
 require_once __DIR__ . "/../infra/conexao.php";
+require_once __DIR__ . "/../infra/verificar_login.php";
 
 $estadosBrasileiros = [
     'DF', 'RJ', 'SC'
@@ -9,7 +10,6 @@ $estadosBrasileiros = [
 $erroFormulario = null;
 $sucessoFormulario = null;
 
-// Buscar os trens cadastrados
 $trens = $conexao->query(
     'SELECT id, nome_trem FROM trens ORDER BY nome_trem'
 );
@@ -18,7 +18,6 @@ if (!$trens) {
     die('Erro ao consultar os trens: ' . $conexao->error);
 }
 
-// Guardar os trens em um array
 $listaTrens = $trens->fetch_all(MYSQLI_ASSOC);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -39,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erroFormulario = 'Selecione um estado brasileiro válido.';
     } else {
 
-        // Verificar se o trem realmente existe
         $verificarTrem = $conexao->prepare(
             'SELECT id FROM trens WHERE id = ?'
         );
@@ -55,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         } else {
 
-            // Cadastrar a rota com o ID do trem
             $stmt = $conexao->prepare(
                 'INSERT INTO rotas
                 (nome_rota, estado_rota, local_rota, id_trem)
@@ -97,7 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Consultar rotas e seus respectivos trens
 $rotas = $conexao->query(
     'SELECT
         r.id,
@@ -155,7 +151,7 @@ if (!$rotas) {
                 </p>
             <?php endif; ?>
 
-            <form method="POST" action="cadastro_rotas.php">
+            <form method="POST" action="rotas.php">
 
                 <label for="nome_rota">Nome da rota</label>
                 <input

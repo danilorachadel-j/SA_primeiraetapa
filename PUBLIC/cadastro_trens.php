@@ -1,10 +1,24 @@
 
 <?php
 require_once __DIR__ . "/../infra/conexao.php";
+require_once __DIR__ . "/../infra/verificar_login.php";
 
 $erroFormulario = null;
 $sucessoFormulario = null;
 
+if (isset($_GET['erro'])) {
+    if ($_GET['erro'] === 'sensor') {
+        $erroFormulario = 'Erro: Este trem possui sensores cadastrados e não pode ser excluído.';
+    } elseif ($_GET['erro'] === 'rota') {
+        $erroFormulario = 'Erro: Este trem já está cadastrado em uma rota e não pode ser excluído.';
+    } elseif ($_GET['erro'] === 'excluir') {
+        $erroFormulario = 'Erro: Não foi possível excluir o trem.';
+    }
+}
+
+if (isset($_GET['erro']) && $_GET['erro'] === 'rota') {
+    $erroFormulario = 'Erro: Este trem já está cadastrado em uma rota e não pode ser excluído.';
+}
 
 $usuarios = $conexao->query(
     "SELECT id, nome_usuario FROM usuarios ORDER BY nome_usuario"
@@ -140,7 +154,7 @@ $trens = $conexao->query(
 
         <section class="data-table-panel">
             <h2>Trens cadastrados</h2>
-
+                        
             <div class="table-wrapper">
                 <table>
                     <thead>
@@ -152,7 +166,7 @@ $trens = $conexao->query(
                             <th>Ação</th>
                         </tr>
                     </thead>
-
+                        
                     <tbody>
                         <?php while ($trem = $trens->fetch_assoc()): ?>
                             <tr>

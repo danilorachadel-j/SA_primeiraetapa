@@ -22,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($usuario && $senha_usuario === $usuario['senha_usuario']) {
          session_regenerate_id(true);
 
-       $_SESSION['id'] = $usuario['id'];
-$_SESSION['nome_usuario'] = $usuario['nome_usuario'];
-$_SESSION['adm'] = (int)$usuario['adm'];
+        $_SESSION['id'] = $usuario['id'];
+        $_SESSION['nome_usuario'] = $usuario['nome_usuario'];
+        $_SESSION['adm'] = (int)$usuario['adm'];
 
-        if ((int) $usuario['administrador'] === 1) {
+        if ((int) $usuario['adm'] === 1) {
             header('Location: home.php');
         } else {
             header('Location: home.php');
