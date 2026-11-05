@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS sensores (
 
 INSERT INTO usuarios
 VALUES
-(NULL, 'Admin', 'admin@gmail.com', '12345678910', '$2y$10$f6dEsIFkRpwggmJw8d6FyO/8xFNEXzNgnDpjKyI.0WSQWzz59KPL', true),
+(NULL, 'Admin', 'admin@gmail.com', '12345678910', '$2y$10$V6dORGSeWDDInQ.1q2GRXOFYweIEe82OMpZa1labLL7MQ1XEX.xXa', true),
 (NULL, 'Samuel', 'samuel@gmail.com', '12345678912', '$2y$10$M0x/QvML0bzx4NPkxdvZYOa9jGrbiqrliJ6pIYHriXi0YUEOlgzBa', true),
 (NULL, 'Nicolas', 'nicolas@gmail.com', '12354342341', '$2y$10$wtFEMY3KGR2JeQfXTShnLO7eAWb4J/uL6H29UYez/TagsGdKUJsaW', false);
 
