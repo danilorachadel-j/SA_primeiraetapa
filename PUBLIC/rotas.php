@@ -269,13 +269,16 @@ if (!$rotas) {
                                 <td> <?= htmlspecialchars($rota['local_rota'], ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td> <?= htmlspecialchars($rota['nome_trem'], ENT_QUOTES, 'UTF-8'); ?></td>
                                 <td>
-                                    <a href="editar_rotas.php?id=<?= (int) $rota['id']; ?>">
-                                        <button type="button">Editar</button>
-                                    </a>
-                                    <form action="apagar_rotas.php" method="POST">
-    <input type="hidden" name="id" value="<?= $rota['id'] ?>">
-    <button type="submit" class="btn btn-danger">Apagar</button>
-</form>
+                                    <td>
+    <a href="editar_rotas.php?id=<?= (int) $rota['id']; ?>">
+        <button type="button">Editar</button>
+    </a>
+
+    <form action="apagar_rotas.php" method="POST" onsubmit="return window.confirm('Tem certeza que deseja excluir esta rota?');">
+        <input type="hidden" name="id" value="<?= (int) $rota['id']; ?>">
+        <button type="submit" class="btn btn-danger">Apagar</button>
+    </form>
+</td>
                                 </td>
                             </tr>
                         <?php endwhile; ?>
