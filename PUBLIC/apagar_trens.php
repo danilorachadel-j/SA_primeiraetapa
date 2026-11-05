@@ -14,7 +14,7 @@ if (!$id) {
     exit;
 }
 
-$sql = "SELECT id FROM sensores WHERE id_trem = ? LIMIT 1";
+$sql = "SELECT id FROM sensores WHERE id = ? LIMIT 1";
 
 $stmt = $conexao->prepare($sql);
 

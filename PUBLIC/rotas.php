@@ -1,5 +1,19 @@
 
 <?php
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (isset($_SESSION['erro_rota'])) {
+    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Erro!</strong> ' . htmlspecialchars($_SESSION['erro_rota']) . '
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>';
+
+    unset($_SESSION['erro_rota']);
+}
+
 require_once __DIR__ . "/../infra/conexao.php";
 require_once __DIR__ . "/../infra/verificar_login.php";
 
@@ -132,7 +146,14 @@ if (!$rotas) {
             </div>
         </nav>
     </div>
+    <?php if (isset($_GET['erro']) && $_GET['erro'] === 'rota_vinculada'): ?>
 
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Erro!</strong> Não é possível apagar esta rota porque existe um sensor vinculado a ela.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+<?php endif; ?>
     <main class="data-layout">
 
         <section class="data-form-panel">
@@ -251,10 +272,10 @@ if (!$rotas) {
                                     <a href="editar_rotas.php?id=<?= (int) $rota['id']; ?>">
                                         <button type="button">Editar</button>
                                     </a>
-                                    <form action="apagar_rotas.php" method="POST" style="display: inline;" onsubmit="return confirm('Tem certeza que deseja apagar esta rota?');" >
-                                        <input type="hidden" name="id" value="<?= (int) $rota['id']; ?>">
-                                        <button type="submit">Apagar</button>
-                                    </form>
+                                    <form action="apagar_rotas.php" method="POST">
+    <input type="hidden" name="id" value="<?= $rota['id'] ?>">
+    <button type="submit" class="btn btn-danger">Apagar</button>
+</form>
                                 </td>
                             </tr>
                         <?php endwhile; ?>
