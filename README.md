@@ -1,4 +1,4 @@
-# Situação de Aprendizagem (S.A.) - Primeira Etapa
+# Situação de Aprendizagem (S.A.) 
 
 ![Status](https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow)
 ![License](https://img.shields.io/badge/License-MIT-blue)
