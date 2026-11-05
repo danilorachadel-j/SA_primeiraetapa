@@ -5,7 +5,7 @@
 
 ## 📌 Sobre o Projeto
 
-Este repositório contém a entrega da **Primeira Etapa** da Situação de Aprendizagem (S.A.). O objetivo desta fase é estabelecer a fundação da aplicação, abrangendo a estruturação do ambiente, documentação inicial, modelagem do sistema e prototipagem do software.
+Este repositório contém a entrega da Situação de Aprendizagem (S.A.). O objetivo desta fase é estabelecer a fundação da aplicação, abrangendo a estruturação do ambiente, documentação inicial, modelagem do sistema e prototipagem do software.
 
 ---
 
