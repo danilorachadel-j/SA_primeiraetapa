@@ -3,13 +3,13 @@
 ![Status](https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
-## 📌 Sobre o Projeto
+##  Sobre o Projeto
 
 Este repositório contém a entrega da Situação de Aprendizagem (S.A.). O objetivo desta fase é estabelecer a fundação da aplicação, abrangendo a estruturação do ambiente, documentação inicial, modelagem do sistema e prototipagem do software.
 
 ---
 
-## 🎯 Objetivos da Etapa
+##  Objetivos da Etapa
 
 - [x] Definição de escopo e levantamento de requisitos.
 - [x] Estruturação da arquitetura inicial da aplicação.
@@ -19,7 +19,7 @@ Este repositório contém a entrega da Situação de Aprendizagem (S.A.). O obje
 
 ---
 
-## 🛠️ Tecnologias e Ferramentas
+##  Tecnologias e Ferramentas
 
 As tecnologias previstas e utilizadas nesta etapa do projeto incluem:
 
@@ -31,7 +31,7 @@ As tecnologias previstas e utilizadas nesta etapa do projeto incluem:
 
 ---
 
-## 📁 Estrutura de Pastas e Arquivos
+##  Estrutura de Pastas e Arquivos
 
 ```text
 SA_primeiraetapa/
