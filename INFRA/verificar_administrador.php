@@ -23,8 +23,10 @@ $usuario = $resultado->fetch_assoc();
 $stmt->close();
 
 if (!$usuario || $usuario['adm'] != 1) {
-    $_SESSION['erro_acesso'] = "Você não tem permissão para acessar esta página. Somente administradores podem entrar.";
-    header("Location: ../PUBLIC/home.php");
+    echo "<script>
+        alert('Você não tem permissão para acessar esta página.');
+        window.location.href = '../PUBLIC/home.php';
+    </script>";
     exit;
 }
 ?>

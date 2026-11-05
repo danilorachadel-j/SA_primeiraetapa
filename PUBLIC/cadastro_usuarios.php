@@ -13,11 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $adm = filter_input(INPUT_POST, 'adm', FILTER_VALIDATE_INT);
 
-  
     if ($adm !== 0 && $adm !== 1) {
         die("Tipo de usuário inválido.");
     }
 
+    $senha_usuario = password_hash($senha_usuario, PASSWORD_DEFAULT);
 
     $sql = 'INSERT INTO usuarios
             (nome_usuario, email_usuario, telefone_usuario, senha_usuario, adm)
@@ -38,24 +38,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $adm
     );
 
-    
     try {
         if ($stmt->execute()) {
             $stmt->close();
 
-            header('Location: login.php');
+            header('Location: ' . $_SERVER['PHP_SELF']);
             exit;
         }
     } catch (mysqli_sql_exception $e) {
 
-    if ($e->getCode() == 1062) {
-        echo "Erro: Nome, email ou telefone já cadastrados.";
-    } else {
-        echo "Erro ao cadastrar usuário: " . $e->getMessage();
+        if ($e->getCode() == 1062) {
+            echo "Erro: Nome, email ou telefone já cadastrados.";
+        } else {
+            echo "Erro ao cadastrar usuário: " . $e->getMessage();
+        }
     }
 }
 
-}
+// Buscar usuários cadastrados, exceto o usuário logado
+$sqlUsuarios = "SELECT id, nome_usuario, email_usuario
+                FROM usuarios
+                WHERE id != ?
+                ORDER BY id DESC";
+
+$stmtUsuarios = $conexao->prepare($sqlUsuarios);
+
+$stmtUsuarios->bind_param("i", $_SESSION['id']);
+
+$stmtUsuarios->execute();
+
+$resultadoUsuarios = $stmtUsuarios->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -162,6 +174,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </script>
 
     </div>
+
+    <hr>
+
+    <h2>Usuários cadastrados</h2>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <?php while ($usuario = $resultadoUsuarios->fetch_assoc()): ?>
+
+                <tr>
+                    <td>
+                        <?= htmlspecialchars($usuario['nome_usuario']) ?>
+                    </td>
+
+                    <td>
+                        <?= htmlspecialchars($usuario['email_usuario']) ?>
+                    </td>
+
+                    <td>
+
+                        <a href="editar_usuario.php?id=<?= $usuario['id'] ?>">
+                            <button type="button">Editar</button>
+                        </a>
+
+                        <form method="POST" action="excluir_usuario.php"
+                              onsubmit="return confirm('Deseja realmente excluir este usuário?');"
+                              style="display: inline;">
+
+                            <input type="hidden" name="id"
+                                   value="<?= $usuario['id'] ?>">
+
+                            <button type="submit">Excluir</button>
+
+                        </form>
+
+                    </td>
+                </tr>
+
+            <?php endwhile; ?>
+
+        </tbody>
+
+    </table>
 
 </body>
 </html>

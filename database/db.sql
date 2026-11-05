@@ -19,8 +19,8 @@ INSERT INTO usuarios (
     senha_usuario,
     adm
 ) VALUES
-('Samuel', 'samuel@gmail.com', '12345678912', '1234', 1),
-( 'Nicolas', 'nicolas@gmail.com', '12354342341', '4321', 0);
+('Samuel', 'samuel@gmail.com', '12345678912', '$2y$10$M0x/QvML0bzx4NPkxdvZYOa9jGrbiqrliJ6pIYHriXi0YUEOlgzBa', 1),
+( 'Nicolas', 'nicolas@gmail.com', '12354342341', '$2y$10$wtFEMY3KGR2JeQfXTShnLO7eAWb4J/uL6H29UYez/TagsGdKUJsaW', 0);
 
 CREATE TABLE IF NOT EXISTS trens (
     id INT AUTO_INCREMENT PRIMARY KEY,
