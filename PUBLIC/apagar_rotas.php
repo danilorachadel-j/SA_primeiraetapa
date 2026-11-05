@@ -1,9 +1,12 @@
-
 <?php
 require_once __DIR__ . "/../infra/conexao.php";
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header("Location: cadastro_rotas.php");
+    header("Location: rotas.php");
     exit;
 }
 
@@ -14,21 +17,39 @@ if (!$id) {
     exit;
 }
 
-$sql = "DELETE FROM rotas WHERE id = ?";
-$stmt = $conexao->prepare($sql);
+$stmt = $conexao->prepare(
+    "SELECT id FROM sensores WHERE id_rota = ?"
+);
 
-if (!$stmt) {
-    exit("Erro ao preparar a exclusão.");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+
+if ($resultado->num_rows > 0) {
+    $stmt->close();
+
+    header("Location: rotas.php?erro=rota_vinculada");
+    exit;
 }
+
+$stmt->close();
+
+$stmt = $conexao->prepare(
+    "DELETE FROM rotas WHERE id = ?"
+);
 
 $stmt->bind_param("i", $id);
 
 if ($stmt->execute()) {
     $stmt->close();
+
     header("Location: rotas.php");
     exit;
 }
 
 $stmt->close();
-exit("Não foi possível apagar a rota.");
+
+header("Location: rotas.php?erro=exclusao");
+exit;
 ?>
