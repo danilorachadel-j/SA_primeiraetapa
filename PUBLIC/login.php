@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome_usuario = trim($_POST['nome_usuario'] ?? '');
     $senha_usuario = $_POST['senha_usuario'] ?? '';
 
-    $stmt = $conexao->prepare( 'SELECT id, nome_usuario, senha_usuario, 'adm' FROM usuarios WHERE nome_usuario = ? LIMIT 1'
+    $stmt = $conexao->prepare( 'SELECT id, nome_usuario, senha_usuario, adm FROM usuarios WHERE nome_usuario = ? LIMIT 1'
     );
 
     $stmt->bind_param('s', $nome_usuario);
