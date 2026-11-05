@@ -6,21 +6,11 @@ CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_usuario VARCHAR(200) NOT NULL UNIQUE,
     email_usuario VARCHAR(200) NOT NULL UNIQUE,
-    telefone_usuario VARCHAR(15) NOT NULL UNIQUE,
+    telefone_usuario VARCHAR(20) NOT NULL UNIQUE,
     senha_usuario VARCHAR(255) NOT NULL,
     adm BOOLEAN NOT NULL DEFAULT 0  
 );
-   
 
-INSERT INTO usuarios (
-    nome_usuario,
-    email_usuario,
-    telefone_usuario,
-    senha_usuario,
-    adm
-) VALUES
-('Samuel', 'samuel@gmail.com', '12345678912', '$2y$10$M0x/QvML0bzx4NPkxdvZYOa9jGrbiqrliJ6pIYHriXi0YUEOlgzBa', 1),
-( 'Nicolas', 'nicolas@gmail.com', '12354342341', '$2y$10$wtFEMY3KGR2JeQfXTShnLO7eAWb4J/uL6H29UYez/TagsGdKUJsaW', 0);
 
 CREATE TABLE IF NOT EXISTS trens (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -53,3 +43,7 @@ CREATE TABLE IF NOT EXISTS sensores (
         REFERENCES rotas(id) ON DELETE RESTRICT
 );
 
+INSERT INTO usuarios
+VALUES
+(NULL, 'Samuel', 'samuel@gmail.com', '12345678912', '$2y$10$M0x/QvML0bzx4NPkxdvZYOa9jGrbiqrliJ6pIYHriXi0YUEOlgzBa', true),
+(NULL, 'Nicolas', 'nicolas@gmail.com', '12354342341', '$2y$10$wtFEMY3KGR2JeQfXTShnLO7eAWb4J/uL6H29UYez/TagsGdKUJsaW', false);
