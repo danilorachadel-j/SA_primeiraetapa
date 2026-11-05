@@ -114,6 +114,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body class="data-page">
+    <div class="cont-nav">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container5">
+                <a class="navbar-brand" href="home.php">
+                    <img src="../assets/img/Logo.png" alt="login">
+                </a>
+            </div>
+        </nav>
+    </div>
 
     <main class="data-layout">
         <section class="data-form-panel">
