@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -12,6 +13,18 @@ require_once __DIR__ . "/../INFRA/layout.php";
 $ehAdm = isset($_SESSION['adm']) && (int) $_SESSION['adm'] === 1;
 layout_head('Início · Ferrorama', '../');
 layout_navbar('../');
+=======
+
+if (isset($_SESSION['erro_acesso'])) {
+    echo '<div class="alert alert-danger text-center" role="alert">';
+    echo $_SESSION['erro_acesso'];
+    echo '</div>';
+
+    unset($_SESSION['erro_acesso']);
+}
+
+require_once __DIR__ . "/../infra/verificar_login.php";
+>>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24
 ?>
 <header class="hero">
     <div class="container-xl">
@@ -25,9 +38,34 @@ layout_navbar('../');
     </div>
 </header>
 
+<<<<<<< HEAD
 <main>
     <div class="container-xl pt-4">
         <?php layout_alerta($erroAcesso, 'danger'); ?>
+=======
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../assets/style/style.css">
+</head>
+
+<body id="body-h">
+    <div class="cont-nav">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container5">
+                <a class="navbar-brand" href="home.php">
+                    <img src="../assets/img/Logo.png" alt="login">
+                </a>
+
+                <form method="POST" action="../index.php">
+                     <button id="logoutButton" type="submit" name="logout" value="1">deslogar</button>
+                </form>
+            </div>
+        </nav>
+>>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24
     </div>
 
     <section class="container-xl py-4">
@@ -91,4 +129,46 @@ layout_navbar('../');
     </section>
 </main>
 
+<<<<<<< HEAD
 <?php layout_rodape(); layout_scripts('../'); ?>
+=======
+        <div class="part-2">
+            <div class="titulo2">
+                <h1>Opções</h1>
+            </div>
+
+            <div class="ops">
+
+                <div class="op1">
+                    <a href="cadastro_sensores.php">
+                        <h1>Cadastrar sensor</h1>
+                    </a>
+                </div>
+
+                <div class="">
+                    <a href="rotas.php">
+                        <h1>Rotas</h1>
+                    </a>
+                </div>
+
+                <?php if (isset($_SESSION['adm']) && (int)$_SESSION['adm'] === 1): ?>
+                    <div class="">
+                        <a href="cadastro_usuarios.php">
+                            <h1>Cadastro Usuarios</h1>
+                        </a>
+                    </div>
+                <?php endif; ?>
+
+                <div class="">
+                    <a href="cadastro_trens.php">
+                        <h1>Cadastro trens</h1>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
+>>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24

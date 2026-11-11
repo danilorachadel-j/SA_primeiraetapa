@@ -1,5 +1,20 @@
 <?php
 session_start();
+<<<<<<< HEAD
+=======
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
+
+    $_SESSION = [];
+
+    session_destroy();
+
+    header("Location: index.php");
+    exit;
+}
+?>
+<html lang="en">
+>>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
 

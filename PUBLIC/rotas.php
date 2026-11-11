@@ -1,5 +1,6 @@
 
 <?php
+<<<<<<< HEAD
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -15,6 +16,29 @@ $estadosBrasileiros = [
     'DF', 'RJ', 'SC'
 ];
 
+=======
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (isset($_SESSION['erro_rota'])) {
+    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Erro!</strong> ' . htmlspecialchars($_SESSION['erro_rota']) . '
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>';
+
+    unset($_SESSION['erro_rota']);
+}
+
+require_once __DIR__ . "/../infra/conexao.php";
+require_once __DIR__ . "/../infra/verificar_login.php";
+
+$estadosBrasileiros = [
+    'DF', 'RJ', 'SC'
+];
+
+>>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24
 $erroFormulario = null;
 $sucessoFormulario = null;
 
@@ -119,6 +143,7 @@ if (!$rotas) {
 }
 ?>
 
+<<<<<<< HEAD
 <?php
 require_once __DIR__ . '/../INFRA/layout.php';
 layout_head('Rotas · Ferrorama', '../');
@@ -230,3 +255,176 @@ layout_titulo_pagina('Rotas', 'Defina as rotas ferroviárias e o trem responsáv
 </main>
 
 <?php layout_rodape(); layout_scripts('../'); ?>
+=======
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotas - Ferrorama</title>
+    <link rel="stylesheet" href="../assets/style/style.css">
+</head>
+
+<body class="data-page">
+
+    <div class="cont-nav">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container5">
+                <a class="navbar-brand" href="home.php">
+                    <img src="../assets/img/Logo.png" alt="login">
+                </a>
+            </div>
+        </nav>
+    </div>
+    <?php if (isset($_GET['erro']) && $_GET['erro'] === 'rota_vinculada'): ?>
+
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Erro!</strong> Não é possível apagar esta rota porque existe um sensor vinculado a ela.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+<?php endif; ?>
+    <main class="data-layout">
+
+        <section class="data-form-panel">
+
+            <h1>Cadastrar rota</h1>
+
+            <?php if ($erroFormulario !== null): ?>
+                <p class="form-message form-error">
+                    <?= htmlspecialchars($erroFormulario, ENT_QUOTES, 'UTF-8'); ?>
+                </p>
+            <?php endif; ?>
+
+            <?php if ($sucessoFormulario !== null): ?>
+                <p class="form-message form-success">
+                    <?= htmlspecialchars($sucessoFormulario, ENT_QUOTES, 'UTF-8'); ?>
+                </p>
+            <?php endif; ?>
+
+            <form method="POST" action="rotas.php">
+
+                <label for="nome_rota">Nome da rota</label>
+                <input
+                    type="text"
+                    id="nome_rota"
+                    name="nome_rota"
+                    value="<?= htmlspecialchars($_POST['nome_rota'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                    required
+                >
+
+                <label for="estado_rota">Estado</label>
+
+                <select id="estado_rota" name="estado_rota" required>
+
+                    <option value="">Selecione um estado</option>
+
+                    <?php foreach ($estadosBrasileiros as $estado): ?>
+
+                        <option
+                            value="<?= htmlspecialchars($estado, ENT_QUOTES, 'UTF-8'); ?>"
+                            <?= (($_POST['estado_rota'] ?? '') === $estado) ? 'selected' : ''; ?>
+                        >
+                            <?= htmlspecialchars($estado, ENT_QUOTES, 'UTF-8'); ?>
+                        </option>
+
+                    <?php endforeach; ?>
+
+                </select>
+
+                <label for="local_rota">Localização</label>
+
+                <input
+                    type="text"
+                    id="local_rota"
+                    name="local_rota"
+                    value="<?= htmlspecialchars($_POST['local_rota'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"
+                    required
+                >
+
+                <label for="id_trem">Selecionar trem</label>
+
+                <select id="id_trem" name="id_trem" required>
+
+                    <option value="">Selecione um trem</option>
+
+                    <?php foreach ($listaTrens as $trem): ?>
+
+                        <option
+                            value="<?= (int) $trem['id']; ?>"
+                            <?= (($_POST['id_trem'] ?? '') == $trem['id']) ? 'selected' : ''; ?>
+                        >
+                            <?= htmlspecialchars($trem['nome_trem'], ENT_QUOTES, 'UTF-8'); ?>
+                        </option>
+
+                    <?php endforeach; ?>
+
+                </select>
+
+                <button type="submit" <?= empty($listaTrens) ? 'disabled' : ''; ?>>
+                    Cadastrar rota
+                </button>
+                <?php if (empty($listaTrens)): ?>
+                    <p class="form-message form-error">
+                        Nenhum trem cadastrado. Cadastre um trem antes de criar uma rota.
+                    </p>
+                <?php endif; ?>
+            </form>
+
+        </section>
+
+        <section class="data-table-panel">
+
+            <h2>Rotas cadastradas</h2>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Estado</th>
+                            <th>Localização</th>
+                            <th>Trem</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php while ($rota = $rotas->fetch_assoc()): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($rota['nome_rota'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td> <?= htmlspecialchars($rota['estado_rota'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td> <?= htmlspecialchars($rota['local_rota'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td> <?= htmlspecialchars($rota['nome_trem'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td>
+                                    <td>
+    <a href="editar_rotas.php?id=<?= (int) $rota['id']; ?>">
+        <button type="button">Editar</button>
+    </a>
+
+    <form action="apagar_rotas.php" method="POST" onsubmit="return window.confirm('Tem certeza que deseja excluir esta rota?');">
+        <input type="hidden" name="id" value="<?= (int) $rota['id']; ?>">
+        <button type="submit" class="btn btn-danger">Apagar</button>
+    </form>
+</td>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                        <?php if ($rotas->num_rows === 0): ?>
+                            <tr>
+                                <td colspan="5">Nenhuma rota cadastrada.</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
+>>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24

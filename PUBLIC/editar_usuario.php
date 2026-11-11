@@ -1,8 +1,14 @@
 
 <?php
+<<<<<<< HEAD
 require_once __DIR__ . "/../INFRA/conexao.php";
 require_once __DIR__ . "/../INFRA/verificar_login.php";
 require_once __DIR__ . "/../INFRA/verificar_administrador.php";
+=======
+require_once __DIR__ . "/../infra/conexao.php";
+require_once __DIR__ . "/../infra/verificar_login.php";
+require_once __DIR__ . "/../infra/verificar_administrador.php";
+>>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24
 
 $erro = "";
 $sucesso = "";
@@ -123,6 +129,7 @@ layout_navbar('../');
 layout_titulo_pagina('Editar usuário', 'Atualize os dados de acesso. Deixe a senha em branco para mantê-la.');
 ?>
 
+<<<<<<< HEAD
 <main class="container-xl py-4">
     <div class="row justify-content-center">
         <div class="col-lg-6">
@@ -168,9 +175,30 @@ layout_titulo_pagina('Editar usuário', 'Atualize os dados de acesso. Deixe a se
                 </form>
             </div>
         </div>
+=======
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuário - Ferrorama</title>
+
+    <link rel="stylesheet" href="../assets/style/style.css">
+</head>
+
+<body>
+
+    <div class="cont-nav">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container5">
+                <a class="navbar-brand" href="home.php">
+                    <img src="../assets/img/Logo.png" alt="login">
+                </a>
+            </div>
+        </nav>
+>>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24
     </div>
 </main>
 
+<<<<<<< HEAD
 <script>
     (function () {
         const campo = document.getElementById('telefone_usuario');
@@ -186,3 +214,111 @@ layout_titulo_pagina('Editar usuário', 'Atualize os dados de acesso. Deixe a se
 </script>
 
 <?php layout_rodape(); layout_scripts('../'); ?>
+=======
+    <div>
+        <a href="cadastro_usuarios.php">Voltar</a>
+    </div>
+
+    <div>
+
+        <h2>Editar usuário</h2>
+
+        <?php if ($erro): ?>
+            <p style="color: red;">
+                <?= htmlspecialchars($erro) ?>
+            </p>
+        <?php endif; ?>
+
+        <?php if ($sucesso): ?>
+            <p style="color: green;">
+                <?= htmlspecialchars($sucesso) ?>
+            </p>
+        <?php endif; ?>
+
+        <form method="POST"
+              action="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?id=' . $id, ENT_QUOTES, 'UTF-8') ?>">
+
+            <label for="nome_usuario">Nome</label>
+            <input
+                type="text"
+                id="nome_usuario"
+                name="nome_usuario"
+                value="<?= htmlspecialchars($usuario['nome_usuario']) ?>"
+                required
+            >
+
+            <label for="email_usuario">E-mail</label>
+            <input
+                type="email"
+                id="email_usuario"
+                name="email_usuario"
+                value="<?= htmlspecialchars($usuario['email_usuario']) ?>"
+                required
+            >
+
+            <label for="telefone_usuario">Telefone</label>
+            <input
+                type="tel"
+                id="telefone_usuario"
+                name="telefone_usuario"
+                pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}"
+                maxlength="15"
+                inputmode="numeric"
+                placeholder="(47) 99999-9999"
+                value="<?= htmlspecialchars($usuario['telefone_usuario']) ?>"
+                required
+            >
+
+            <label for="senha_usuario">Nova senha</label>
+            <input
+                type="password"
+                id="senha_usuario"
+                name="senha_usuario"
+                placeholder="Deixe vazio para manter a senha atual"
+            >
+
+            <label for="adm">Tipo de usuário</label>
+
+            <select id="adm" name="adm" required>
+                <option value="0" <?= $usuario['adm'] == 0 ? 'selected' : '' ?>>
+                    Usuário normal
+                </option>
+
+                <option value="1" <?= $usuario['adm'] == 1 ? 'selected' : '' ?>>
+                    Administrador
+                </option>
+            </select>
+
+            <input type="submit" value="Salvar alterações">
+
+        </form>
+
+        <script>
+            const campoTelefone =
+                document.getElementById('telefone_usuario');
+
+            campoTelefone.addEventListener('input', () => {
+
+                let telefone = campoTelefone.value
+                    .replace(/\D/g, '')
+                    .slice(0, 11);
+
+                if (telefone.length > 2) {
+                    telefone = `(${telefone.slice(0, 2)}) ${telefone.slice(2)}`;
+                } else if (telefone.length > 0) {
+                    telefone = `(${telefone}`;
+                }
+
+                if (telefone.length > 10) {
+                    telefone = `${telefone.slice(0, 10)}-${telefone.slice(10)}`;
+                }
+
+                campoTelefone.value = telefone;
+            });
+        </script>
+
+    </div>
+
+</body>
+</html>
+>>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24

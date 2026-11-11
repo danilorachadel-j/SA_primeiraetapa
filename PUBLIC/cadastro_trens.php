@@ -1,7 +1,12 @@
 
 <?php
+<<<<<<< HEAD
 require_once __DIR__ . "/../INFRA/conexao.php";
 require_once __DIR__ . "/../INFRA/verificar_login.php";
+=======
+require_once __DIR__ . "/../infra/conexao.php";
+require_once __DIR__ . "/../infra/verificar_login.php";
+>>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24
 
 $erroFormulario = null;
 $sucessoFormulario = null;
@@ -122,6 +127,7 @@ layout_titulo_pagina('Trens', 'Cadastre a frota e acompanhe quem é o responsáv
                     <button type="submit" class="btn btn-primary w-100 py-2"><?= icone('mais', 18) ?> Cadastrar trem</button>
                 </form>
             </div>
+<<<<<<< HEAD
         </section>
 
         <section class="col-lg-8">
@@ -139,6 +145,89 @@ layout_titulo_pagina('Trens', 'Cadastre a frota e acompanhe quem é o responsáv
                                 <th>Carga</th>
                                 <th>Responsável</th>
                                 <th class="text-end">Ações</th>
+=======
+        </nav>
+    </div>
+
+    <main class="data-layout">
+
+        <section class="data-form-panel">
+            <h1>Cadastrar trem</h1>
+            
+
+            <?php if (!empty($erroFormulario)): ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?= htmlspecialchars($erroFormulario, ENT_QUOTES, 'UTF-8'); ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($sucessoFormulario !== null): ?>
+                <p class="form-message form-success">
+                    <?= htmlspecialchars($sucessoFormulario, ENT_QUOTES, 'UTF-8'); ?>
+                </p>
+            <?php endif; ?>
+
+            <form method="POST" action="cadastro_trens.php">
+
+                <label for="nome_trem">Nome</label>
+                <input type="text" id="nome_trem" name="nome_trem" required>
+
+                <label for="tipo_trem">Tipo</label>
+                <input type="text" id="tipo_trem" name="tipo_trem" required>
+
+                <label for="carga">Carga</label>
+                <input type="text" id="carga" name="carga" required>
+
+                <label for="id_usuario">Usuário responsável</label>
+                <select id="id_usuario" name="id_usuario" required>
+                    <option value="">Selecione um usuário</option>
+
+                    <?php while ($usuario = $usuarios->fetch_assoc()): ?>
+                        <option value="<?= (int) $usuario['id']; ?>">
+                            <?= htmlspecialchars($usuario['nome_usuario'], ENT_QUOTES, 'UTF-8'); ?>
+                        </option>
+                    <?php endwhile; ?>
+                </select>
+
+                <button type="submit">Cadastrar trem</button>
+
+            </form>
+        </section>
+
+        <section class="data-table-panel">
+            <h2>Trens cadastrados</h2>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Tipo</th>
+                            <th>Carga</th>
+                            <th>Usuário responsável</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php while ($trem = $trens->fetch_assoc()): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($trem['nome_trem'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td><?= htmlspecialchars($trem['tipo_trem'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td><?= htmlspecialchars($trem['carga'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td><?= htmlspecialchars($trem['nome_usuario'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                <td>
+                                    <a class="edit-button" href="editar_trens.php?id=<?= (int) $trem['id']; ?>">
+                                        Editar
+                                    </a>
+
+                                    <form method="POST" action="apagar_trens.php" style="display: inline;" onsubmit="return confirm('Tem certeza que deseja apagar este trem?');">
+                                        <input type="hidden" name="id" value="<?= (int) $trem['id']; ?>">
+                                        <button type="submit">Apagar</button>
+                                    </form>
+                                </td>
+>>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24
                             </tr>
                         </thead>
                         <tbody>
