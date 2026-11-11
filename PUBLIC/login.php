@@ -1,6 +1,6 @@
 
 <?php
-require_once __DIR__ . "/../infra/conexao.php";
+require_once __DIR__ . "/../INFRA/conexao.php";
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,15 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt->close();
 
-  
-    if ($usuario && $senha_usuario === $usuario['senha_usuario']) {
-         session_regenerate_id(true);
+    if ($usuario && password_verify($senha_usuario, $usuario['senha_usuario'])) {
+        session_regenerate_id(true);
 
-       $_SESSION['id'] = $usuario['id'];
-$_SESSION['nome_usuario'] = $usuario['nome_usuario'];
-$_SESSION['adm'] = (int)$usuario['adm'];
+        $_SESSION['id'] = $usuario['id'];
+        $_SESSION['nome_usuario'] = $usuario['nome_usuario'];
+        $_SESSION['adm'] = (int)$usuario['adm'];
 
-        if ((int) $usuario['administrador'] === 1) {
+        if ((int) $usuario['adm'] === 1) {
             header('Location: home.php');
         } else {
             header('Location: home.php');
@@ -39,32 +38,32 @@ $_SESSION['adm'] = (int)$usuario['adm'];
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Ferrorama</title>
-</head>
-<body>
-
-    <div>
-        <a href="../index.php">Voltar</a>
+<?php require_once __DIR__ . '/../INFRA/layout.php'; layout_head('Login · Ferrorama', '../', 'login-page'); ?>
+<main class="login-card">
+    <div class="text-center mb-4">
+        <img src="../assets/img/Logo.png" alt="Ferrorama" class="login-logo mb-3">
+        <h1 class="mb-1">Acesso ao sistema</h1>
+        <p class="text-secondary mb-0">Entre com seu usuário e senha</p>
     </div>
 
-    <div>
-        <form method="POST"
-              action="<?= htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8') ?>">
+    <?php if (isset($loginError)): ?>
+        <div class="alert alert-danger" role="alert"><?= htmlspecialchars($loginError, ENT_QUOTES, 'UTF-8') ?></div>
+    <?php endif; ?>
+
+    <form method="POST" action="<?= htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8') ?>">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nome_usuario" name="nome_usuario" placeholder="Nome de usuário" autocomplete="username" required autofocus>
             <label for="nome_usuario">Nome de usuário</label>
-            <input type="text" id="nome_usuario" name="nome_usuario" required>
+        </div>
+        <div class="form-floating mb-4">
+            <input type="password" class="form-control" id="senha_usuario" name="senha_usuario" placeholder="Senha" autocomplete="current-password" required>
             <label for="senha_usuario">Senha</label>
-            <input type="password" id="senha_usuario" name="senha_usuario" required>
-            <input type="submit" value="Entrar">
-            <?php if (isset($loginError)): ?>
-                <p><?= htmlspecialchars($loginError, ENT_QUOTES, 'UTF-8') ?></p>
-            <?php endif; ?>
-        </form>
-    </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 py-2">Entrar</button>
+    </form>
 
-</body>
-</html>
+    <a href="../index.php" class="d-flex align-items-center justify-content-center gap-2 mt-4 text-secondary text-decoration-none small">
+        <?= icone('voltar', 16) ?> Voltar ao site
+    </a>
+</main>
+<?php layout_scripts('../'); ?>

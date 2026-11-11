@@ -1,67 +1,70 @@
-<html lang="en">
+<?php
+session_start();
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="assets/style/style.css">
-</head>
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
 
-<body id="body-h">
-    <div class="cont-nav">
-        <nav class="navbar bg-body-tertiary">
-            <div class="container5">
-                <a class="navbar-brand" href="index.php">
-                    <img src="assets/img/Logo.png" alt="login">
-                </a>
-            </div>
-            <div class="nav-direita">
-                <a class="nav-login" href="../SA_primeiraetapa/PUBLIC/login.php">Login</a>
-                <a class="nav-user" href="../SA_primeiraetapa/PUBLIC/login.php">
-                    <img src="assets/img/icon-user.webp" alt="home">
-                </a>
-            </div>
-        </nav>
+    $_SESSION = [];
+
+    session_destroy();
+
+    header("Location: index.php");
+    exit;
+}
+?>
+<?php
+require_once __DIR__ . '/INFRA/layout.php';
+layout_head('Ferrorama · Planejamento urbano', '');
+layout_navbar_publica('');
+?>
+<header class="hero">
+    <div class="container-xl">
+        <span class="hero-eyebrow">Trainsecurity</span>
+        <h1>O planejamento urbano muda o mundo</h1>
+        <p class="lead">
+            Ao longo das décadas, o planejamento urbano tem se tornado algo cada vez mais importante,
+            principalmente agora que a tecnologia está cada vez mais presente. Venha conhecer a Trainsecurity
+            e veja o nosso processo de implementação de ferrovias e metrôs no país.
+        </p>
+        <a href="PUBLIC/login.php" class="btn btn-primary btn-lg mt-3 px-4">Acessar o sistema</a>
     </div>
+</header>
 
-    <main>
-        <div class="part-1">
-            <div class="container2">
-                <div class="title">
-                    <div class="IA">
-                        <h1>O Planejamento Urbano Muda o Mundo</h1>
+<main>
+    <section class="container-xl py-5">
+        <h2 class="secao-titulo mb-4"><small>Onde atuamos</small>Nossos projetos pelo país</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <a class="cidade-card" href="PUBLIC/Joinville_sc.php">
+                    <img src="assets/img/joinville_arco.jpg" alt="Arco de Joinville" loading="lazy">
+                    <div class="corpo">
+                        <h3>Joinville &ndash; SC</h3>
+                        <p>Conheça nossos projetos para o Sul</p>
+                        <span class="saiba">Saiba mais <?= icone('seta', 16) ?></span>
                     </div>
-                </div>
-                <div class="description">
-                    <b>Planejamento urbano ao longo das decádas tems e tornado algo cada vez mais
-                        importante, principalmente agora que a tecnologia tem se tornado cada vez mais comun, venha e
-                        conheça a
-                        Trainsecurity e veja nosso processo de implementação de ferrovias e metrôs no país.</b>
-                </div>
+                </a>
             </div>
-            <div class="subcontainer">
-                <div class="card1">
-                    <a href="public/Joinville_sc.php">
-                        <h3>Joinville - SC</h3>
-                        <p>Conheças nossos projetos para o Sul</p>
-                    </a>
-                </div>
-                <div class="card2">
-                    <a href="public/RioDeJaneiro.php">
-                        <h3>Rio de Janeiro - RJ</h3>
+            <div class="col-md-4">
+                <a class="cidade-card" href="PUBLIC/RioDeJaneiro.php">
+                    <img src="assets/img/RJ_Cristo.jpg" alt="Cristo Redentor, Rio de Janeiro" loading="lazy">
+                    <div class="corpo">
+                        <h3>Rio de Janeiro &ndash; RJ</h3>
                         <p>Venha e conheça nossos projetos na cidade maravilhosa</p>
-                    </a>
-                </div>
-                <div class="card3">
-                    <a href="public/Brasilia.php">
-                        <h3>Brasília - DF</h3>
+                        <span class="saiba">Saiba mais <?= icone('seta', 16) ?></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a class="cidade-card" href="PUBLIC/Brasilia.php">
+                    <img src="assets/img/brasilia_novo.jpg" alt="Brasília" loading="lazy">
+                    <div class="corpo">
+                        <h3>Brasília &ndash; DF</h3>
                         <p>Veja nossos projetos na capital</p>
-                    </a>
-                </div>
+                        <span class="saiba">Saiba mais <?= icone('seta', 16) ?></span>
+                    </div>
+                </a>
             </div>
         </div>
-    </main>
-    
-</body>
+    </section>
+</main>
 
-</html>
+<?php layout_rodape(); layout_scripts(''); ?>

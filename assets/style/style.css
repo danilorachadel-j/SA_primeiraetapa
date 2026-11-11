@@ -1,870 +1,352 @@
-.container1{
-    color: #d1d1d1;
-    background-color: #212529;
-    min-height: 91vh;
-    padding-left: 330px;
-    padding-top: 250px;
-} 
-*{
-    padding: 0;
-    margin: 0;
+/* ==========================================================================
+   Ferrorama · Trainsecurity — camada visual sobre o Bootstrap 5.3
+   Ordem de carregamento: bootstrap.min.css  ->  style.css
+   ========================================================================== */
+
+:root {
+    --ink: #0e1114;
+    --ink-2: #161b20;
+    --steel: #2a323a;
+    --line: #dde2e7;
+    --paper: #f2f4f6;
+    --signal: #f2a516;
+    --signal-dark: #d48a00;
+    --signal-soft: #fff4dc;
+
+    --font-display: "Bahnschrift", "DIN Alternate", "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    --font-mono: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+
+    /* Bootstrap */
+    --bs-body-font-family: var(--font-body);
+    --bs-body-bg: var(--paper);
+    --bs-body-color: #1d242b;
+    --bs-primary: var(--signal);
+    --bs-primary-rgb: 242, 165, 22;
+    --bs-link-color: #9a6400;
+    --bs-link-hover-color: #6f4800;
+    --bs-border-color: var(--line);
+    --bs-border-radius: .55rem;
 }
-.flex {
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
+    background: var(--paper);
+}
+main { flex: 1 0 auto; }
+
+h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: .01em;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: auto auto auto;
+.icone { flex-shrink: 0; vertical-align: -.2em; }
+
+/* ---------- Botões ---------- */
+.btn { font-weight: 600; border-radius: .5rem; }
+.btn-primary {
+    --bs-btn-color: #1a1200;
+    --bs-btn-bg: var(--signal);
+    --bs-btn-border-color: var(--signal);
+    --bs-btn-hover-color: #1a1200;
+    --bs-btn-hover-bg: #ffb82e;
+    --bs-btn-hover-border-color: #ffb82e;
+    --bs-btn-active-color: #1a1200;
+    --bs-btn-active-bg: var(--signal-dark);
+    --bs-btn-active-border-color: var(--signal-dark);
+    --bs-btn-disabled-color: #5b4a1c;
+    --bs-btn-disabled-bg: #e6cf9b;
+    --bs-btn-disabled-border-color: #e6cf9b;
+    --bs-btn-focus-shadow-rgb: 242, 165, 22;
 }
+.btn-outline-light { --bs-btn-border-color: rgba(255, 255, 255, .35); }
 
-.containerTable {
-    align-items: left;
-    width: 100%;
+/* ---------- Navbar ---------- */
+.site-nav {
+    background: var(--ink);
+    border-bottom: 3px solid var(--signal);
+    padding-block: .55rem;
 }
-
-.cont {
-    justify-content: center;
-    align-items: center;
-
-}
-
-.nav-esquerda {
-    padding-left: 30px;
-    display: flex;
-}
-
-.nav-direita {
-    padding: 10px;
-    display: flex;
-
-}
-
-.navbar {
-    display: grid;
-    grid-template-columns: auto 155px;
-}
-
-.navbarTable {
-    background-color: #333333;
-}
-.nav-login2{
-    border-bottom: 3px solid rgba(226, 215, 215, 0.562);
-}
-.nav-login {
-    font-size: 25px;
-    padding-top: 15px;
-    color: #d1d1d1;
-    text-decoration: none;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-.nav-user {}
-
-.cont-nav {
-    background-color: #1c1d1f;
-    img{
-        width: 100px;
-    }  
-    margin: 0;
-    padding: 0;
-
-}
-
-.title {
-    padding-top: 150px;
-    padding-left: 90px;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    display: flex;
-    font-size: clamp(2rem, 2.5vw, 5.5rem);
-}
-
-.description {
-    padding-left: 95px;
-    padding-right: 400px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: large;
-    font-size: large;
-    padding-bottom: 60px;
-}
-
-.subcontainer {
-    padding-left: 95px;
-    margin-top: 90px ;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    align-items: center;
-    justify-content: center;
-    font-family: monospace;
-    font-size: large;
-    padding-bottom: 60px;
-
-    h3 {
-        padding-top: 10px;
-    }
-     
-}
-
-.card1{
-    margin-right: 260px;
-    border-top: 2px solid #ffffff9f;
-    a{
-        color: #fdfeff;
-        text-decoration: none;
-    }
-}
-.card2{
-    margin-right: 260px;
-    border-top: 2px solid #ffffff9f;
-     a{
-        color: #fdfeff;
-        text-decoration: none;
-    }
-}
-
-.card3{
-    margin-right: 260px;
-    border-top: 2px solid #ffffff9f;
-    a{
-        color: #fdfeff;
-        text-decoration: none;
-    }
-}
-.container {
-    padding-right: 840;
-}
-
-.container2{
-    padding-right: 700;
-    justify-content: center;
-    align-items: center;
-}
-.IA{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.part-1 {
-    background-image: url(../img/Fundo_Home.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    h1 p {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-}
-
-.part-2 {
-
-}
-
-.titulo2 {
-    padding-left: 250px;
-    font-family: monospace;
-    color: #151618;
-    font-size: clamp(2rem, 2.5vw, 5.5rem);
-    padding-top: 60px;
-    padding-bottom: 60px;
-}
-
-.ops {
-    display: grid;
-    grid-template-columns: auto auto;
-    padding-left: 250px;
-    padding-right: 250px;
-    font-family: monospace;
-    font-size: xx-large;
-
-    h1 {
-        padding-left: 40px;
-        text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-}
-.part-2{
-    padding-bottom: 60px;
-}
-
-.op1 {
-    background-image: url(../img/Metro\ DF\ \(1\).jfif);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: local;
-    padding-top: 340px;
-    margin-right: 20px;
-    padding-right: 500px;
-    padding-bottom: 20px;
-    a{
-        color: #ffffff;
-        text-decoration: none;
-    }
-
-}
-
-.op2 {
-    background-image: url(../img/Metro-logo-login.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: local;
-    padding-top: 340px;
-    a{
-        color: #ffffff;
-        text-decoration: none;
-    }
-}
-
-.embaixo {
-    background-color: #000000;
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img{
-        width: 100px;
-    }
-}
-
-.logo {
-    width: 100px;
-    height: auto;
-}
-
-.img-lateralTrain {
-    height: 95vh;
-    position: fixed;
-    right: 0;
-}
-
-#body-h{
-    color: white;
-    margin: 0;
-    
-}
-
-
-#body-l {
-    background-color: #212529;
-}
-
-#body-n {
-    #background-image: url(../img/mapWallpaper.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-
-
-#tableButton {
-    padding: 20px;
-    align-self: center;
-    width: auto;
-}
-
-#sensorTable table {
-    background-color: #000000;
-    width: calc(100% - 350px);
-    font-size: 1.2rem;
-    border-collapse: collapse;
-}
-
-#sensorTable th,
-#sensorTable td {
-    padding: 12px 16px;
-    text-align: left;
-}
-
-#sensorTable th {
-    background-color: rgb(93, 155, 105);
+.brand-logo { width: 38px; height: 38px; object-fit: contain; }
+.brand-name {
+    font-family: var(--font-display);
     font-size: 1.3rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #fff;
 }
+.site-nav .nav-link {
+    color: #b8c0c8;
+    font-weight: 500;
+    padding: .5rem .9rem;
+    border-radius: .4rem;
+}
+.site-nav .nav-link:hover { color: #fff; }
+.site-nav .nav-link.active {
+    color: var(--ink);
+    background: var(--signal);
+}
+.nav-user-name { color: #b8c0c8; font-size: .9rem; }
 
-#sensorTable tr:nth-child(odd) {
-    background-color: #bababa;
+/* ---------- Cabeçalho de página ---------- */
+.page-header {
+    background:
+        linear-gradient(90deg, rgba(14,17,20,.96) 0%, rgba(14,17,20,.82) 100%),
+        url("../img/trainYard.jpg") center / cover no-repeat;
+    color: #fff;
+    padding: 2.4rem 0 2.2rem;
 }
+.page-title { font-size: clamp(1.7rem, 3vw, 2.4rem); margin: 0 0 .25rem; }
+.page-title::before {
+    content: "";
+    display: inline-block;
+    width: .45em; height: 1em;
+    margin-right: .55rem;
+    vertical-align: -.12em;
+    background: repeating-linear-gradient(180deg, var(--signal) 0 .22em, transparent .22em .34em);
+}
+.page-subtitle { color: #aeb7c0; }
 
-#sensorTable tr:nth-child(even) {
-    background-color: #a9a9a9;
+/* ---------- Painéis de dados ---------- */
+.panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: .85rem;
+    box-shadow: 0 1px 2px rgba(14,17,20,.05), 0 8px 24px -12px rgba(14,17,20,.12);
 }
-
-.content-wrapper {
-    color: #fdfeff;
-    font-size: clamp(2rem, 2.5vw, 5.5rem);
+.panel-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between; gap: .75rem;
 }
-
-.img-lateral {
-    flex: 0 0 55%;
-    background-image: url(../img/Fundo-1.jpd.jpg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-attachment: fixed;
-
-    border-radius: 0px 35px 35px 0px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-}
-
-.container2 {
-    justify-content: center;
-    align-items: center;
-}
-
-#body-c {
-    background-color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 20px 0;
-    background-image: url(../img/metro_1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    color: white;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-}
-
-#body-r{
-    padding: 0;
-    margin: 0;
-}
-.titulo-rotas{
-    background-image: url(../img/tren-rotas2.png);
-    padding-bottom: 250px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    h1{
-        color: white;
-        padding-top: 200;
-        font-size: clamp(3rem, 3.5vw, 5.5rem);
-    }
-}
-.rotas{
-    display: flex;
-    justify-content: center;
-    margin-top: 80px;
-    
-    h2{
-        border-bottom: 2px solid black;
-        margin-right: 10px;
-    }
-    th{
-        padding-right: 10px;
-    }
-}
-.df{
-    padding-right: 70px;
-    padding-left: 70px;
-}
-.card-cadastro {
-    background: #000000;
-    padding: 45px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-    max-width: 950px;
-    width: 100%;
-    color: white;
-}
-.horario{
-    display: flex;
-}
-.cadastro-rotas{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 300px;
-}
-#body-sla{
-    background-image: url(../img/tela-cadastro-rotas1.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: white;
-}
-.form-cdstro-rotas{
-    font-family: monospace;
-    font-size: large;
-    color: rgb(40, 115, 255);
-    justify-content: center;
-    height: 220px;
-    width: 330px;
-    padding: 30px 50px;
-    border-radius: 35px;
-    background-color: rgba(253, 253, 253, 0.096);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 255, 255, 0.281);
-    border-left: 1px solid rgba(255, 255, 255, 0.281);
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.281);
-    h2{
-        display: flex;
-        justify-content: center;
-    }
-}
-.bottom-01{
-    display: flex;
-    justify-content: center;
-}
-
-.titulo-pagina {
-    font-weight: 700;
-    color: #000000;
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    color: white;
-}
-
-.subtitulo {
-    font-size: 0.95rem;
-    color: #000000;
-    margin-bottom: 30px;
-    color: white;
-}
+.panel-header h2 { font-size: 1.1rem; margin: 0; }
+.panel-body { padding: 1.25rem; }
 
 .form-label {
-    font-weight: 500;
-    font-size: 0.9rem;
-    color: #000000;
-    margin-bottom: 6px;
-    color: white;
-}
-
-.form-control {
-    border: 1px solid #dee2e6;
-    padding: 10px 12px;
-    border-radius: 6px;
-    transition: border-color 0.2s ease-in-out;
-    color: white;
-}
-
-.form-control:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
-    color: white;
-}
-
-.form-login{
-    width: max-content;
-}
-
-.btn-cadastrar {
-    background-color: #0d6efd;
-    border: none;
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 6px;
-    transition: background-color 0.3s;
-    color: white;
-}
-
-.btn-cadastrar:hover {
-    background-color: #0b5ed7;
-    color: white;
-}
-
-#body-w {
-    background-image: url(../img/imagem_jlle1.webp);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-.title-6 {
-    background-image: url(../img/RJ_Cristo.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    text-align: center;
-}
-
-.hero-section {
-    height: 100vh;
-    width: 100%;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.7)0% rgba(8, 8, 8, 0)60%);
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    padding: 1%;
-    font-family: 'inter', sans-serif;
-}
-
-.content-wrapper {
-    max-width: 800px;
-}
-
-.btn-main {
-    all: unset;
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    padding: 20px 50px;
-    font-size: 1.2rem;
-    font-weight: 500;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 32 px 0 rgba(0, 0, 0, 0.3);
-}
-
-.btn-main:hover {
-    background-color: white;
-    color: black;
-    transform: translateY(-3px);
-}
-
-.blue {
-    padding: 100px;
-    background-color: rgb(99, 99, 99);
-}
-
-.yo {
-    padding: 100px;
-    background-color: rgb(255, 255, 255);
-    margin: 30px;
-}
-
-.body-t {
-    background-image: url(../img/joinville_arco.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    text-align: center;
-}
-
-
-
-.body-bu {
-    background-color: #ffffff;
-    color: #333333;
-    line-height: 1.6;
-}
-
-.banner {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-    min-height: 300px;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/imagem_jlle1.webp') no-repeat center center;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.banner h1 {
-    color: #ffffffff;
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-size: .76rem;
     font-weight: 700;
-    letter-spacing: -1px;
-    text-align: center;
-    white-space: nowrap;
-    max-width: 90%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.body-b2 {
-    background-color: #ffffff;
-    color: #333333;
-    line-height: 1.6;
-}
-
-.banner1 {
-    Position: relative;
-    width: 100%;
-    height: 50vh;
-    min-height: 300px;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(165, 165, 165, 0.4)), url('../img/paisagenrj.jpg') no-repeat center top;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.banner1 h1 {
-    color: #ffffffff;
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 700;
-    letter-spacing: -1px;
-    text-align: center;
-    white-space: nowrap;
-    max-width: 90%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.back-btn {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 2px solid #ffffff;
-    background: rgba(0, 0, 0, 0.3);
-    color: #ffffff;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background 0.3s;
-}
-
-.back-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-.content-container3 {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-    display: flex;
-    gap: 40px;
-    text-align: flex-start;
-}
-
-.imagem-coluna {
-    max-width: 700px;
-    width: 900px;
-    overflow: hidden;
-    border-radius: 60px;
-}
-
-.texto-coluna2 {
-    flex: 1.2;
-    font-size: 1.1rem;
-    color: #444444;
-    text-align: justify;
-}
-
-.rounded-img {
-    width: 100%;
-    height: auto;
-    max-height: 350px;
-    object-fit: cover;
-    border-radius: 24px;
-}
-
-.texto-coluna {
-    flex: 1.2;
-    font-size: 1.1rem;
-    color: #444444;
-    text-align: justify;
-}
-
-.texto-coluna p {
-    margin-bottom: 15px;
-}
-
-@media (max-width: 768px) {
-    .content-container3 {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .banner {
-        height: 35vh;
-    }
-}
-
-
-.banner2 {
-Position: relative;
-    width: 100%;
-    height: 50vh;
-    min-height: 300px; 
-    transform: scale(1.0);
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(165, 165, 165, 0.4)), url('../img/brasilia_novo.jpg') no-repeat center 80%;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-    color:#ffffff;
-}
-
-.body-Nu {
-    background-color: #ffffff;
-    color: #333333;
-    line-height: 1.6;
-}
-
-.content-container4 {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-    display: flex;
-    gap: 40px;
-    text-align: flex-start;
-}
-
-.imagem-coluna3 {
-    max-width: 500px;
-    width: 800px;
-    overflow: hidden;
-    top: -15px;
-    border-radius: 120px;
-}
-
-.imagem-coluna1 {
-    max-width: 700px;
-    width: 900px;
-    overflow: hidden;
-    top: -15px;
-    border-radius: 50px;
-}
-
-.sideSquash {
-    overflow: hidden;
-    width: 900px;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-#body-76{
-    margin: 0;
-    background-color: rgb(53, 53, 53);
-    background-image: url(../img/estacao_trem76.jpg);
-    background-size: cover;
-}
-
-.titulo-76{
-    margin-bottom: 50px;
-    color: white;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-left: 200px;
-    padding: 25px;
-    background-color: rgb(36, 36, 36);
-    margin-right: 200px;
-    border-radius: 25px;
-}
-
-.head-76{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-#formCadastro{
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-left: 700px;
-    padding: 25px;
-    color: white;
-    background-color: rgb(36, 36, 36);
-    margin-right: 700px;
-    border-radius: 25px;
-    box-shadow: 0px 0px 10px 1px black;
-}
-
-.form-cadastro-sensores{
-    font-family: monospace;
-    font-size: large;
-    color: rgb(255, 255, 255);
-    justify-content: center;
-    height: 220px;
-    width: 330px;
-    padding: 30px 50px;
-    border-radius: 35px;
-    background-color: rgba(253, 253, 253, 0.096);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 255, 255, 0.281);
-    border-left: 1px solid rgba(255, 255, 255, 0.281);
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.281);
-}
-    h2{
-        display: flex;
-        justify-content: center;
-    }
-
-.cadastro-sensores{
-display: flex;
-justify-content: center;
-align-items: center;
-padding-top: 300px;
-}
-
-.bottom-05{
-    display: flex;
-    justify-content: center;
-}
-
-#body-sensor{
-    background-image: url(../img/tela_cadastro_sensor.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: white; 
-}
-
-body{
-    background-color: #f4f6f9;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333333;
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
-
-#container99{
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background-color: #ffffff !important;
-}
-
-h2, h5{
-    color: #1a252f;
-    font-weight: 600;
-}
-
-.form-label{
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #495057;
+    letter-spacing: .06em;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    color: #4b5560;
+    margin-bottom: .35rem;
 }
-
-.form-control, .form-select{
-    border-radius: 6px;
-    border: 1px solid #ced4da;
-    font-size: 0.9rem;
-    transition: border-color 0.2rem ease, box-shadow 0.2s ease;
+.form-control, .form-select {
+    --bs-body-bg: #fff;
+    background-color: #fff;
+    border-color: #c9d0d7;
+    padding: .6rem .8rem;
 }
-
 .form-control:focus, .form-select:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+    border-color: var(--signal);
+    box-shadow: 0 0 0 .25rem rgba(242, 165, 22, .22);
 }
 
-.table{
-    font-size: 0.9rem;
-
-}
-
-.table thead th{
-    font-weight: 600;
-    font-size: 0.8rem;
+/* ---------- Tabelas ---------- */
+.table-data { margin: 0; --bs-table-bg: transparent; }
+.table-data thead th {
+    background: var(--ink-2);
+    color: #e7ebef;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .08em;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    background-color: #212529;
-}
-
-.col-acoes{
-    text-align: center;
     white-space: nowrap;
-    width: 140px;
+    padding: .8rem 1rem;
+    border: 0;
+}
+.table-data tbody td { padding: .8rem 1rem; vertical-align: middle; }
+.table-data tbody tr:hover { --bs-table-bg-state: var(--signal-soft); }
+.col-acoes { white-space: nowrap; text-align: right; width: 1%; }
+.cell-mono { font-family: var(--font-mono); font-size: .88rem; }
+.estado-badge {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    background: var(--ink);
+    color: var(--signal);
+    padding: .3em .6em;
+    border-radius: .35rem;
+}
+.empty-state { text-align: center; padding: 2.5rem 1rem; color: #6b7682; }
+
+/* ---------- Hero (index e home) ---------- */
+.hero {
+    position: relative;
+    color: #fff;
+    background:
+        linear-gradient(100deg, rgba(14,17,20,.94) 0%, rgba(14,17,20,.72) 55%, rgba(14,17,20,.35) 100%),
+        url("../img/Fundo_Home.jpg") center / cover no-repeat;
+    padding: clamp(4rem, 10vw, 8rem) 0 clamp(3rem, 7vw, 5.5rem);
+}
+.hero-eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--signal);
+    border: 1px solid rgba(242,165,22,.5);
+    padding: .3rem .7rem;
+    border-radius: 999px;
+    margin-bottom: 1.2rem;
+}
+.hero h1 {
+    font-size: clamp(2.2rem, 5.2vw, 4rem);
+    line-height: 1.05;
+    max-width: 18ch;
+    text-shadow: 0 4px 18px rgba(0,0,0,.35);
+}
+.hero p.lead { max-width: 60ch; color: #d3d9df; margin-top: 1.1rem; }
+
+/* ---------- Cartões de cidade ---------- */
+.cidade-card {
+    position: relative;
+    display: block;
+    height: 100%;
+    min-height: 260px;
+    overflow: hidden;
+    border-radius: .9rem;
+    color: #fff;
+    text-decoration: none;
+    background: var(--ink);
+    box-shadow: 0 10px 28px -14px rgba(0,0,0,.55);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+.cidade-card img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+}
+.cidade-card::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(14,17,20,.05) 25%, rgba(14,17,20,.88) 100%);
+}
+.cidade-card .corpo {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+    padding: 1.25rem;
+}
+.cidade-card h3 { font-size: 1.35rem; margin: 0 0 .2rem; }
+.cidade-card p { margin: 0; color: #d3d9df; font-size: .92rem; }
+.cidade-card .saiba {
+    display: inline-flex; align-items: center; gap: .4rem;
+    margin-top: .7rem;
+    color: var(--signal);
+    font-weight: 600;
+    font-size: .88rem;
+}
+.cidade-card:hover { transform: translateY(-4px); box-shadow: 0 18px 34px -14px rgba(0,0,0,.6); color: #fff; }
+.cidade-card:hover img { transform: scale(1.06); }
+
+.secao-titulo { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+.secao-titulo small {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #9a6400;
+    margin-bottom: .35rem;
 }
 
-.badge{
-    font-size: 0.75rem;
-    padding: 0.4em 0.6em;
-    font-weight: 500;
+/* ---------- Atalhos (home logada) ---------- */
+.atalho {
+    display: flex; align-items: center; gap: 1rem;
+    height: 100%;
+    padding: 1.25rem 1.3rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--signal);
+    border-radius: .8rem;
+    color: var(--ink);
+    text-decoration: none;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.atalho:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 26px -16px rgba(14,17,20,.4);
+    border-left-color: var(--ink);
+    color: var(--ink);
+}
+.atalho .atalho-icone {
+    display: grid; place-items: center;
+    width: 52px; height: 52px;
+    flex-shrink: 0;
+    border-radius: .7rem;
+    background: var(--ink);
+    color: var(--signal);
+}
+.atalho h3 { font-size: 1.1rem; margin: 0; }
+.atalho p { margin: 0; color: #5d6873; font-size: .88rem; }
+.atalho .seta { margin-left: auto; color: #9aa4ae; }
+
+/* ---------- Login ---------- */
+.login-page {
+    min-height: 100vh;
+    display: grid; place-items: center;
+    padding: 1.5rem;
+    background:
+        linear-gradient(135deg, rgba(14,17,20,.9), rgba(14,17,20,.62)),
+        url("../img/Metro-logo-login.jpg") center / cover no-repeat fixed;
+}
+.login-card {
+    width: 100%; max-width: 420px;
+    background: rgba(255,255,255,.97);
+    border-radius: 1rem;
+    border-top: 5px solid var(--signal);
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,.65);
+    padding: 2.1rem 2rem 1.8rem;
+}
+.login-card .login-logo { width: 74px; height: 74px; object-fit: contain; background: var(--ink); border-radius: 50%; padding: 8px; }
+.login-card h1 { font-size: 1.6rem; }
+
+/* ---------- Páginas de cidade ---------- */
+.cidade-hero {
+    position: relative;
+    min-height: 46vh;
+    display: flex; align-items: flex-end;
+    color: #fff;
+    background:
+        linear-gradient(180deg, rgba(14,17,20,.35) 0%, rgba(14,17,20,.85) 100%),
+        var(--hero-img) center / cover no-repeat;
+    padding: 5rem 0 2.2rem;
+}
+.cidade-hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin: 0; }
+.cidade-hero .btn-voltar {
+    position: absolute; top: 1.25rem; left: 1.25rem;
+    display: inline-flex; align-items: center; gap: .45rem;
+    background: rgba(14,17,20,.55);
+    backdrop-filter: blur(6px);
+}
+.cidade-texto { font-size: 1.08rem; line-height: 1.75; color: #36404a; }
+.cidade-foto {
+    width: 100%; max-height: 420px;
+    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 0 18px 36px -18px rgba(14,17,20,.55);
+}
+
+/* ---------- Rodapé ---------- */
+.site-footer {
+    background: var(--ink);
+    color: #c7ced5;
+    font-size: .88rem;
+    padding: 1.4rem 0;
+    border-top: 3px solid var(--signal);
+    margin-top: 3rem;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 575.98px) {
+    .page-header { padding: 1.8rem 0 1.6rem; }
+    .col-acoes { text-align: left; }
+    .login-card { padding: 1.6rem 1.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
 }
