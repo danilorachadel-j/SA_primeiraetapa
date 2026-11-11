@@ -1,12 +1,7 @@
 <?php
 
-<<<<<<< HEAD
 require_once __DIR__ . "/../INFRA/verificar_login.php";
 require_once __DIR__ . "/../INFRA/conexao.php";
-=======
-require_once __DIR__ . "/../infra/verificar_login.php";
-require_once __DIR__ . "/../infra/conexao.php";
->>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24
 
 $erro = "";
 $sucesso = "";
@@ -71,7 +66,6 @@ layout_titulo_pagina('Sensores', 'Registre os sensores de cada rota e seus limit
     <?php layout_alerta($erro, 'danger'); ?>
     <?php layout_alerta($sucesso, 'success'); ?>
 
-<<<<<<< HEAD
     <div class="row g-4">
         <section class="col-xl-4">
             <div class="panel">
@@ -180,103 +174,3 @@ layout_titulo_pagina('Sensores', 'Registre os sensores de cada rota e seus limit
 </main>
 
 <?php layout_rodape(); layout_scripts('../'); ?>
-=======
-    <h1>Cadastrar sensor</h1>
-
-    <?php if ($erro !== ''): ?>
-        <p><?php echo htmlspecialchars($erro, ENT_QUOTES, 'UTF-8'); ?></p>
-    <?php endif; ?>
-
-    <?php if ($sucesso !== ''): ?>
-        <p><?php echo htmlspecialchars($sucesso, ENT_QUOTES, 'UTF-8'); ?></p>
-    <?php endif; ?>
-
-    <form method="POST" action="cadastro_sensores.php">
-
-        <label for="tipo_sensor">Tipo de sensor:</label>
-        <select id="tipo_sensor" name="tipo_sensor" required>
-            <option value="">Selecione o tipo</option>
-            <option value="Temperatura">Temperatura</option>
-            <option value="Velocidade">Velocidade</option>
-            <option value="Localização">Localização</option>
-            <option value="Vibração">Vibração</option>
-            <option value="Pressão">Pressão</option>
-        </select>
-
-        <label for="id_rota">Rota:</label>
-        <select id="id_rota" name="id_rota" required>
-            <option value="">Selecione uma rota</option>
-
-            <?php while ($rota = $rotas->fetch_assoc()): ?>
-                <option value="<?= (int) $rota['id']; ?>">
-                    <?= htmlspecialchars($rota['nome_rota'], ENT_QUOTES, 'UTF-8'); ?>
-                </option>
-            <?php endwhile; ?>
-        </select>
-
-        <label for="dados_sensor">Dados do sensor:</label>
-        <textarea id="dados_sensor" name="dados_sensor" rows="4" required placeholder="Ex.: sensor instalado na rota"></textarea>
-
-        <br>
-
-        <label for="valor_capturado">Valor capturado (opcional):</label>
-        <input type="number" step="0.01" id="valor_capturado" name="valor_capturado">
-
-        <br>
-
-        <label for="limite_disparo">Limite de disparo (opcional):</label>
-        <input type="number" step="0.01" id="limite_disparo" name="limite_disparo">
-
-        <br>
-
-        <button type="submit">Cadastrar sensor</button>
-
-    </form>
-
-    <hr>
-
-    <h2>Sensores cadastrados</h2>
-
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Tipo</th>
-            <th>Rota</th>
-            <th>Dados</th>
-            <th>Valor capturado</th>
-            <th>Limite de disparo</th>
-            <th>Ações</th>
-        </tr>
-
-        <?php
-        if ($sensores && $sensores->num_rows > 0) {
-            while ($sensor = $sensores->fetch_assoc()) {
-        ?>
-            <tr>
-                <td><?= htmlspecialchars($sensor['id']); ?></td>
-                <td><?= htmlspecialchars($sensor['tipo_sensor']); ?></td>
-                <td><?= htmlspecialchars($sensor['nome_rota']); ?></td>
-                <td><?= htmlspecialchars($sensor['dados_sensor']); ?></td>
-                <td><?= htmlspecialchars($sensor['valor_capturado'] ?? 'Não informado'); ?></td>
-                <td><?= htmlspecialchars($sensor['limite_disparo'] ?? 'Não informado'); ?></td>
-                <td>
-                    <a href="editar_sensor.php?id=<?= $sensor['id']; ?>">Editar</a>
-                    <form action="exluir_sensor.php" method="POST">
-                        <input type="hidden" name="id" value="<?= $sensor['id']; ?>">
-                        <button type="submit" onclick="return confirm('Deseja excluir este sensor?')">
-                            Excluir
-                        </button>
-                    </form>
-                </td>
-            </tr>
-        <?php
-            }
-        } else {
-            echo "<tr><td colspan='7'>Nenhum sensor cadastrado.</td></tr>";
-        }
-        ?>
-    </table>
-
-</body>
-</html>
->>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24

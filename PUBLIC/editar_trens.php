@@ -1,11 +1,6 @@
 <?php
-<<<<<<< HEAD
 require_once __DIR__ . "/../INFRA/conexao.php";
 require_once __DIR__ . "/../INFRA/verificar_login.php";
-=======
-require_once __DIR__ . "/../infra/conexao.php";
-require_once __DIR__ . "/../infra/verificar_login.php";
->>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
@@ -94,7 +89,6 @@ if (!$trem) {
 
 ?>
 
-<<<<<<< HEAD
 <?php
 require_once __DIR__ . '/../INFRA/layout.php';
 layout_head('Editar trem · Ferrorama', '../');
@@ -149,64 +143,3 @@ layout_titulo_pagina('Editar trem', 'Atualize os dados do trem selecionado.');
 </main>
 
 <?php layout_rodape(); layout_scripts('../'); ?>
-=======
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar trem - Ferrorama</title>
-    <link rel="stylesheet" href="../assets/style/style.css">
-</head>
-
-<body>
-    <div class="cont-nav">
-        <nav class="navbar bg-body-tertiary">
-            <div class="container5">
-                <a class="navbar-brand" href="home.php">
-                    <img src="../assets/img/Logo.png" alt="login">
-                </a>
-            </div>
-        </nav>
-    </div>
-
-    <h1>Editar trem</h1>
-    <?php if ($mensagem !== ""): ?>
-        <p> <?= htmlspecialchars($mensagem, ENT_QUOTES, 'UTF-8'); ?> </p>
-    <?php endif; ?>
-
-    <form method="POST">
-
-        <label for="nome_trem">Nome do trem:</label>
-        <input type="text" id="nome_trem" name="nome_trem" value="<?= htmlspecialchars($trem['nome_trem'], ENT_QUOTES, 'UTF-8'); ?>" required >
-
-        <br><br>
-        <label for="tipo_trem">Tipo:</label>
-        <input type="text" id="tipo_trem" name="tipo_trem" value="<?= htmlspecialchars($trem['tipo_trem'], ENT_QUOTES, 'UTF-8'); ?>" required>
-        <br><br>
-        <label for="carga">Carga:</label>
-        <input type="text" id="carga" name="carga" value="<?= htmlspecialchars($trem['carga'], ENT_QUOTES, 'UTF-8'); ?>" required >
-        <br><br>
-
-        <label for="id_usuario">Usuário responsável:</label>
-        <select id="id_usuario" name="id_usuario" required>
-            <option value="">Selecione um usuário</option>
-
-            <?php while ($usuario = $usuarios->fetch_assoc()): ?>
-                <option value="<?= (int) $usuario['id']; ?>"
-                    <?= ($usuario['id'] == $trem['id_usuario']) ? 'selected' : ''; ?>>
-                    <?= htmlspecialchars($usuario['nome_usuario'], ENT_QUOTES, 'UTF-8'); ?>
-                </option>
-            <?php endwhile; ?>
-        </select>
-
-        <br><br>
-        <button type="submit">Salvar alterações</button>
-        <a href="cadastro_trens.php">Voltar</a>
-
-    </form>
-
-</body>
-</html>
->>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24

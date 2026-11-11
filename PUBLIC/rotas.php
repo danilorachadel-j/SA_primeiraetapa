@@ -1,6 +1,6 @@
 
 <?php
-<<<<<<< HEAD
+
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -16,7 +16,7 @@ $estadosBrasileiros = [
     'DF', 'RJ', 'SC'
 ];
 
-=======
+
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -38,7 +38,7 @@ $estadosBrasileiros = [
     'DF', 'RJ', 'SC'
 ];
 
->>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24
+
 $erroFormulario = null;
 $sucessoFormulario = null;
 
@@ -143,7 +143,6 @@ if (!$rotas) {
 }
 ?>
 
-<<<<<<< HEAD
 <?php
 require_once __DIR__ . '/../INFRA/layout.php';
 layout_head('Rotas · Ferrorama', '../');
@@ -255,7 +254,6 @@ layout_titulo_pagina('Rotas', 'Defina as rotas ferroviárias e o trem responsáv
 </main>
 
 <?php layout_rodape(); layout_scripts('../'); ?>
-=======
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -427,4 +425,3 @@ layout_titulo_pagina('Rotas', 'Defina as rotas ferroviárias e o trem responsáv
 </body>
 
 </html>
->>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24

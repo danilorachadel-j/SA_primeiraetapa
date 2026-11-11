@@ -1,14 +1,8 @@
 
 <?php
-<<<<<<< HEAD
 require_once __DIR__ . "/../INFRA/conexao.php";
 require_once __DIR__ . "/../INFRA/verificar_login.php";
 require_once __DIR__ . "/../INFRA/verificar_administrador.php";
-=======
-require_once __DIR__ . "/../infra/conexao.php";
-require_once __DIR__ . "/../infra/verificar_login.php";
-require_once __DIR__ . "/../infra/verificar_administrador.php";
->>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

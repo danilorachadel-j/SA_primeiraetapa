@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
 require_once __DIR__ . "/../INFRA/conexao.php";
-=======
-require_once __DIR__ . "/../infra/conexao.php";
->>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

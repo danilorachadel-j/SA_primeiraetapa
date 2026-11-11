@@ -1,7 +1,5 @@
 <?php
 session_start();
-<<<<<<< HEAD
-=======
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
 
@@ -14,8 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
 }
 ?>
 <html lang="en">
->>>>>>> 31f87ab6c2de53642b0e42814028b011c64f7e24
-
+<?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
 
     $_SESSION = [];
