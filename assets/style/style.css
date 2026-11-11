@@ -1,8 +1,3 @@
-/* ==========================================================================
-   Ferrorama · Trainsecurity — camada visual sobre o Bootstrap 5.3
-   Ordem de carregamento: bootstrap.min.css  ->  style.css
-   ========================================================================== */
-
 :root {
     --ink: #0e1114;
     --ink-2: #161b20;
@@ -46,7 +41,6 @@ h1, h2, h3, h4, h5 {
 
 .icone { flex-shrink: 0; vertical-align: -.2em; }
 
-/* ---------- Botões ---------- */
 .btn { font-weight: 600; border-radius: .5rem; }
 .btn-primary {
     --bs-btn-color: #1a1200;
@@ -65,7 +59,6 @@ h1, h2, h3, h4, h5 {
 }
 .btn-outline-light { --bs-btn-border-color: rgba(255, 255, 255, .35); }
 
-/* ---------- Navbar ---------- */
 .site-nav {
     background: var(--ink);
     border-bottom: 3px solid var(--signal);
@@ -92,7 +85,6 @@ h1, h2, h3, h4, h5 {
 }
 .nav-user-name { color: #b8c0c8; font-size: .9rem; }
 
-/* ---------- Cabeçalho de página ---------- */
 .page-header {
     background:
         linear-gradient(90deg, rgba(14,17,20,.96) 0%, rgba(14,17,20,.82) 100%),
@@ -111,7 +103,6 @@ h1, h2, h3, h4, h5 {
 }
 .page-subtitle { color: #aeb7c0; }
 
-/* ---------- Painéis de dados ---------- */
 .panel {
     background: #fff;
     border: 1px solid var(--line);
@@ -145,7 +136,6 @@ h1, h2, h3, h4, h5 {
     box-shadow: 0 0 0 .25rem rgba(242, 165, 22, .22);
 }
 
-/* ---------- Tabelas ---------- */
 .table-data { margin: 0; --bs-table-bg: transparent; }
 .table-data thead th {
     background: var(--ink-2);
@@ -172,7 +162,6 @@ h1, h2, h3, h4, h5 {
 }
 .empty-state { text-align: center; padding: 2.5rem 1rem; color: #6b7682; }
 
-/* ---------- Hero (index e home) ---------- */
 .hero {
     position: relative;
     color: #fff;
@@ -201,7 +190,6 @@ h1, h2, h3, h4, h5 {
 }
 .hero p.lead { max-width: 60ch; color: #d3d9df; margin-top: 1.1rem; }
 
-/* ---------- Cartões de cidade ---------- */
 .cidade-card {
     position: relative;
     display: block;
@@ -254,7 +242,6 @@ h1, h2, h3, h4, h5 {
     margin-bottom: .35rem;
 }
 
-/* ---------- Atalhos (home logada) ---------- */
 .atalho {
     display: flex; align-items: center; gap: 1rem;
     height: 100%;
@@ -285,7 +272,6 @@ h1, h2, h3, h4, h5 {
 .atalho p { margin: 0; color: #5d6873; font-size: .88rem; }
 .atalho .seta { margin-left: auto; color: #9aa4ae; }
 
-/* ---------- Login ---------- */
 .login-page {
     min-height: 100vh;
     display: grid; place-items: center;
@@ -305,7 +291,6 @@ h1, h2, h3, h4, h5 {
 .login-card .login-logo { width: 74px; height: 74px; object-fit: contain; background: var(--ink); border-radius: 50%; padding: 8px; }
 .login-card h1 { font-size: 1.6rem; }
 
-/* ---------- Páginas de cidade ---------- */
 .cidade-hero {
     position: relative;
     min-height: 46vh;
@@ -331,7 +316,6 @@ h1, h2, h3, h4, h5 {
     box-shadow: 0 18px 36px -18px rgba(14,17,20,.55);
 }
 
-/* ---------- Rodapé ---------- */
 .site-footer {
     background: var(--ink);
     color: #c7ced5;
@@ -341,7 +325,6 @@ h1, h2, h3, h4, h5 {
     margin-top: 3rem;
 }
 
-/* ---------- Responsivo ---------- */
 @media (max-width: 575.98px) {
     .page-header { padding: 1.8rem 0 1.6rem; }
     .col-acoes { text-align: left; }
