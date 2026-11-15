@@ -9,6 +9,9 @@ unset($_SESSION['erro_acesso']);
 
 require_once __DIR__ . "/../INFRA/verificar_login.php";
 require_once __DIR__ . "/../INFRA/layout.php";
+require_once __DIR__ . "/../INFRA/clima.php";
+
+$clima = clima_obter();
 
 $ehAdm = isset($_SESSION['adm']) && (int) $_SESSION['adm'] === 1;
 layout_head('Início · Ferrorama', '../');
@@ -46,6 +49,43 @@ require_once __DIR__ . "/../infra/verificar_login.php";
         
 
     </div>
+
+    <section class="container-xl py-4" aria-labelledby="titulo-clima">
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-4">
+            <h2 class="secao-titulo mb-0" id="titulo-clima"><small>Condições agora</small>Clima nas nossas cidades</h2>
+            <?php if ($clima !== null): ?>
+                <span class="clima-atualizado">
+                    Atualizado às <?= (new DateTime('@' . $clima['atualizado']))->setTimezone(new DateTimeZone('America/Sao_Paulo'))->format('H:i') ?>
+                </span>
+            <?php endif; ?>
+        </div>
+
+        <?php if ($clima === null): ?>
+            <div class="alert alert-warning mb-0" role="alert">
+                Não foi possível carregar o clima agora. Tente novamente em alguns minutos.
+            </div>
+        <?php else: ?>
+            <div class="row g-3">
+                <?php foreach ($clima['cidades'] as $i => $c): ?>
+                    <div class="col-md-4">
+                        <article class="clima-card<?= $i === 0 ? ' clima-card-destaque' : '' ?>">
+                            <header class="clima-topo">
+                                <h3><?= htmlspecialchars($c['nome'], ENT_QUOTES, 'UTF-8') ?> <span class="estado-badge"><?= htmlspecialchars($c['uf'], ENT_QUOTES, 'UTF-8') ?></span></h3>
+                                <span class="clima-icone"><?= icone($c['icone'], 40) ?></span>
+                            </header>
+                            <div class="clima-temp"><?= round($c['temp']) ?><sup>°C</sup></div>
+                            <p class="clima-texto"><?= htmlspecialchars($c['texto'], ENT_QUOTES, 'UTF-8') ?></p>
+                            <ul class="clima-detalhes">
+                                <li title="Sensação térmica"><?= icone('usuario', 16) ?> Sensação <strong><?= round($c['sensacao']) ?>°C</strong></li>
+                                <li title="Umidade relativa"><?= icone('gota', 16) ?> <strong><?= (int) $c['umidade'] ?>%</strong></li>
+                                <li title="Velocidade do vento"><?= icone('vento', 16) ?> <strong><?= round($c['vento']) ?> km/h</strong></li>
+                            </ul>
+                        </article>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+    </section>
 
     <section class="container-xl py-4">
         <h2 class="secao-titulo mb-4"><small>Operações</small>Painel de gestão</h2>
