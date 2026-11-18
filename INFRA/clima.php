@@ -1,16 +1,8 @@
 <?php
-/**
- * Clima atual das cidades atendidas pela Ferrorama.
- *
- * Usa a API Open-Meteo (gratuita, sem chave): https://open-meteo.com
- * O resultado fica em cache (arquivo temporário) para não chamar a API
- * a cada acesso à home e para a página continuar abrindo rápido.
- */
 
-const CLIMA_CACHE_SEGUNDOS = 600; // 10 minutos
+const CLIMA_CACHE_SEGUNDOS = 600; 
 const CLIMA_TIMEOUT_SEGUNDOS = 4;
 
-/** Cidades exibidas na home (a primeira ganha destaque). */
 function clima_cidades(): array
 {
     return [
@@ -20,7 +12,6 @@ function clima_cidades(): array
     ];
 }
 
-/** Traduz o código WMO retornado pela API em [descrição, nome do ícone]. */
 function clima_descricao(int $codigo, bool $dia = true): array
 {
     switch (true) {
@@ -50,7 +41,6 @@ function clima_descricao(int $codigo, bool $dia = true): array
     }
 }
 
-/** Baixa o JSON da API. Retorna array decodificado ou null em caso de falha. */
 function clima_baixar(array $cidades): ?array
 {
     $lats = implode(',', array_column($cidades, 'lat'));
@@ -92,16 +82,12 @@ function clima_baixar(array $cidades): ?array
         return null;
     }
 
-    // Com várias coordenadas a API devolve uma lista; com uma só, um objeto.
     return isset($json['current']) ? [$json] : $json;
 }
 
-/**
- * Retorna o clima atual das cidades, ou null se não foi possível obter
- * (nem da API, nem de um cache antigo).
- *
+
  * @return array{atualizado:int, cidades:array}|null
- */
+
 function clima_obter(): ?array
 {
     $cidades = clima_cidades();
@@ -121,7 +107,7 @@ function clima_obter(): ?array
 
     $resposta = clima_baixar($cidades);
     if ($resposta === null || count($resposta) !== count($cidades)) {
-        return $cache; // API fora do ar: usa o último dado conhecido, se houver
+        return $cache; 
     }
 
     $resultado = [];
