@@ -7,7 +7,7 @@
 
 Este repositório contém a entrega da Situação de Aprendizagem (S.A.). O objetivo desta fase é estabelecer a fundação da aplicação, abrangendo a estruturação do ambiente, documentação inicial, modelagem do sistema e prototipagem do software.
 
-MANUAL DE DESENVOLVIMENTO DO SISTEMA
+## MANUAL DE DESENVOLVIMENTO DO SISTEMA
 1. Introdução e Visão Geral
 Este manual tem como objetivo orientar a equipe de desenvolvimento na estrutura, configuração e manutenção do projeto baseado em PHP, Bootstrap e metodologias ágeis (Scrum). O sistema foi planejado para integrar funcionalidades de gerenciamento de rotas, sensores, trens e controle de usuários.
 2. Estrutura de Diretórios e Arquivos
