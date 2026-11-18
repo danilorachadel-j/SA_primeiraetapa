@@ -1,7 +1,7 @@
 
 <?php
-require_once __DIR__ . "/../infra/conexao.php";
-require_once __DIR__ . "/../infra/verificar_login.php";
+require_once __DIR__ . "/../INFRA/conexao.php";
+require_once __DIR__ . "/../INFRA/verificar_login.php";
 
 $estadosBrasileiros = [
     'DF', 'RJ','SC'
@@ -103,90 +103,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar rota</title>
+<?php
+require_once __DIR__ . '/../INFRA/layout.php';
+layout_head('Editar rota · Ferrorama', '../');
+layout_navbar('../');
+layout_titulo_pagina('Editar rota', 'Atualize nome, estado e localização da rota.');
+?>
 
-    <link rel="stylesheet" href="../assets/style/style.css">
-</head>
-
-<body class="data-page">
-    <div class="cont-nav">
-        <nav class="navbar bg-body-tertiary">
-            <div class="container5">
-                <a class="navbar-brand" href="home.php">
-                    <img src="../assets/img/Logo.png" alt="login">
-                </a>
-            </div>
-        </nav>
-    </div>
-
-    <main class="data-layout">
-        <section class="data-form-panel">
-
-            <h1>Editar rota</h1>
-
+<main class="container-xl py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
             <?php if ($salvo): ?>
-                <p class="form-message form-success" role="status">
-                    Alterações salvas com sucesso!
-                </p>
+                <?php layout_alerta('Alterações salvas com sucesso!', 'success'); ?>
             <?php endif; ?>
-
             <?php foreach ($erros as $erro): ?>
-                <p class="form-message form-error">
-                    <?= htmlspecialchars($erro, ENT_QUOTES, 'UTF-8'); ?>
-                </p>
+                <?php layout_alerta($erro, 'danger'); ?>
             <?php endforeach; ?>
 
-            <form method="post" action="editar_rotas.php?id=<?= (int) $id; ?>">
+            <div class="panel">
+                <div class="panel-header"><h2>Dados da rota</h2></div>
+                <form class="panel-body" method="post" action="editar_rotas.php?id=<?= (int) $id; ?>">
+                    <input type="hidden" name="id" value="<?= (int) $id; ?>">
+                    <div class="mb-3">
+                        <label class="form-label" for="nome_rota">Nome da rota</label>
+                        <input type="text" class="form-control" id="nome_rota" name="nome_rota"
+                               value="<?= htmlspecialchars($rota['nome_rota'], ENT_QUOTES, 'UTF-8'); ?>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="estado_rota">Estado</label>
+                        <select class="form-select" id="estado_rota" name="estado_rota" required>
+                            <option value="">Selecione um estado</option>
+                            <?php foreach ($estadosBrasileiros as $estado): ?>
+                                <option value="<?= htmlspecialchars($estado, ENT_QUOTES, 'UTF-8'); ?>"
+                                    <?= $rota['estado_rota'] === $estado ? 'selected' : ''; ?>>
+                                    <?= htmlspecialchars($estado, ENT_QUOTES, 'UTF-8'); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label" for="local_rota">Local da rota</label>
+                        <input type="text" class="form-control" id="local_rota" name="local_rota"
+                               value="<?= htmlspecialchars($rota['local_rota'], ENT_QUOTES, 'UTF-8'); ?>" required>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary px-4">Salvar alterações</button>
+                        <a href="rotas.php" class="btn btn-outline-secondary"><?= icone('voltar', 16) ?> Voltar para as rotas</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
 
-                <input type="hidden" name="id" value="<?= (int) $id; ?>">
-
-                <label for="nome_rota">Nome da rota</label>
-                <input
-                    type="text"
-                    id="nome_rota"
-                    name="nome_rota"
-                    value="<?= htmlspecialchars($rota['nome_rota'], ENT_QUOTES, 'UTF-8'); ?>"
-                    required
-                >
-
-                <label for="estado_rota">Estado</label>
-                <select id="estado_rota" name="estado_rota" required>
-                    <option value="">Selecione um estado</option>
-
-                    <?php foreach ($estadosBrasileiros as $estado): ?>
-                        <option
-                            value="<?= htmlspecialchars($estado, ENT_QUOTES, 'UTF-8'); ?>"
-                            <?= $rota['estado_rota'] === $estado ? 'selected' : ''; ?>
-                        >
-                            <?= htmlspecialchars($estado, ENT_QUOTES, 'UTF-8'); ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-
-                <label for="local_rota">Local da rota</label>
-                <input
-                    type="text"
-                    id="local_rota"
-                    name="local_rota"
-                    value="<?= htmlspecialchars($rota['local_rota'], ENT_QUOTES, 'UTF-8'); ?>"
-                    required
-                >
-
-                <button type="submit">Salvar alterações</button>
-
-            </form>
-
-            <p>
-                <a href="rotas.php">Voltar para as rotas</a>
-            </p>
-
-        </section>
-    </main>
-
-</body>
-</html>
+<?php layout_rodape(); layout_scripts('../'); ?>

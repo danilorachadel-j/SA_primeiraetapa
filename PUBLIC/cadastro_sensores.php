@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . "/../infra/verificar_login.php";
-require_once __DIR__ . "/../infra/conexao.php";
+require_once __DIR__ . "/../INFRA/verificar_login.php";
+require_once __DIR__ . "/../INFRA/conexao.php";
 
 $erro = "";
 $sucesso = "";
@@ -55,121 +55,122 @@ $sensores = $conexao->query(
 );
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de sensores</title>
-    <link rel="stylesheet" href="../assets/style/style.css">
-</head>
+<?php
+require_once __DIR__ . '/../INFRA/layout.php';
+layout_head('Sensores · Ferrorama', '../');
+layout_navbar('../');
+layout_titulo_pagina('Sensores', 'Registre os sensores de cada rota e seus limites de disparo.');
+?>
 
-<body>
-    <div class="cont-nav">
-        <nav class="navbar bg-body-tertiary">
-            <div class="container5">
-                <a class="navbar-brand" href="home.php">
-                    <img src="../assets/img/Logo.png" alt="login">
-                </a>
+<main class="container-xl py-4">
+    <?php layout_alerta($erro, 'danger'); ?>
+    <?php layout_alerta($sucesso, 'success'); ?>
+
+    <div class="row g-4">
+        <section class="col-xl-4">
+            <div class="panel">
+                <div class="panel-header"><h2>Cadastrar sensor</h2></div>
+                <form class="panel-body" method="POST" action="cadastro_sensores.php">
+                    <div class="mb-3">
+                        <label class="form-label" for="tipo_sensor">Tipo de sensor</label>
+                        <select class="form-select" id="tipo_sensor" name="tipo_sensor" required>
+                            <option value="">Selecione o tipo</option>
+                            <option value="Temperatura">Temperatura</option>
+                            <option value="Velocidade">Velocidade</option>
+                            <option value="Localização">Localização</option>
+                            <option value="Vibração">Vibração</option>
+                            <option value="Pressão">Pressão</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="id_rota">Rota</label>
+                        <select class="form-select" id="id_rota" name="id_rota" required>
+                            <option value="">Selecione uma rota</option>
+                            <?php while ($rota = $rotas->fetch_assoc()): ?>
+                                <option value="<?= (int) $rota['id']; ?>">
+                                    <?= htmlspecialchars($rota['nome_rota'], ENT_QUOTES, 'UTF-8'); ?>
+                                </option>
+                            <?php endwhile; ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="dados_sensor">Dados do sensor</label>
+                        <textarea class="form-control" id="dados_sensor" name="dados_sensor" rows="3" required placeholder="Ex.: sensor instalado na rota"></textarea>
+                    </div>
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6">
+                            <label class="form-label" for="valor_capturado">Valor capturado</label>
+                            <input type="number" step="0.01" class="form-control" id="valor_capturado" name="valor_capturado" placeholder="Opcional">
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="form-label" for="limite_disparo">Limite de disparo</label>
+                            <input type="number" step="0.01" class="form-control" id="limite_disparo" name="limite_disparo" placeholder="Opcional">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 py-2"><?= icone('mais', 18) ?> Cadastrar sensor</button>
+                </form>
             </div>
-        </nav>
+        </section>
+
+        <section class="col-xl-8">
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Sensores cadastrados</h2>
+                    <span class="badge text-bg-dark"><?= $sensores ? (int) $sensores->num_rows : 0 ?> no total</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-data table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tipo</th>
+                                <th>Rota</th>
+                                <th>Dados</th>
+                                <th>Valor</th>
+                                <th>Limite</th>
+                                <th class="text-end">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if ($sensores && $sensores->num_rows > 0): ?>
+                                <?php while ($sensor = $sensores->fetch_assoc()): ?>
+                                    <tr>
+                                        <td class="cell-mono">#<?= (int) $sensor['id']; ?></td>
+                                        <td><span class="badge text-bg-warning"><?= htmlspecialchars($sensor['tipo_sensor'], ENT_QUOTES, 'UTF-8'); ?></span></td>
+                                        <td class="fw-semibold"><?= htmlspecialchars($sensor['nome_rota'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                        <td><?= htmlspecialchars($sensor['dados_sensor'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                        <td class="cell-mono">
+                                            <?php if ($sensor['valor_capturado'] !== null): ?>
+                                                <?= htmlspecialchars($sensor['valor_capturado'], ENT_QUOTES, 'UTF-8'); ?>
+                                            <?php else: ?>
+                                                <span class="text-secondary">&mdash;</span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td class="cell-mono">
+                                            <?php if ($sensor['limite_disparo'] !== null): ?>
+                                                <?= htmlspecialchars($sensor['limite_disparo'], ENT_QUOTES, 'UTF-8'); ?>
+                                            <?php else: ?>
+                                                <span class="text-secondary">&mdash;</span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td class="col-acoes">
+                                            <a class="btn btn-outline-secondary btn-sm" href="editar_sensor.php?id=<?= (int) $sensor['id']; ?>" title="Editar sensor" aria-label="Editar sensor"><?= icone('editar', 15) ?></a>
+                                            <form action="exluir_sensor.php" method="POST" class="d-inline" onsubmit="return confirm('Deseja excluir este sensor?');">
+                                                <input type="hidden" name="id" value="<?= (int) $sensor['id']; ?>">
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" title="Excluir sensor" aria-label="Excluir sensor"><?= icone('lixo', 15) ?></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            <?php else: ?>
+                                <tr><td colspan="7" class="empty-state">Nenhum sensor cadastrado.</td></tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
     </div>
+</main>
 
-    <h1>Cadastrar sensor</h1>
-
-    <?php if ($erro !== ''): ?>
-        <p><?php echo htmlspecialchars($erro, ENT_QUOTES, 'UTF-8'); ?></p>
-    <?php endif; ?>
-
-    <?php if ($sucesso !== ''): ?>
-        <p><?php echo htmlspecialchars($sucesso, ENT_QUOTES, 'UTF-8'); ?></p>
-    <?php endif; ?>
-
-    <form method="POST" action="cadastro_sensores.php">
-
-        <label for="tipo_sensor">Tipo de sensor:</label>
-        <select id="tipo_sensor" name="tipo_sensor" required>
-            <option value="">Selecione o tipo</option>
-            <option value="Temperatura">Temperatura</option>
-            <option value="Velocidade">Velocidade</option>
-            <option value="Localização">Localização</option>
-            <option value="Vibração">Vibração</option>
-            <option value="Pressão">Pressão</option>
-        </select>
-
-        <label for="id_rota">Rota:</label>
-        <select id="id_rota" name="id_rota" required>
-            <option value="">Selecione uma rota</option>
-
-            <?php while ($rota = $rotas->fetch_assoc()): ?>
-                <option value="<?= (int) $rota['id']; ?>">
-                    <?= htmlspecialchars($rota['nome_rota'], ENT_QUOTES, 'UTF-8'); ?>
-                </option>
-            <?php endwhile; ?>
-        </select>
-
-        <label for="dados_sensor">Dados do sensor:</label>
-        <textarea id="dados_sensor" name="dados_sensor" rows="4" required placeholder="Ex.: sensor instalado na rota"></textarea>
-
-        <br>
-
-        <label for="valor_capturado">Valor capturado (opcional):</label>
-        <input type="number" step="0.01" id="valor_capturado" name="valor_capturado">
-
-        <br>
-
-        <label for="limite_disparo">Limite de disparo (opcional):</label>
-        <input type="number" step="0.01" id="limite_disparo" name="limite_disparo">
-
-        <br>
-
-        <button type="submit">Cadastrar sensor</button>
-
-    </form>
-
-    <hr>
-
-    <h2>Sensores cadastrados</h2>
-
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Tipo</th>
-            <th>Rota</th>
-            <th>Dados</th>
-            <th>Valor capturado</th>
-            <th>Limite de disparo</th>
-            <th>Ações</th>
-        </tr>
-
-        <?php
-        if ($sensores && $sensores->num_rows > 0) {
-            while ($sensor = $sensores->fetch_assoc()) {
-        ?>
-            <tr>
-                <td><?= htmlspecialchars($sensor['id']); ?></td>
-                <td><?= htmlspecialchars($sensor['tipo_sensor']); ?></td>
-                <td><?= htmlspecialchars($sensor['nome_rota']); ?></td>
-                <td><?= htmlspecialchars($sensor['dados_sensor']); ?></td>
-                <td><?= htmlspecialchars($sensor['valor_capturado'] ?? 'Não informado'); ?></td>
-                <td><?= htmlspecialchars($sensor['limite_disparo'] ?? 'Não informado'); ?></td>
-                <td>
-                    <a href="editar_sensor.php?id=<?= $sensor['id']; ?>">Editar</a>
-                    <form action="exluir_sensor.php" method="POST">
-                        <input type="hidden" name="id" value="<?= $sensor['id']; ?>">
-                        <button type="submit" onclick="return confirm('Deseja excluir este sensor?')">
-                            Excluir
-                        </button>
-                    </form>
-                </td>
-            </tr>
-        <?php
-            }
-        } else {
-            echo "<tr><td colspan='7'>Nenhum sensor cadastrado.</td></tr>";
-        }
-        ?>
-    </table>
-
-</body>
-</html>
+<?php layout_rodape(); layout_scripts('../'); ?>

@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../infra/conexao.php";
+require_once __DIR__ . "/../INFRA/conexao.php";
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

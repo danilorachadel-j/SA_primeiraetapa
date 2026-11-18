@@ -1,8 +1,8 @@
 
 <?php
-require_once __DIR__ . "/../infra/conexao.php";
-require_once __DIR__ . "/../infra/verificar_login.php";
-require_once __DIR__ . "/../infra/verificar_administrador.php";
+require_once __DIR__ . "/../INFRA/conexao.php";
+require_once __DIR__ . "/../INFRA/verificar_login.php";
+require_once __DIR__ . "/../INFRA/verificar_administrador.php";
 
 $erro = "";
 $sucesso = "";
@@ -116,132 +116,73 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
+<?php
+require_once __DIR__ . '/../INFRA/layout.php';
+layout_head('Editar usuário · Ferrorama', '../');
+layout_navbar('../');
+layout_titulo_pagina('Editar usuário', 'Atualize os dados de acesso. Deixe a senha em branco para mantê-la.');
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Usuário - Ferrorama</title>
+<main class="container-xl py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <?php layout_alerta($erro, 'danger'); ?>
+            <?php layout_alerta($sucesso, 'success'); ?>
 
-    <link rel="stylesheet" href="../assets/style/style.css">
-</head>
-
-<body>
-
-    <div class="cont-nav">
-        <nav class="navbar bg-body-tertiary">
-            <div class="container5">
-                <a class="navbar-brand" href="home.php">
-                    <img src="../assets/img/Logo.png" alt="login">
-                </a>
+            <div class="panel">
+                <div class="panel-header"><h2>Dados do usuário</h2></div>
+                <form class="panel-body" method="POST" action="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?id=' . $id, ENT_QUOTES, 'UTF-8') ?>">
+                    <div class="mb-3">
+                        <label class="form-label" for="nome_usuario">Nome</label>
+                        <input type="text" class="form-control" id="nome_usuario" name="nome_usuario"
+                               value="<?= htmlspecialchars($usuario['nome_usuario']) ?>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="email_usuario">E-mail</label>
+                        <input type="email" class="form-control" id="email_usuario" name="email_usuario"
+                               value="<?= htmlspecialchars($usuario['email_usuario']) ?>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="telefone_usuario">Telefone</label>
+                        <input type="tel" class="form-control" id="telefone_usuario" name="telefone_usuario"
+                               pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}" maxlength="15" inputmode="numeric"
+                               placeholder="(47) 99999-9999"
+                               value="<?= htmlspecialchars($usuario['telefone_usuario']) ?>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="senha_usuario">Nova senha</label>
+                        <input type="password" class="form-control" id="senha_usuario" name="senha_usuario"
+                               autocomplete="new-password" placeholder="Deixe vazio para manter a senha atual">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label" for="adm">Tipo de usuário</label>
+                        <select class="form-select" id="adm" name="adm" required>
+                            <option value="0" <?= $usuario['adm'] == 0 ? 'selected' : '' ?>>Usuário normal</option>
+                            <option value="1" <?= $usuario['adm'] == 1 ? 'selected' : '' ?>>Administrador</option>
+                        </select>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary px-4">Salvar alterações</button>
+                        <a href="cadastro_usuarios.php" class="btn btn-outline-secondary"><?= icone('voltar', 16) ?> Voltar</a>
+                    </div>
+                </form>
             </div>
-        </nav>
+        </div>
     </div>
+</main>
 
-    <div>
-        <a href="cadastro_usuarios.php">Voltar</a>
-    </div>
+<script>
+    (function () {
+        const campo = document.getElementById('telefone_usuario');
+        if (!campo) return;
+        campo.addEventListener('input', () => {
+            let t = campo.value.replace(/\D/g, '').slice(0, 11);
+            if (t.length > 2) { t = `(${t.slice(0, 2)}) ${t.slice(2)}`; }
+            else if (t.length > 0) { t = `(${t}`; }
+            if (t.length > 10) { t = `${t.slice(0, 10)}-${t.slice(10)}`; }
+            campo.value = t;
+        });
+    })();
+</script>
 
-    <div>
-
-        <h2>Editar usuário</h2>
-
-        <?php if ($erro): ?>
-            <p style="color: red;">
-                <?= htmlspecialchars($erro) ?>
-            </p>
-        <?php endif; ?>
-
-        <?php if ($sucesso): ?>
-            <p style="color: green;">
-                <?= htmlspecialchars($sucesso) ?>
-            </p>
-        <?php endif; ?>
-
-        <form method="POST"
-              action="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?id=' . $id, ENT_QUOTES, 'UTF-8') ?>">
-
-            <label for="nome_usuario">Nome</label>
-            <input
-                type="text"
-                id="nome_usuario"
-                name="nome_usuario"
-                value="<?= htmlspecialchars($usuario['nome_usuario']) ?>"
-                required
-            >
-
-            <label for="email_usuario">E-mail</label>
-            <input
-                type="email"
-                id="email_usuario"
-                name="email_usuario"
-                value="<?= htmlspecialchars($usuario['email_usuario']) ?>"
-                required
-            >
-
-            <label for="telefone_usuario">Telefone</label>
-            <input
-                type="tel"
-                id="telefone_usuario"
-                name="telefone_usuario"
-                pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}"
-                maxlength="15"
-                inputmode="numeric"
-                placeholder="(47) 99999-9999"
-                value="<?= htmlspecialchars($usuario['telefone_usuario']) ?>"
-                required
-            >
-
-            <label for="senha_usuario">Nova senha</label>
-            <input
-                type="password"
-                id="senha_usuario"
-                name="senha_usuario"
-                placeholder="Deixe vazio para manter a senha atual"
-            >
-
-            <label for="adm">Tipo de usuário</label>
-
-            <select id="adm" name="adm" required>
-                <option value="0" <?= $usuario['adm'] == 0 ? 'selected' : '' ?>>
-                    Usuário normal
-                </option>
-
-                <option value="1" <?= $usuario['adm'] == 1 ? 'selected' : '' ?>>
-                    Administrador
-                </option>
-            </select>
-
-            <input type="submit" value="Salvar alterações">
-
-        </form>
-
-        <script>
-            const campoTelefone =
-                document.getElementById('telefone_usuario');
-
-            campoTelefone.addEventListener('input', () => {
-
-                let telefone = campoTelefone.value
-                    .replace(/\D/g, '')
-                    .slice(0, 11);
-
-                if (telefone.length > 2) {
-                    telefone = `(${telefone.slice(0, 2)}) ${telefone.slice(2)}`;
-                } else if (telefone.length > 0) {
-                    telefone = `(${telefone}`;
-                }
-
-                if (telefone.length > 10) {
-                    telefone = `${telefone.slice(0, 10)}-${telefone.slice(10)}`;
-                }
-
-                campoTelefone.value = telefone;
-            });
-        </script>
-
-    </div>
-
-</body>
-</html>
+<?php layout_rodape(); layout_scripts('../'); ?>

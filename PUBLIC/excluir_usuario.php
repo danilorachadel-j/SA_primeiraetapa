@@ -1,8 +1,8 @@
 
 <?php
-require_once __DIR__ . "/../infra/conexao.php";
-require_once __DIR__ . "/../infra/verificar_login.php";
-require_once __DIR__ . "/../infra/verificar_administrador.php";
+require_once __DIR__ . "/../INFRA/conexao.php";
+require_once __DIR__ . "/../INFRA/verificar_login.php";
+require_once __DIR__ . "/../INFRA/verificar_administrador.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
