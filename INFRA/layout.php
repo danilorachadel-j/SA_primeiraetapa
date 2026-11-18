@@ -1,11 +1,4 @@
 <?php
-/**
- * Layout compartilhado (Bootstrap 5 + style.css).
- *
- * $base = caminho relativo até a raiz do projeto
- *         ''    -> páginas na raiz (index.php)
- *         '../' -> páginas dentro de PUBLIC/
- */
 
 function layout_head(string $titulo, string $base = '../', string $bodyClass = ''): void
 {
@@ -34,7 +27,6 @@ function layout_scripts(string $base = '../'): void
     echo '<script src="' . $b . 'assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>' . "\n</body>\n</html>\n";
 }
 
-/** Ícones SVG simples (herdam a cor do texto). */
 function icone(string $nome, int $tamanho = 24): string
 {
     $paths = [
@@ -64,7 +56,6 @@ function icone(string $nome, int $tamanho = 24): string
     return '<svg class="icone" width="' . $tamanho . '" height="' . $tamanho . '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $d . '</svg>';
 }
 
-/** Navbar para visitantes (index.php). */
 function layout_navbar_publica(string $base = ''): void
 {
     $b = htmlspecialchars($base, ENT_QUOTES, 'UTF-8');
@@ -82,7 +73,6 @@ function layout_navbar_publica(string $base = ''): void
 HTML;
 }
 
-/** Navbar da área logada (PUBLIC/*). Mostra "Usuários" só para administradores. */
 function layout_navbar(string $base = '../'): void
 {
     $b      = htmlspecialchars($base, ENT_QUOTES, 'UTF-8');
@@ -119,7 +109,6 @@ function layout_navbar(string $base = '../'): void
     echo '</form></div></div></nav>' . "\n";
 }
 
-/** Cabeçalho de página de dados (faixa escura com título). */
 function layout_titulo_pagina(string $titulo, string $subtitulo = ''): void
 {
     $t = htmlspecialchars($titulo, ENT_QUOTES, 'UTF-8');
@@ -140,7 +129,6 @@ function layout_rodape(): void
         . '</div></footer>' . "\n";
 }
 
-/** Alerta Bootstrap dispensável. $tipo: success | danger | warning | info */
 function layout_alerta(?string $mensagem, string $tipo = 'danger'): void
 {
     if ($mensagem === null || $mensagem === '') {
