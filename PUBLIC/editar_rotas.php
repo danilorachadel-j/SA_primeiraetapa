@@ -148,7 +148,7 @@ layout_titulo_pagina('Editar rota', 'Atualize nome, estado e localização da ro
                     </div>
                     <div class="d-flex gap-2">
                         <button type="submit" class="btn btn-primary px-4">Salvar alterações</button>
-                        <a href="rotas.php" class="btn btn-outline-secondary"><?= icone('voltar', 16) ?> Voltar para as rotas</a>
+                        <a href="cadastro_rotas.php" class="btn btn-outline-secondary"><?= icone('voltar', 16) ?> Voltar para as rotas</a>
                     </div>
                 </form>
             </div>

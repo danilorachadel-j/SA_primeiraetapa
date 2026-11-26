@@ -154,4 +154,4 @@ layout_titulo_pagina('Editar sensor', 'Atualize os dados e os limites do sensor.
     </div>
 </main>
 
-<?php layout_rodape(); layout_
+<?php layout_rodape(); layout_scripts('../'); ?>
