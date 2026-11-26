@@ -151,6 +151,12 @@ layout_titulo_pagina('Rotas', 'Defina as rotas ferroviárias e o trem responsáv
 ?>
 
 <main class="container-xl py-4">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotas - Ferrorama</title>
+    <link rel="stylesheet" href="../assets/style/style.css">
+</head>
     <?php layout_alerta($erroSessao, 'danger'); ?>
     <?php if (isset($_GET['erro']) && $_GET['erro'] === 'rota_vinculada'): ?>
         <?php layout_alerta('Não é possível apagar esta rota porque existe um sensor vinculado a ela.', 'danger'); ?>
@@ -162,7 +168,7 @@ layout_titulo_pagina('Rotas', 'Defina as rotas ferroviárias e o trem responsáv
         <section class="col-lg-4">
             <div class="panel">
                 <div class="panel-header"><h2>Cadastrar rota</h2></div>
-                <form class="panel-body" method="POST" action="rotas.php">
+                <form class="panel-body" method="POST" action="cadastro_rotas.php">
                     <div class="mb-3">
                         <label class="form-label" for="nome_rota">Nome da rota</label>
                         <input type="text" class="form-control" id="nome_rota" name="nome_rota"
@@ -235,7 +241,7 @@ layout_titulo_pagina('Rotas', 'Defina as rotas ferroviárias e o trem responsáv
                                     <td><?= htmlspecialchars($rota['nome_trem'], ENT_QUOTES, 'UTF-8'); ?></td>
                                     <td class="col-acoes">
                                         <a class="btn btn-outline-secondary btn-sm" href="editar_rotas.php?id=<?= (int) $rota['id']; ?>"><?= icone('editar', 15) ?> Editar</a>
-                                        <form action="apagar_rotas.php" method="POST" class="d-inline" onsubmit="return window.confirm('Tem certeza que deseja excluir esta rota?');">
+                                        <form action="excluir_rotas.php" method="POST" class="d-inline" onsubmit="return window.confirm('Tem certeza que deseja excluir esta rota?');">
                                             <input type="hidden" name="id" value="<?= (int) $rota['id']; ?>">
                                             <button type="submit" class="btn btn-outline-danger btn-sm"><?= icone('lixo', 15) ?> Apagar</button>
                                         </form>
@@ -257,12 +263,7 @@ layout_titulo_pagina('Rotas', 'Defina as rotas ferroviárias e o trem responsáv
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rotas - Ferrorama</title>
-    <link rel="stylesheet" href="../assets/style/style.css">
-</head>
+
 
 
 

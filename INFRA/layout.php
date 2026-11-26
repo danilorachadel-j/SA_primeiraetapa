@@ -82,7 +82,7 @@ function layout_navbar(string $base = '../'): void
 
     $itens = [
         ['home.php',              'Início',   ['home.php']],
-        ['rotas.php',             'Rotas',    ['rotas.php', 'editar_rotas.php']],
+        ['cadastro_rotas.php',             'Rotas',    ['cadastro_rotas.php', 'editar_rotas.php']],
         ['cadastro_trens.php',    'Trens',    ['cadastro_trens.php', 'editar_trens.php']],
         ['cadastro_sensores.php', 'Sensores', ['cadastro_sensores.php', 'editar_sensor.php']],
     ];

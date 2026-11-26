@@ -29,7 +29,7 @@ $resultado = $stmt->get_result();
 if ($resultado->num_rows > 0) {
     $stmt->close();
 
-    header("Location: rotas.php?erro=rota_vinculada");
+    header("Location: cadastro_rotas.php?erro=rota_vinculada");
     exit;
 }
 
@@ -44,12 +44,12 @@ $stmt->bind_param("i", $id);
 if ($stmt->execute()) {
     $stmt->close();
 
-    header("Location: rotas.php");
+    header("Location: cadastro_rotas.php");
     exit;
 }
 
 $stmt->close();
 
-header("Location: rotas.php?erro=exclusao");
+header("Location: cadastro_rotas.php?erro=exclusao");
 exit;
 ?>
