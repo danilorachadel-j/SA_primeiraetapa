@@ -6,7 +6,7 @@ $dbHost = getenv('DB_HOST') ?: 'localhost';
 $dbUser = getenv('DB_USER') ?: 'root';
 $dbPass = getenv('DB_PASS') ?: '';
 $dbName = getenv('DB_NAME') ?: 'sa_ferrorama_d_s_i_n';
-$dbPort = (int) (getenv('DB_PORT') ?: 3306);
+$dbPort = (int) (getenv('DB_PORT') ?: 3344);
 
 try {
     $conexao = new mysqli($dbHost, $dbUser, $dbPass, $dbName, $dbPort);

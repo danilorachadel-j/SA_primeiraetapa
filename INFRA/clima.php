@@ -1,3 +1,4 @@
+
 <?php
 
 const CLIMA_CACHE_SEGUNDOS = 600; 
@@ -65,6 +66,7 @@ function clima_baixar(array $cidades): ?array
         $corpo = curl_exec($ch);
         $http  = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
+
         if ($http !== 200) {
             $corpo = false;
         }
@@ -78,6 +80,7 @@ function clima_baixar(array $cidades): ?array
     }
 
     $json = json_decode($corpo, true);
+
     if (!is_array($json)) {
         return null;
     }
@@ -85,17 +88,19 @@ function clima_baixar(array $cidades): ?array
     return isset($json['current']) ? [$json] : $json;
 }
 
-
+/**
  * @return array{atualizado:int, cidades:array}|null
-
+ */
 function clima_obter(): ?array
 {
     $cidades = clima_cidades();
     $arquivo = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'ferrorama_clima.json';
 
     $cache = null;
+
     if (is_file($arquivo)) {
         $lido = json_decode((string) @file_get_contents($arquivo), true);
+
         if (is_array($lido) && isset($lido['atualizado'], $lido['cidades'])) {
             $cache = $lido;
         }
@@ -106,17 +111,22 @@ function clima_obter(): ?array
     }
 
     $resposta = clima_baixar($cidades);
+
     if ($resposta === null || count($resposta) !== count($cidades)) {
-        return $cache; 
+        return $cache;
     }
 
     $resultado = [];
+
     foreach ($cidades as $i => $cidade) {
         $atual = $resposta[$i]['current'] ?? null;
+
         if (!is_array($atual) || !isset($atual['temperature_2m'])) {
             return $cache;
         }
+
         $dia = (int) ($atual['is_day'] ?? 1) === 1;
+
         [$texto, $icone] = clima_descricao((int) ($atual['weather_code'] ?? -1), $dia);
 
         $resultado[] = $cidade + [
@@ -130,6 +140,7 @@ function clima_obter(): ?array
     }
 
     $dados = ['atualizado' => time(), 'cidades' => $resultado];
+
     @file_put_contents($arquivo, json_encode($dados), LOCK_EX);
 
     return $dados;
