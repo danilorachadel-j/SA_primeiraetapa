@@ -150,7 +150,7 @@ layout_titulo_pagina('Trens', 'Cadastre a frota e acompanhe quem é o responsáv
                                     <td><?= htmlspecialchars($trem['nome_usuario'], ENT_QUOTES, 'UTF-8'); ?></td>
                                     <td class="col-acoes">
                                         <a class="btn btn-outline-secondary btn-sm" href="editar_trens.php?id=<?= (int) $trem['id']; ?>"><?= icone('editar', 15) ?> Editar</a>
-                                        <form method="POST" action="apagar_trens.php" class="d-inline" onsubmit="return confirm('Tem certeza que deseja apagar este trem?');">
+                                        <form method="POST" action="excluir_trens.php" class="d-inline" onsubmit="return confirm('Tem certeza que deseja apagar este trem?');">
                                             <input type="hidden" name="id" value="<?= (int) $trem['id']; ?>">
                                             <button type="submit" class="btn btn-outline-danger btn-sm"><?= icone('lixo', 15) ?> Apagar</button>
                                         </form>

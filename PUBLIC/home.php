@@ -91,7 +91,7 @@ require_once __DIR__ . "/../infra/verificar_login.php";
         <h2 class="secao-titulo mb-4"><small>Operações</small>Painel de gestão</h2>
         <div class="row g-3">
             <div class="col-md-6">
-                <a class="atalho" href="rotas.php">
+                <a class="atalho" href="cadastro_rotas.php">
                     <span class="atalho-icone"><?= icone('rota', 26) ?></span>
                     <span><h3>Rotas</h3><p>Cadastre e gerencie as rotas ferroviárias</p></span>
                     <span class="seta"><?= icone('seta', 20) ?></span>
@@ -127,19 +127,19 @@ require_once __DIR__ . "/../infra/verificar_login.php";
         <h2 class="secao-titulo mb-4"><small>Onde atuamos</small>Nossos projetos pelo país</h2>
         <div class="row g-4">
             <div class="col-md-4">
-                <a class="cidade-card" href="Joinville_sc.php">
+                <a class="cidade-card" href="tela_joinville.php">
                     <img src="../assets/img/joinville_arco.jpg" alt="Arco de Joinville" loading="lazy">
                     <div class="corpo"><h3>Joinville &ndash; SC</h3><p>Conheça nossos projetos para o Sul</p></div>
                 </a>
             </div>
             <div class="col-md-4">
-                <a class="cidade-card" href="RioDeJaneiro.php">
+                <a class="cidade-card" href="tela_rio_de_janeiro.php">
                     <img src="../assets/img/RJ_Cristo.jpg" alt="Cristo Redentor, Rio de Janeiro" loading="lazy">
                     <div class="corpo"><h3>Rio de Janeiro &ndash; RJ</h3><p>Venha e conheça nossos projetos na cidade maravilhosa</p></div>
                 </a>
             </div>
             <div class="col-md-4">
-                <a class="cidade-card" href="Brasilia.php">
+                <a class="cidade-card" href="tela_brasilia.php">
                     <img src="../assets/img/brasilia_novo.jpg" alt="Brasília" loading="lazy">
                     <div class="corpo"><h3>Brasília &ndash; DF</h3><p>Veja nossos projetos na capital</p></div>
                 </a>
