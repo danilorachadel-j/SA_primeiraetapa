@@ -35,17 +35,14 @@ MySQLi: Exige reescrever parte dos acessos aos dados se houver mudança para out
 
 **Vantagens e desvantagens de utilizar PDO?**
 Código aberto e gratuito: não há custo de licenciamento para usar a linguagem ou seus ecossistema
-
 Fácil conexão com bancos: integra-se de forma rápida e eficaz ao MySQL, PostgreSQL, SQLite e Oracle.
 Grande Ecossistema: Frameworks como laravel ajudam a estruturar projetos e organizadores e seguros.
+Comunidade Ativa: Ampla disponibilidade de bibliotecas, fóruns e documentação em português.
 
-_Comunidade Ativa_: Ampla disponibilidade de bibliotecas, fóruns e documentação em português.
-Desvantagens do PHP
+*Desvantagens do PHP*
 Desempenho em dados: Não é a melhor escolha para a manipulação massiva de dados.
-
-_Consistência de funções_: Algumas funções nativas antigas possuem nomenclaturas e ordens de parâmetros consistentes
-
-_Comunidade Ativas_: Códigos mal feitos ou mal estruturados feitos no passado ainda mancham a reputação moderna da linguagem.
+Consistência de funções: Algumas funções nativas antigas possuem nomenclaturas e ordens de parâmetros consistentes
+Comunidade Ativas: Códigos mal feitos ou mal estruturados feitos no passado ainda mancham a reputação moderna da linguagem.
 
 **O que são Prepared Statements e por que são importantes?**
 Segurança contra SQL injection: Separa o comando SQL dos dados enviados pelo usuário, impedindo assim que entradas maliciosas alterem a lógica da consulta.
