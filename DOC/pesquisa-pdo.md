@@ -14,13 +14,10 @@ Para estabelecer a conexão, você instancia a classe nativa PDO informando o DS
 **Quais as tuas principais características?**
 É mantido por suas principais características é marcado por sua evolução de uma linguagem focada apenas em páginas web simples para um ecossistema robusto,  capaz de manipular grandes volumes de informação e integrar-se a arquiteturas modernas.
 
--Camada de Abstração robustas.
-
--Ecossistema assíncrono de Alta performance.
-
--Forte integração com APIs e Ferramentas Modernas.
-
--Tipagem Forte e Performance Aprimorada.
+- Camada de Abstração robustas.
+- Ecossistema assíncrono de Alta performance.
+- Forte integração com APIs e Ferramentas Modernas.
+- Tipagem Forte e Performance Aprimorada.
 
 **Diferenças entre PDO e MySQLi?**
 O PDO funciona com vários tipos de bancos de dados, enquanto o MySQLi funciona somente para MySQLi e MariaDB.
@@ -31,7 +28,7 @@ MySQLi: Funciona apenas com servidores MySQLi e MariaDB.
 
 **Flexibilidade de Migração.**
 PDO: Facilita a troca de bancos de dados no futuro.
-MySQLi: Exige reescrever parte dos acessos aos dados se houver mudança para outro                                sistema de bancos de dados.  
+MySQLi: Exige reescrever parte dos acessos aos dados se houver mudança para outro sistema de bancos de dados.  
 
 **Vantagens e desvantagens de utilizar PDO?**
 Código aberto e gratuito: não há custo de licenciamento para usar a linguagem ou seus ecossistema
